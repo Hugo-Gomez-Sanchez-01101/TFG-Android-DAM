@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -83,7 +82,7 @@ public class TerminarRegistroActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                     } else {
-                        mostrarAlerta();
+                        mostrarToastError();
                     }
                 });
     }
@@ -108,17 +107,18 @@ public class TerminarRegistroActivity extends AppCompatActivity {
         t.show();
     }
 
-    private void mostrarAlerta() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Error");
-        builder.setMessage("Se ha producido un error autenticando al usuario");
-        builder.setPositiveButton("Aceptar", null);
-        Dialog dialog = builder.create();
-        dialog.show();
+    private void mostrarToastError() {
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.toast_error_login_registro, (ViewGroup) findViewById(R.id.toastErrorLoginRegistro));
+        Toast t = new Toast(getApplicationContext());
+        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
+        t.setDuration(Toast.LENGTH_SHORT);
+        t.setView(view);
+        t.show();
     }
 
     private void irHome(String email, ProviderType proveedor) {
-        Intent i = new Intent(this, ResultadosActivity.class);
+        Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email", email);
         i.putExtra("proveedor", proveedor + "");
         startActivity(i);

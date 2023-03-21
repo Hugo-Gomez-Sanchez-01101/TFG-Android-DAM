@@ -15,7 +15,7 @@ public class ResultadosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_resultados_pruebas);
         Bundle bundle = getIntent().getExtras();
         email = bundle.getString("email");
         proveedor = bundle.getString("proveedor");

@@ -17,13 +17,10 @@
         <activity
             android:name=".ResultadosActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"></activity>
         <activity android:name=".PerfilActivity" />
         <activity android:name=".ListaOrdenadoresActivity" />
         <activity android:name=".VistaOrdenadorActivity" />
-        <activity android:name=".ActividadMenu"></activity>
+        <activity android:name=".HomeActivity"></activity>
         <activity
             android:name=".RegistroLoginActivity"
             android:exported="true">

@@ -5,8 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -20,7 +24,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -92,23 +95,24 @@ public class RegistroLoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                         } else{
-                            mostrarAlerta();
+                            mostrarToastError();
                         }
                     });
         }
     }
 
-    private void mostrarAlerta(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Error");
-        builder.setMessage("Se ha producido un error autenticando al usuario");
-        builder.setPositiveButton("Aceptar", null);
-        Dialog dialog = builder.create();
-        dialog.show();
+    private void mostrarToastError() {
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.toast_error_login_registro, (ViewGroup) findViewById(R.id.toastErrorLoginRegistro));
+        Toast t = new Toast(getApplicationContext());
+        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
+        t.setDuration(Toast.LENGTH_SHORT);
+        t.setView(view);
+        t.show();
     }
 
     private void irHome(String email, ProviderType proveedor){
-        Intent i = new Intent(this, ListaOrdenadoresActivity.class);
+        Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email",email);
         i.putExtra("proveedor",proveedor + "");
         startActivity(i);
@@ -133,12 +137,12 @@ public class RegistroLoginActivity extends AppCompatActivity {
                         if(it.isSuccessful()){
                             irHome(finalAccount.getEmail(), ProviderType.GOOGLE);
                         } else{
-                            mostrarAlerta();
+                            mostrarToastError();
                         }
                     });
                 }
             } catch (ApiException e) {
-                mostrarAlerta();
+                mostrarToastError();
             }
         }
     }

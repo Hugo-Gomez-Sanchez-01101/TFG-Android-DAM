@@ -48,7 +48,7 @@ public class ListaOrdenadoresActivity extends AppCompatActivity {
         });
 
         iOrdenador.setOnClickListener(v ->{
-            Intent intent = new Intent(this, ActividadMenu.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         } );
 
