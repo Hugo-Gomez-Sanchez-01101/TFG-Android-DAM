@@ -4,86 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF">
+    android:id="@+id/authLayout"
+    android:background="@drawable/background_registro">
 
-    <LinearLayout
-        android:id="@+id/authLayout"
+    <EditText
+        android:id="@+id/emailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#30ffffff"
+
+        android:drawablePadding="10dp"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/contrasenaEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#30ffffff"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:backgroundTint="#B4241C"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Email"
-            android:textColor="#000000"
-            android:textColorHint="#000000" />
+    <Button
+        android:id="@+id/btnAcceder"
+        android:layout_width="128dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="336dp"
+        android:background="@drawable/botones_registro"
+        android:text="LOGIN"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp" />
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="181dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="336dp"
+        android:background="@drawable/botones_registro"
+        android:text="REGISTRAR"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/contrasenaEditText"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:backgroundTint="#B4241C"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:text="Contraseña"
-            android:textColor="#000000" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usuariotfg" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnRegistrar"
-                android:layout_width="99dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="#B4241C"
-                android:backgroundTint="#B4241C"
-                android:text="Registrar" />
+    <TextView
+        android:id="@+id/tvForget"
+        android:layout_width="244dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="540dp"
+        android:text="¿Olvidastes tu contraseña?"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-            <Button
-                android:id="@+id/btnAcceder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="#B4241C"
-                android:text="Acceder" />
-        </LinearLayout>
+    <Button
+        android:id="@+id/btnRegistroGoogle"
+        android:layout_width="264dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="440dp"
+        android:background="@drawable/botones_registro"
+        android:text="Iniciar Sesion con Google"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="5dp" />
-
-        <Button
-            android:id="@+id/btnRegistroGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:backgroundTint="#E1DEDE"
-            android:text="Google"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            app:icon="@drawable/common_google_signin_btn_icon_light_normal" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
