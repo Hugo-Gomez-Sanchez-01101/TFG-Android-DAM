@@ -1,5 +1,6 @@
 package com.example.apptfg;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,14 +30,28 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegistroLoginActivity extends AppCompatActivity {
     private final int GOOGLE_SIGN_IN = 100;
+    private EditText contrasenaEditText,emailEditText;
     EditText email;
     EditText c;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
         setup();
         sesion();
+
+        contrasenaEditText = findViewById(R.id.contrasenaEditText);
+        emailEditText = findViewById(R.id.emailEditText);
+
+        emailEditText.setOnTouchListener((v, event) -> {
+            emailEditText.setText("");
+            return  false;
+        });
+        contrasenaEditText.setOnTouchListener((v, event) ->{
+                contrasenaEditText.setText("");
+            return false;
+        });
     }
 
     @Override
@@ -46,9 +61,11 @@ public class RegistroLoginActivity extends AppCompatActivity {
     }
 
     private void sesion() {
+
         SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
         String email = prefs.getString("email", null);
         String proveedor = prefs.getString("proveedor", null);
+
 
         if(email != null && proveedor != null) {
             findViewById(R.id.authLayout).setVisibility(View.INVISIBLE);
@@ -115,11 +132,21 @@ public class RegistroLoginActivity extends AppCompatActivity {
         Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email",email);
         i.putExtra("proveedor",proveedor + "");
+        guardarDatosUsuario();
         startActivity(i);
     }
 
     private void vaciarCampos(EditText e){
         e.setText("");
+    }
+
+    private void guardarDatosUsuario() {
+        SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        prefs.putString("email", email);
+
+        prefs.apply();
     }
 
     @Override
