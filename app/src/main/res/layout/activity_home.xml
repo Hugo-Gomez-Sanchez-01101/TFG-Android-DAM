@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="80dp"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/red_1"
             android:font="@font/dancing"
             android:text="Introduzca el precio del ordenador que desee"
             android:textColor="@color/white"
@@ -30,10 +30,11 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="308dp"
-            android:layout_height="36dp"
+            android:layout_width="324dp"
+            android:layout_height="53dp"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="30dp"
+            android:backgroundTint="@color/red_1"
             android:entries="@array/precio"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="90dp"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/red_1"
             android:text="Uso del ordenador"
             android:textColor="@color/white"
             android:textSize="15dp"
@@ -51,10 +52,11 @@
 
         <Spinner
             android:id="@+id/spinner2"
-            android:layout_width="308dp"
-            android:layout_height="36dp"
+            android:layout_width="329dp"
+            android:layout_height="55dp"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="30dp"
+            android:backgroundTint="@color/red_1"
             android:entries="@array/uso"
             tools:ignore="MissingConstraints" />
 
@@ -65,7 +67,7 @@
             android:layout_height="43dp"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="90dp"
-            android:backgroundTint="@android:color/holo_red_light"
+            android:backgroundTint="@color/red_1"
             android:text="GENERAR ORDENADOR"
             tools:ignore="MissingConstraints" />
 
