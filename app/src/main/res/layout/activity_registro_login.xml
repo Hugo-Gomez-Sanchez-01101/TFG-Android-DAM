@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/authLayout"
-    android:background="@drawable/background_registro">
+    android:background="@drawable/img">
 
     <EditText
         android:id="@+id/emailEditText"
@@ -34,9 +34,8 @@
         android:background="#30ffffff"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -48,16 +47,17 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
+
     <Button
         android:id="@+id/btnAcceder"
-        android:layout_width="128dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="336dp"
+        android:layout_width="134dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="392dp"
         android:background="@drawable/botones_registro"
         android:text="LOGIN"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -66,12 +66,12 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="181dp"
         android:layout_height="57dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="392dp"
         android:background="@drawable/botones_registro"
         android:text="REGISTRAR"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -80,24 +80,24 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="76dp"
 
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/usuariotfg" />
-
 
     <TextView
         android:id="@+id/tvForget"
         android:layout_width="244dp"
         android:layout_height="24dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="332dp"
         android:text="¿Olvidastes tu contraseña?"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -106,11 +106,12 @@
         android:id="@+id/btnRegistroGoogle"
         android:layout_width="264dp"
         android:layout_height="63dp"
-        android:layout_marginTop="440dp"
-        android:background="@drawable/botones_registro"
-        android:text="Iniciar Sesion con Google"
+        android:layout_marginTop="484dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_normal"
+        android:text="Iniciar con Google"
         android:textAlignment="viewStart"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
