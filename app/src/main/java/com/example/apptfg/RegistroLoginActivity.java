@@ -45,11 +45,11 @@ public class RegistroLoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
 
         emailEditText.setOnTouchListener((v, event) -> {
-            emailEditText.setText("");
+            emailEditText.setHint("");
             return  false;
         });
-        contrasenaEditText.setOnTouchListener((v, event) ->{
-                contrasenaEditText.setText("");
+        contrasenaEditText. setOnTouchListener((v, event) ->{
+                contrasenaEditText.setHint("");
             return false;
         });
     }
@@ -157,7 +157,7 @@ public class RegistroLoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = null;
             try {
                 account = task.getResult(ApiException.class);
-                if(account != null) {
+                if(account == null) {
                     AuthCredential credetial = GoogleAuthProvider.getCredential(account.getIdToken(), null);
                     GoogleSignInAccount finalAccount = account;
                     FirebaseAuth.getInstance().signInWithCredential(credetial).addOnCompleteListener((it) -> {

@@ -118,7 +118,7 @@ public class TerminarRegistroActivity extends AppCompatActivity {
     }
 
     private void irHome(String email, ProviderType proveedor) {
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, ListaOrdenadoresActivity.class);
         i.putExtra("email", email);
         i.putExtra("proveedor", proveedor + "");
         startActivity(i);
