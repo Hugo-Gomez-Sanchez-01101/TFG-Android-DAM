@@ -89,7 +89,7 @@
         app:srcCompat="@drawable/usuariotfg" />
 
     <TextView
-        android:id="@+id/tvForget"
+        android:id="@+id/lblRecuperarContraseña"
         android:layout_width="244dp"
         android:layout_height="24dp"
         android:layout_marginTop="332dp"

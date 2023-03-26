@@ -28,7 +28,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class RegistroLoginActivity extends AppCompatActivity {
+public class RegistroLoginActivity extends FatherView {
     private final int GOOGLE_SIGN_IN = 100;
     private EditText contrasenaEditText,emailEditText;
     EditText email;
@@ -40,37 +40,6 @@ public class RegistroLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro_login);
         setup();
         sesion();
-
-        contrasenaEditText = findViewById(R.id.contrasenaEditText);
-        emailEditText = findViewById(R.id.emailEditText);
-
-        emailEditText.setOnTouchListener((v, event) -> {
-            emailEditText.setHint("");
-            return  false;
-        });
-        contrasenaEditText. setOnTouchListener((v, event) ->{
-                contrasenaEditText.setHint("");
-            return false;
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        findViewById(R.id.authLayout).setVisibility(View.VISIBLE);
-    }
-
-    private void sesion() {
-
-        SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
-        String email = prefs.getString("email", null);
-        String proveedor = prefs.getString("proveedor", null);
-
-
-        if(email != null && proveedor != null) {
-            findViewById(R.id.authLayout).setVisibility(View.INVISIBLE);
-            irHome(email, ProviderType.valueOf(proveedor));
-        }
     }
 
     private void setup() {
@@ -81,17 +50,39 @@ public class RegistroLoginActivity extends AppCompatActivity {
         findViewById(R.id.btnRegistrar).setOnClickListener(v -> irTerminarRegistro());
         findViewById(R.id.btnAcceder).setOnClickListener(v -> acceder());
         findViewById(R.id.btnRegistroGoogle).setOnClickListener(v -> regitrarConGoogle());
+        findViewById(R.id.lblRecuperarContraseña).setOnClickListener(v -> irRecuperarContraseña());
     }
+
+    private void irRecuperarContraseña() {
+        Intent i = new Intent(this, RecuperContraseñaActivity.class);
+        startActivity(i);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        findViewById(R.id.authLayout).setVisibility(View.VISIBLE);
+    }
+
+    private void sesion() {
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
+        String email = prefs.getString("email", null);
+        String proveedor = prefs.getString("proveedor", null);
+
+        if(email != null && proveedor != null) {
+            findViewById(R.id.authLayout).setVisibility(View.INVISIBLE);
+            irHome(email, ProviderType.valueOf(proveedor));
+        }
+    }
+
+
 
     private void regitrarConGoogle() {
         GoogleSignInOptions googleConf;
-
         googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
-
         GoogleSignInClient googleClient;
         googleClient = GoogleSignIn.getClient(this, googleConf);
         googleClient.signOut();
@@ -115,17 +106,9 @@ public class RegistroLoginActivity extends AppCompatActivity {
                             mostrarToastError();
                         }
                     });
+        }else{
+            mostrarToastCamposVacios();
         }
-    }
-
-    private void mostrarToastError() {
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_error_login_registro, (ViewGroup) findViewById(R.id.toastErrorLoginRegistro));
-        Toast t = new Toast(getApplicationContext());
-        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
-        t.setDuration(Toast.LENGTH_SHORT);
-        t.setView(view);
-        t.show();
     }
 
     private void irHome(String email, ProviderType proveedor){

@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TerminarRegistroActivity extends AppCompatActivity {
+public class TerminarRegistroActivity extends FatherView {
     EditText email;
     EditText contraseña1;
     EditText contraseña2;
@@ -85,36 +85,6 @@ public class TerminarRegistroActivity extends AppCompatActivity {
                         mostrarToastError();
                     }
                 });
-    }
-
-    private void mostrarToastCamposVacios() {
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_campos_vacios, (ViewGroup) findViewById(R.id.toastCamposVacios));
-        Toast t = new Toast(getApplicationContext());
-        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
-        t.setDuration(Toast.LENGTH_SHORT);
-        t.setView(view);
-        t.show();
-    }
-
-    private void mostrarToastContraseña() {
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_contrasenas_iguales, (ViewGroup) findViewById(R.id.toastContrasenaDif));
-        Toast t = new Toast(getApplicationContext());
-        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
-        t.setDuration(Toast.LENGTH_SHORT);
-        t.setView(view);
-        t.show();
-    }
-
-    private void mostrarToastError() {
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_error_login_registro, (ViewGroup) findViewById(R.id.toastErrorLoginRegistro));
-        Toast t = new Toast(getApplicationContext());
-        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
-        t.setDuration(Toast.LENGTH_SHORT);
-        t.setView(view);
-        t.show();
     }
 
     private void irHome(String email, ProviderType proveedor) {
