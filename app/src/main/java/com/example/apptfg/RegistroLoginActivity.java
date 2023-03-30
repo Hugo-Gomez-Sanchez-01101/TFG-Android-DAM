@@ -30,7 +30,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegistroLoginActivity extends FatherView {
     private final int GOOGLE_SIGN_IN = 100;
-    private EditText contrasenaEditText,emailEditText;
     EditText email;
     EditText c;
 
@@ -140,7 +139,7 @@ public class RegistroLoginActivity extends FatherView {
             GoogleSignInAccount account = null;
             try {
                 account = task.getResult(ApiException.class);
-                if(account == null) {
+                if(account != null) {
                     AuthCredential credetial = GoogleAuthProvider.getCredential(account.getIdToken(), null);
                     GoogleSignInAccount finalAccount = account;
                     FirebaseAuth.getInstance().signInWithCredential(credetial).addOnCompleteListener((it) -> {
