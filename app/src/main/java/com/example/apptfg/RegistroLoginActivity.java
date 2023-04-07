@@ -37,6 +37,7 @@ public class RegistroLoginActivity extends FatherView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
+
         setup();
         sesion();
     }
@@ -44,8 +45,8 @@ public class RegistroLoginActivity extends FatherView {
     private void setup() {
         email = findViewById(R.id.emailEditText);
         c = findViewById(R.id.contrasenaEditText);
-        email.setOnClickListener(v -> vaciarCampos(email));
-        c.setOnClickListener(v -> vaciarCampos(c));
+        email.setOnClickListener(v -> email.setHint(""));
+        c.setOnClickListener(v -> c.setHint(""));
         findViewById(R.id.btnRegistrar).setOnClickListener(v -> irTerminarRegistro());
         findViewById(R.id.btnAcceder).setOnClickListener(v -> acceder());
         findViewById(R.id.btnRegistroGoogle).setOnClickListener(v -> regitrarConGoogle());
@@ -118,9 +119,6 @@ public class RegistroLoginActivity extends FatherView {
         startActivity(i);
     }
 
-    private void vaciarCampos(EditText e){
-        e.setText("");
-    }
 
     private void guardarDatosUsuario() {
         SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
