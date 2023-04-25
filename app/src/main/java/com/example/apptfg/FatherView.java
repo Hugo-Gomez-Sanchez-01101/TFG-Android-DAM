@@ -1,5 +1,6 @@
 package com.example.apptfg;
 
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,5 +58,23 @@ public class FatherView extends AppCompatActivity {
         t.setDuration(Toast.LENGTH_SHORT);
         t.setView(view);
         t.show();
+    }
+
+    protected void darFuncionalidadMenu(){
+        findViewById(R.id.iCasa).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListaOrdenadoresActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        findViewById(R.id.iOrdenador).setOnClickListener(v ->{
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        } );
+        findViewById(R.id.iUsuario).setOnClickListener(v ->{
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }

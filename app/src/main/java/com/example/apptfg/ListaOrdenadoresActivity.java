@@ -16,17 +16,18 @@ import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
 import java.util.List;
 
 
-public class ListaOrdenadoresActivity extends AppCompatActivity {
+public class ListaOrdenadoresActivity extends FatherView {
     private RecyclerView recyclerViewUser;
     private AdaptadorOrdenadorVH adaptadorOrdenadorVH;
-    private ImageButton iUsuario,iCasa, iOrdenador;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_ordenadores);
-        iUsuario = findViewById(R.id.iUsuario);
-        iCasa = findViewById(R.id.iCasa);
-        iOrdenador = findViewById(R.id.iOrdenador);
+        darFuncionalidadMenu();
+        setupRecicler();
+    }
+
+    private void setupRecicler() {
         recyclerViewUser = findViewById(R.id.rViewUsuario);
         recyclerViewUser.setHasFixedSize(true);
 
@@ -40,35 +41,12 @@ public class ListaOrdenadoresActivity extends AppCompatActivity {
         List<Ordenador> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getListaOrdenadores();
         adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores);
         recyclerViewUser.setAdapter(adaptadorOrdenadorVH);
-
-        iCasa.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ListaOrdenadoresActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        iOrdenador.setOnClickListener(v ->{
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        } );
-
-
-        iUsuario.setOnClickListener(v ->{
-            Intent intent = new Intent(this, PerfilActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         recyclerViewUser.getAdapter().notifyDataSetChanged();
     }
-
-
-
-
 }

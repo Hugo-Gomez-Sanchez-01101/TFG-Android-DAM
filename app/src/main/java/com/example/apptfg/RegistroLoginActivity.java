@@ -115,16 +115,17 @@ public class RegistroLoginActivity extends FatherView {
         Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email",email);
         i.putExtra("proveedor",proveedor + "");
-        guardarDatosUsuario();
+        guardarDatosUsuario(proveedor);
         startActivity(i);
     }
 
 
-    private void guardarDatosUsuario() {
+    private void guardarDatosUsuario(ProviderType proveedor) {
         SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         prefs.putString("email", email);
+        prefs.putString("proveedor",proveedor + "");
 
         prefs.apply();
     }
