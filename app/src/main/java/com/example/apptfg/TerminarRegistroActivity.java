@@ -82,7 +82,7 @@ public class TerminarRegistroActivity extends FatherView {
                     if (task.isSuccessful()) {
                         irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                     } else {
-                        mostrarToastError();
+                        mostrarToastCamposIncompletos();
                     }
                 });
     }

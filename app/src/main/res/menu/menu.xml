@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/iCasa"
+        android:icon="@drawable/casitatf"
+        android:title="" />
+    <item android:id="@+id/iOrdenador"
+        android:icon="@drawable/ordenador2"
+        android:title="" />
+    <item android:id="@+id/iUsuario"
+        android:icon="@drawable/usuario"
+        android:title="" />
+</menu>

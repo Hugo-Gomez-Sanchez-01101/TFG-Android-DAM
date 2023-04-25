@@ -44,18 +44,20 @@ public class ListaOrdenadoresActivity extends AppCompatActivity {
         iCasa.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListaOrdenadoresActivity.class);
             startActivity(intent);
-
+            finish();
         });
 
         iOrdenador.setOnClickListener(v ->{
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
+            finish();
         } );
 
 
         iUsuario.setOnClickListener(v ->{
             Intent intent = new Intent(this, PerfilActivity.class);
             startActivity(intent);
+            finish();
         });
 
     }
