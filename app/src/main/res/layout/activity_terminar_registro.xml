@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img"
+    android:background="@drawable/fondo_login_"
     tools:context=".TerminarRegistroActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="112dp"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/usuariotfg" />
+        app:layout_constraintVertical_bias="0.107"
+        app:srcCompat="@drawable/usuario_login" />
 
     <EditText
         android:id="@+id/emailParaRegistroEditText"
@@ -30,8 +31,8 @@
         android:hint="Email"
         android:inputType="textPersonName"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnTerminrRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
@@ -50,8 +51,8 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
@@ -65,21 +66,21 @@
         android:layout_width="391dp"
         android:layout_height="63dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:background="#30ffffff"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Confirmar contraseña"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593"
+        app:layout_constraintVertical_bias="0.592"
         tools:ignore="MissingConstraints,Suspicious0dp" />
 
     <Button
@@ -87,7 +88,7 @@
         android:layout_width="312dp"
         android:layout_height="49dp"
         android:background="@drawable/botones_registro"
-        android:text="Registarse"
+        android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

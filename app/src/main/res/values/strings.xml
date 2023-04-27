@@ -9,4 +9,5 @@
     <string name="eliminarO">ELIMINAR</string>
     <string name="prefs_file">com.example.apptfg.PREFERENCE.FILE.KEY</string>
     <string name="se_ha_producido_un_error">se ha producido un error</string>
+    <string name="olvidar_contrasena"><u>¿Olvidastes tu contraseña?</u></string>
 </resources>

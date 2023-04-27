@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/authLayout"
-    android:background="@drawable/img">
+    android:background="@drawable/fondo_login_">
 
     <EditText
         android:id="@+id/emailEditText"
@@ -14,13 +14,12 @@
         android:layout_margin="10dp"
         android:layout_marginTop="10dp"
         android:background="#30ffffff"
-
         android:drawablePadding="10dp"
         android:hint="Email"
         android:inputType="textPersonName"
         android:padding="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +36,8 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -81,20 +80,19 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="76dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/usuariotfg" />
+        app:srcCompat="@drawable/usuario_login" />
 
     <TextView
         android:id="@+id/lblRecuperarContraseña"
         android:layout_width="244dp"
         android:layout_height="24dp"
         android:layout_marginTop="332dp"
-        android:text="¿Olvidastes tu contraseña?"
-        android:textColor="#FFFFFF"
+        android:text="@string/olvidar_contrasena"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -107,9 +105,9 @@
         android:layout_width="264dp"
         android:layout_height="63dp"
         android:layout_marginTop="484dp"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_normal"
-        android:text="Iniciar con Google"
+        android:backgroundTint="#30ffffff"
+        android:drawableLeft="@drawable/google"
+        android:text="    Iniciar con Google"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
