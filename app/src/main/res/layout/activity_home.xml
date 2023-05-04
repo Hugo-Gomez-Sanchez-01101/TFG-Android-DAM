@@ -62,7 +62,7 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnGenerarPc"
             android:layout_width="299dp"
             android:layout_height="43dp"
             android:layout_marginLeft="55dp"

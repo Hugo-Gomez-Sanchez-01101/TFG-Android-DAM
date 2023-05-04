@@ -20,7 +20,7 @@ public class Reglas {
     private double    PRECIO_MAX;
     private double    PRECIO_MIN;
 
-    public Reglas(Usos uso, double maximoEstablecidoUsuario, double minimoEstablecidoUsuario){
+    public Reglas(Usos uso, double minimoEstablecidoUsuario, double maximoEstablecidoUsuario){
         switch (uso){
             case GAMING:
                 rellenarGaming();

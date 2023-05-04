@@ -11,12 +11,9 @@ import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Reglas;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Query;
 
-import java.util.concurrent.ExecutionException;
+
 
 
 public class Generador {
@@ -51,25 +48,25 @@ public class Generador {
     }
 
     private PlacaBase sacarPlacaBase() {
-        Query query = db.collection("placas_base")
-                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
-                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
-                .orderBy("precio")
-                .limit(1);
-
-
-        ApiFuture<QuerySnapshot> future = (ApiFuture<QuerySnapshot>) query.get();
-        QuerySnapshot querySnapshot = null;
-        try {
-            querySnapshot = future.get();
-        } catch (ExecutionException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        PlacaBase placaBase = null;
-        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-            placaBase = document.toObject(PlacaBase.class);
-        }
+//        Query query = db.collection("placas_base")
+//                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
+//                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
+//                .orderBy("precio")
+//                .limit(1);
+//
+//
+//        ApiFuture<QuerySnapshot> future = (ApiFuture<QuerySnapshot>) query.get();
+//        QuerySnapshot querySnapshot = null;
+//        try {
+//            querySnapshot = future.get();
+//        } catch (ExecutionException | InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        PlacaBase placaBase = null;
+//        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+//            placaBase = document.toObject(PlacaBase.class);
+//        }
         return null;
     }
 
@@ -99,17 +96,17 @@ public class Generador {
         return t;
     }
 
-    public Ordenador generarOrdenador() {
+    public void generarOrdenador() {
         sacarInformacionCompatibilidades();
-        TarjetaGrafica tarjetaGrafica = sacarGpu();
-        FuenteAlimentacion fuenteAlimentacion = sacarPsu();
-        Disipador disipador = sacarDisipador();
-        DiscoDuro discoDuro = sacarDiscoDuro();
-        Caja caja = sacarCaja();
         PlacaBase placaBase = sacarPlacaBase();
-        Procesador procesador = sacarCpu();
-        MemoriaRam memoriaRam = sacarMemoriaRam();
-        Ordenador ordenador = new Ordenador(caja, discoDuro, disipador, fuenteAlimentacion, memoriaRam, placaBase, procesador, tarjetaGrafica);
-        return ordenador;
+//        TarjetaGrafica tarjetaGrafica = sacarGpu();
+//        FuenteAlimentacion fuenteAlimentacion = sacarPsu();
+//        Disipador disipador = sacarDisipador();
+//        DiscoDuro discoDuro = sacarDiscoDuro();
+//        Caja caja = sacarCaja();
+//        Procesador procesador = sacarCpu();
+//        MemoriaRam memoriaRam = sacarMemoriaRam();
+//        Ordenador ordenador = new Ordenador(caja, discoDuro, disipador, fuenteAlimentacion, memoriaRam, placaBase, procesador, tarjetaGrafica);
+//        return ordenador;
     }
 }
