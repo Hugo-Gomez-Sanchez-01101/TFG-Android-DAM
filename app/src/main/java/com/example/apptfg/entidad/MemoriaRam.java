@@ -21,71 +21,35 @@ public class MemoriaRam {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getCosLatencia() {
         return cosLatencia;
-    }
-
-    public void setCosLatencia(String cosLatencia) {
-        this.cosLatencia = cosLatencia;
     }
 
     public String getFactorForma() {
         return factorForma;
     }
 
-    public void setFactorForma(String factorForma) {
-        this.factorForma = factorForma;
-    }
-
     public String getModulos() {
         return modulos;
-    }
-
-    public void setModulos(String modulos) {
-        this.modulos = modulos;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPrecioXgb() {
         return precioXgb;
-    }
-
-    public void setPrecioXgb(String precioXgb) {
-        this.precioXgb = precioXgb;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     public int getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
     public int getVelocidad() {
         return velocidad;
-    }
-
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
     }
 }

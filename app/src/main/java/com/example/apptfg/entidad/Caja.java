@@ -27,71 +27,35 @@ public class Caja {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getBahiasExternas() {
         return bahiasExternas;
-    }
-
-    public void setBahiasExternas(String bahiasExternas) {
-        this.bahiasExternas = bahiasExternas;
     }
 
     public String getFactorForma() {
         return factorForma;
     }
 
-    public void setFactorForma(String factorForma) {
-        this.factorForma = factorForma;
-    }
-
     public String getBahiasInternas() {
         return bahiasInternas;
-    }
-
-    public void setBahiasInternas(String bahiasInternas) {
-        this.bahiasInternas = bahiasInternas;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getFuenteAlmintación() {
         return fuenteAlmintación;
-    }
-
-    public void setFuenteAlmintación(String fuenteAlmintación) {
-        this.fuenteAlmintación = fuenteAlmintación;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     public String getPanelLateral() {
         return panelLateral;
     }
 
-    public void setPanelLateral(String panelLateral) {
-        this.panelLateral = panelLateral;
-    }
-
     public String getTipo() {
         return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 }

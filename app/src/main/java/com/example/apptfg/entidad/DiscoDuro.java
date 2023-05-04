@@ -19,63 +19,31 @@ public class DiscoDuro {
         return cache;
     }
 
-    public void setCache(String cache) {
-        this.cache = cache;
-    }
-
     public String getCapacidad() {
         return capacidad;
-    }
-
-    public void setCapacidad(String capacidad) {
-        this.capacidad = capacidad;
     }
 
     public String getFactorForma() {
         return factorForma;
     }
 
-    public void setFactorForma(String factorForma) {
-        this.factorForma = factorForma;
-    }
-
     public String getInterfaz() {
         return interfaz;
-    }
-
-    public void setInterfaz(String interfaz) {
-        this.interfaz = interfaz;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getPrecioXgb() {
         return precioXgb;
-    }
-
-    public void setPrecioXgb(String precioXgb) {
-        this.precioXgb = precioXgb;
     }
 
     public String getRevoluciones() {
         return revoluciones;
     }
 
-    public void setRevoluciones(String revoluciones) {
-        this.revoluciones = revoluciones;
-    }
-
     public double getPrecio() {
         return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
     }
 }

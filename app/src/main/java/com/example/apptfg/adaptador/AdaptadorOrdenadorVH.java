@@ -10,19 +10,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apptfg.ListaOrdenadoresActivity;
 import com.example.apptfg.R;
 import com.example.apptfg.VistaOrdenadorActivity;
-import com.example.apptfg.entidad.Ordenador;
+import com.example.apptfg.entidad.OrdenadorTarjeta;
 import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
 
 import java.util.List;
 
 public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenadorVH.ViewHolder> {
 
-   private List<Ordenador> listaOrdenadores;
+   private List<OrdenadorTarjeta> listaOrdenadores;
 
-    public AdaptadorOrdenadorVH(List<Ordenador> listaOrdenadores) {
+    public AdaptadorOrdenadorVH(List<OrdenadorTarjeta> listaOrdenadores) {
         this.listaOrdenadores = listaOrdenadores;
     }
 

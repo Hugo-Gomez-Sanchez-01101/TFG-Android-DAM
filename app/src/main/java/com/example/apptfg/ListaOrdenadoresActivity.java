@@ -1,16 +1,13 @@
 package com.example.apptfg;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apptfg.adaptador.AdaptadorOrdenadorVH;
-import com.example.apptfg.entidad.Ordenador;
+import com.example.apptfg.entidad.OrdenadorTarjeta;
 import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
 
 import java.util.List;
@@ -38,7 +35,7 @@ public class ListaOrdenadoresActivity extends FatherView {
                         LinearLayoutManager.VERTICAL,
                         false));
         ListaOrdenadoresSingleton.getInstance().inicializar();
-        List<Ordenador> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getListaOrdenadores();
+        List<OrdenadorTarjeta> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getListaOrdenadores();
         adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores);
         recyclerViewUser.setAdapter(adaptadorOrdenadorVH);
     }
