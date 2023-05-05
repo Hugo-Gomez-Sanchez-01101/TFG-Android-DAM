@@ -1,65 +1,130 @@
 package com.example.apptfg.entidad;
 
 public class PlacaBase {
-    private String audio, chipset, factorForma, nombre, puertosAlmacenamiento, puertosRed, puertosUsb, shocket;
+    private int memoria_maxima;
     private double precio;
-    private int memoriaMaxima, velocidadMaxima;
+    private String puertos_almacenamiento;
+    private String factor_forma_memoria;
+    private String formato;
+    private String puertos_usb;
+    private String puertos_red;
+    private String audio;
+    private String socket;
+    private String chipset;
+    private String nombre;
+    private int velocidad_max_memoria;
 
-    public PlacaBase(String audio, String chipset, String factorForma, String nombre, String puertosAlmacenamiento, String puertosRed, String puertosUsb, String shocket, double precio, int memoriaMaxima, int velocidadMaxima) {
-        this.audio = audio;
-        this.chipset = chipset;
-        this.factorForma = factorForma;
-        this.nombre = nombre;
-        this.puertosAlmacenamiento = puertosAlmacenamiento;
-        this.puertosRed = puertosRed;
-        this.puertosUsb = puertosUsb;
-        this.shocket = shocket;
+    public PlacaBase(int memoriaMaxima, double precio, String puertosAlmacenamiento, String factorFormaMemoria, String formato, String puertosUsb, String puertosRed, String audio, String shocket, String chipset, String nombre, int velocidadMaxima) {
+        this.memoria_maxima = memoriaMaxima;
         this.precio = precio;
-        this.memoriaMaxima = memoriaMaxima;
-        this.velocidadMaxima = velocidadMaxima;
+        this.puertos_almacenamiento = puertosAlmacenamiento;
+        this.factor_forma_memoria = factorFormaMemoria;
+        this.formato = formato;
+        this.puertos_usb = puertosUsb;
+        this.puertos_red = puertosRed;
+        this.audio = audio;
+        this.socket = shocket;
+        this.chipset = chipset;
+        this.nombre = nombre;
+        this.velocidad_max_memoria = velocidadMaxima;
     }
 
-    public String getAudio() {
-        return audio;
+    public int getMemoria_maxima() {
+        return memoria_maxima;
     }
 
-    public String getChipset() {
-        return chipset;
+    public PlacaBase() {
     }
 
-    public String getFactorForma() {
-        return factorForma;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getPuertosAlmacenamiento() {
-        return puertosAlmacenamiento;
-    }
-
-    public String getPuertosRed() {
-        return puertosRed;
-    }
-
-    public String getPuertosUsb() {
-        return puertosUsb;
-    }
-
-    public String getShocket() {
-        return shocket;
+    public void setMemoria_maxima(int memoria_maxima) {
+        this.memoria_maxima = memoria_maxima;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    public int getMemoriaMaxima() {
-        return memoriaMaxima;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getVelocidadMaxima() {
-        return velocidadMaxima;
+    public String getPuertos_almacenamiento() {
+        return puertos_almacenamiento;
+    }
+
+    public void setPuertos_almacenamiento(String puertos_almacenamiento) {
+        this.puertos_almacenamiento = puertos_almacenamiento;
+    }
+
+    public String getFactor_forma_memoria() {
+        return factor_forma_memoria;
+    }
+
+    public void setFactor_forma_memoria(String factor_forma_memoria) {
+        this.factor_forma_memoria = factor_forma_memoria;
+    }
+
+    public String getFormato() {
+        return formato;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
+    public String getPuertos_usb() {
+        return puertos_usb;
+    }
+
+    public void setPuertos_usb(String puertos_usb) {
+        this.puertos_usb = puertos_usb;
+    }
+
+    public String getPuertos_red() {
+        return puertos_red;
+    }
+
+    public void setPuertos_red(String puertos_red) {
+        this.puertos_red = puertos_red;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public String getSocket() {
+        return socket;
+    }
+
+    public void setSocket(String socket) {
+        this.socket = socket;
+    }
+
+    public String getChipset() {
+        return chipset;
+    }
+
+    public void setChipset(String chipset) {
+        this.chipset = chipset;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getVelocidad_max_memoria() {
+        return velocidad_max_memoria;
+    }
+
+    public void setVelocidad_max_memoria(int velocidad_max_memoria) {
+        this.velocidad_max_memoria = velocidad_max_memoria;
     }
 }

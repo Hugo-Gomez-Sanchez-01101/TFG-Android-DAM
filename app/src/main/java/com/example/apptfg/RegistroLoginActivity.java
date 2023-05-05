@@ -107,6 +107,7 @@ public class RegistroLoginActivity extends FatherView {
         i.putExtra("proveedor",proveedor + "");
         guardarDatosUsuario(proveedor);
         startActivity(i);
+        finish();
     }
 
 

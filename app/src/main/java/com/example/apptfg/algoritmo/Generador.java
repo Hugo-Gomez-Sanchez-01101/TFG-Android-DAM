@@ -1,20 +1,23 @@
 package com.example.apptfg.algoritmo;
 
+import static android.content.ContentValues.TAG;
+
+import android.util.Log;
+
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
 import com.example.apptfg.entidad.FuenteAlimentacion;
 import com.example.apptfg.entidad.MemoriaRam;
-import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Reglas;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-
-
-
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 
 public class Generador {
     private Reglas reglas;
@@ -23,15 +26,11 @@ public class Generador {
     private String shocketCpu;
     private String velMaxRam;
     private String memMaxRam;
-    private FirebaseFirestore db;
 
     public Generador(Reglas regla) {
         this.reglas = regla;
     }
 
-    private void inicializarConexionBd() {
-        db = FirebaseFirestore.getInstance();
-    }
 
     private void sacarInformacionCompatibilidades() {
 
@@ -48,26 +47,42 @@ public class Generador {
     }
 
     private PlacaBase sacarPlacaBase() {
-//        Query query = db.collection("placas_base")
-//                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
-//                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
-//                .orderBy("precio")
-//                .limit(1);
-//
-//
-//        ApiFuture<QuerySnapshot> future = (ApiFuture<QuerySnapshot>) query.get();
-//        QuerySnapshot querySnapshot = null;
-//        try {
-//            querySnapshot = future.get();
-//        } catch (ExecutionException | InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        PlacaBase placaBase = null;
-//        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-//            placaBase = document.toObject(PlacaBase.class);
-//        }
-        return null;
+        class PlacaBaseWrapper {
+            private PlacaBase placaBase;
+            public PlacaBase getPlacaBase() {
+                return placaBase;
+            }
+
+            public void setPlacaBase(PlacaBase placaBase) {
+                this.placaBase = placaBase;
+            }
+        }
+        PlacaBaseWrapper placaBaseWrapper = new PlacaBaseWrapper();
+        Gson gson = new Gson();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("placas_base")
+                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
+                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
+                .orderBy("precio")
+                .limit(1)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot snapshot = task.getResult();
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            PlacaBase placaBase = document.toObject(PlacaBase.class);
+                            //PlacaBase placaBase = gson.fromJson(document.getData().toString(), PlacaBase.class);
+                            placaBaseWrapper.setPlacaBase(placaBase);
+                        } else {
+                            System.out.println("No se encontró ningún documento que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
+                    }
+
+                });
+        return placaBaseWrapper.getPlacaBase();
     }
 
     private Caja sacarCaja() {
@@ -99,6 +114,8 @@ public class Generador {
     public void generarOrdenador() {
         sacarInformacionCompatibilidades();
         PlacaBase placaBase = sacarPlacaBase();
+        System.out.println(placaBase);
+        System.out.println("vfvvvfddvdfvfdAAAAAAAAAAAAAAAAAAa");
 //        TarjetaGrafica tarjetaGrafica = sacarGpu();
 //        FuenteAlimentacion fuenteAlimentacion = sacarPsu();
 //        Disipador disipador = sacarDisipador();
