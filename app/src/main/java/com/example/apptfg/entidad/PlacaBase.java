@@ -127,4 +127,22 @@ public class PlacaBase {
     public void setVelocidad_max_memoria(int velocidad_max_memoria) {
         this.velocidad_max_memoria = velocidad_max_memoria;
     }
+
+    @Override
+    public String toString() {
+        return "PlacaBase{" +
+                "memoria_maxima=" + memoria_maxima +
+                ", precio=" + precio +
+                ", puertos_almacenamiento='" + puertos_almacenamiento + '\'' +
+                ", factor_forma_memoria='" + factor_forma_memoria + '\'' +
+                ", formato='" + formato + '\'' +
+                ", puertos_usb='" + puertos_usb + '\'' +
+                ", puertos_red='" + puertos_red + '\'' +
+                ", audio='" + audio + '\'' +
+                ", socket='" + socket + '\'' +
+                ", chipset='" + chipset + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", velocidad_max_memoria=" + velocidad_max_memoria +
+                '}';
+    }
 }

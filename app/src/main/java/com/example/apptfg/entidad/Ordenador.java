@@ -6,7 +6,7 @@ public class Ordenador {
     private Disipador disipador;
     private FuenteAlimentacion fuenteAlimentacion;
     private MemoriaRam memoriaRam;
-    private PlacaBase placaBasem;
+    private PlacaBase placaBase;
     private Procesador procesador;
     private TarjetaGrafica tarjetaGrafica;
 
@@ -16,10 +16,12 @@ public class Ordenador {
         this.disipador = disipador;
         this.fuenteAlimentacion = fuenteAlimentacion;
         this.memoriaRam = memoriaRam;
-        this.placaBasem = placaBasem;
+        this.placaBase = placaBasem;
         this.procesador = procesador;
         this.tarjetaGrafica = tarjetaGrafica;
     }
+
+    public Ordenador() {}
 
     public Caja getCaja() {
         return caja;
@@ -61,12 +63,12 @@ public class Ordenador {
         this.memoriaRam = memoriaRam;
     }
 
-    public PlacaBase getPlacaBasem() {
-        return placaBasem;
+    public PlacaBase getPlacaBase() {
+        return placaBase;
     }
 
-    public void setPlacaBasem(PlacaBase placaBasem) {
-        this.placaBasem = placaBasem;
+    public void setPlacaBase(PlacaBase placaBase) {
+        this.placaBase = placaBase;
     }
 
     public Procesador getProcesador() {
