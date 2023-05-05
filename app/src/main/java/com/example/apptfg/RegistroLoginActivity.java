@@ -90,8 +90,9 @@ public class RegistroLoginActivity extends FatherView {
             FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(email.getText().toString(), c.getText().toString())
                     .addOnCompleteListener((task) -> {
-                        if(task.isSuccessful()){
+                        if(task.isSuccessful() ){
                             irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
+
                         } else{
                             mostrarToastError();
                         }
