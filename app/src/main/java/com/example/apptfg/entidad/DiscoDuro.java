@@ -46,4 +46,18 @@ public class DiscoDuro {
     public double getPrecio() {
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "DiscoDuro{" +
+                "cache='" + cache + '\'' +
+                ", capacidad='" + capacidad + '\'' +
+                ", factorForma='" + factorForma + '\'' +
+                ", interfaz='" + interfaz + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precioXgb='" + precioXgb + '\'' +
+                ", revoluciones='" + revoluciones + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }

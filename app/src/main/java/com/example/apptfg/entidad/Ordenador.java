@@ -86,4 +86,18 @@ public class Ordenador {
     public void setTarjetaGrafica(TarjetaGrafica tarjetaGrafica) {
         this.tarjetaGrafica = tarjetaGrafica;
     }
+
+    @Override
+    public String toString() {
+        return "Ordenador{" +
+                "caja=" + caja +
+                ", discoDuro=" + discoDuro +
+                ", disipador=" + disipador +
+                ", fuenteAlimentacion=" + fuenteAlimentacion +
+                ", memoriaRam=" + memoriaRam +
+                ", placaBase=" + placaBase +
+                ", procesador=" + procesador +
+                ", tarjetaGrafica=" + tarjetaGrafica +
+                '}';
+    }
 }

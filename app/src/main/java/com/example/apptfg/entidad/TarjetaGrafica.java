@@ -1,49 +1,63 @@
 package com.example.apptfg.entidad;
 
-public class TarjetaGrafica {
-    private String overClock, chipset, color, coreClock, ancho, vRam, nombre;
-    private double precio;
+public class TarjetaGrafica {;
+    private double price_usd;
+    private String memory;
+    private String color;
+    private String name;
+    private double rating;
+    private String chipset;
+    private String boost_clock;
+    private String core_clock;
+    private double rating_count;
 
-    public TarjetaGrafica(String overClock, String chipset, String color, String coreClock, String ancho, String vRam, String nombre, double precio) {
-        this.overClock = overClock;
-        this.chipset = chipset;
+    public TarjetaGrafica(){}
+
+    public TarjetaGrafica(double price_usd, String memory, String color, String name, double rating, String chipset, String boost_clock, String core_clock, double rating_count) {
+        this.price_usd = price_usd;
+        this.memory = memory;
         this.color = color;
-        this.coreClock = coreClock;
-        this.ancho = ancho;
-        this.vRam = vRam;
-        this.nombre = nombre;
-        this.precio = precio;
+        this.name = name;
+        this.rating = rating;
+        this.chipset = chipset;
+        this.boost_clock = boost_clock;
+        this.core_clock = core_clock;
+        this.rating_count = rating_count;
     }
 
-    public String getOverClock() {
-        return overClock;
+    public double getPrice_usd() {
+        return price_usd;
     }
 
-    public String getChipset() {
-        return chipset;
+    public String getMemory() {
+        return memory;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String getCoreClock() {
-        return coreClock;
+    public String getName() {
+        return name;
     }
 
-    public String getAncho() {
-        return ancho;
+    public double getRating() {
+        return rating;
     }
 
-    public String getvRam() {
-        return vRam;
+    public String getChipset() {
+        return chipset;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getBoost_clock() {
+        return boost_clock;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getCore_clock() {
+        return core_clock;
+    }
+
+    public double getRating_count() {
+        return rating_count;
     }
 }

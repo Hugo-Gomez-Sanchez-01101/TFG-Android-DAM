@@ -52,4 +52,19 @@ public class MemoriaRam {
     public int getVelocidad() {
         return velocidad;
     }
+
+    @Override
+    public String toString() {
+        return "MemoriaRam{" +
+                "color='" + color + '\'' +
+                ", cosLatencia='" + cosLatencia + '\'' +
+                ", factorForma='" + factorForma + '\'' +
+                ", modulos='" + modulos + '\'' +
+                ", name='" + name + '\'' +
+                ", precioXgb='" + precioXgb + '\'' +
+                ", precio=" + precio +
+                ", capacidad=" + capacidad +
+                ", velocidad=" + velocidad +
+                '}';
+    }
 }

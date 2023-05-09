@@ -58,4 +58,19 @@ public class Caja {
     public String getTipo() {
         return tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Caja{" +
+                "color='" + color + '\'' +
+                ", bahiasExternas='" + bahiasExternas + '\'' +
+                ", factorForma='" + factorForma + '\'' +
+                ", bahiasInternas='" + bahiasInternas + '\'' +
+                ", name='" + name + '\'' +
+                ", fuenteAlmintación='" + fuenteAlmintación + '\'' +
+                ", precio=" + precio +
+                ", panelLateral='" + panelLateral + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 }

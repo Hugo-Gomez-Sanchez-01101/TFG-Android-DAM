@@ -42,4 +42,17 @@ public class FuenteAlimentacion {
     public int getWattage() {
         return wattage;
     }
+
+    @Override
+    public String toString() {
+        return "FuenteAlimentacion{" +
+                "color='" + color + '\'' +
+                ", certificacion='" + certificacion + '\'' +
+                ", factorForma='" + factorForma + '\'' +
+                ", modular='" + modular + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", wattage=" + wattage +
+                '}';
+    }
 }

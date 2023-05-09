@@ -9,108 +9,185 @@ import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
+import com.example.apptfg.exception.MuñonException;
+import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Reglas;
+import com.example.apptfg.regla.Usos;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.Gson;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * The type Generador.
+ */
 public class Generador {
     private Reglas reglas;
-    private String formFactorPlaca;
-    private String forFactorRam;
-    private String shocketCpu;
-    private String velMaxRam;
-    private String memMaxRam;
-
     private Ordenador ordenador;
+    private GestorFirebase gestorFirestore;
 
-    public Generador(Reglas regla) {
-        this.reglas = regla;
+
+    public Generador(Usos uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
+        reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
         ordenador = new Ordenador();
+        inicializarGestor();
     }
 
+    public void inicializarGestor(){
+        reglas.rellenarCamos(new Reglas.ReglasCallback() {
+            @Override
+            public void onReglasObtenidas(Reglas reglas) {
+                gestorFirestore = new GestorFirebase(reglas);
+                sacarPlaca();
+            }
 
-    private void sacarInformacionCompatibilidades() {
+            @Override
+            public void onError(String errorMessage) {
 
+            }
+        });
     }
 
-    private MemoriaRam sacarMemoriaRam() {
-
-        return null;
+    /**
+     * obtains a motherboard that is the base to build a pc, then it calls the continuarGenerando() method
+     */
+    public void sacarPlaca() {
+        gestorFirestore.sacarPlacaBase(new GestorFirebase.PlacaBaseCallback() {
+            @Override
+            public void onPlacaBaseObtenida(PlacaBase placaBase) {
+                ordenador.setPlacaBase(placaBase);
+                sacarCpu();
+            }
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private Procesador sacarCpu() {
+    /**
+     * Obtains a cpu compatible with the motherboard
+      */
+    private void sacarCpu() {
+        if(reglas.getPRECIO_MAX_GPU() == 0)
+            gestorFirestore.sacarCpuConGrafica(new GestorFirebase.ProcesadorCallback() {
+                @Override
+                public void onProcesadorObtenido(Procesador procesador) {
+                    ordenador.setProcesador(procesador);
+                    ordenador.setTarjetaGrafica(null);
+                    sacarPsu();
+                }
 
-        return null;
+                @Override
+                public void onError(String errorMessage) {
+                    System.out.println(errorMessage);
+                }
+            });
+        else
+            gestorFirestore.sacarCpuNormal(new GestorFirebase.ProcesadorCallback() {
+                @Override
+                public void onProcesadorObtenido(Procesador procesador) {
+                    ordenador.setProcesador(procesador);
+                    sacarGpu();
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    System.out.println(errorMessage);
+                }
+            });
     }
 
-    private void sacarPlacaBase() {
-        Gson gson = new Gson();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        db.collection("placas_base")
-                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
-                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
-                .orderBy("precio")
-                .limit(1)
-                .get()
-                .addOnCompleteListener(task -> {
-                    System.out.println("NNNNNNNNNNNNNNNNNNNNNNNNNNN");
-                    if (task.isSuccessful()) {
-                        QuerySnapshot snapshot = task.getResult();
-                        if (snapshot != null && !snapshot.isEmpty()) {
-                            DocumentSnapshot document = snapshot.getDocuments().get(0);
-                            PlacaBase placaBase = document.toObject(PlacaBase.class);
-                            //PlacaBase placaBase = gson.fromJson(document.getData().toString(), PlacaBase.class);
-                            ordenador.setPlacaBase(placaBase);
-                        } else {
-                            System.out.println("No se encontró ningún documento que cumpliera las condiciones de la consulta");
-                        }
-                    } else {
-                        System.out.println("hubo un error al realizar la consulta");
-                    }
+    private void sacarGpu() {
+        gestorFirestore.sacarGpu(new GestorFirebase.GpuCallback() {
+            @Override
+            public void onGpuObtenida(TarjetaGrafica tarjetaGrafica) {
+                ordenador.setTarjetaGrafica(tarjetaGrafica);
+                sacarPsu();
+            }
 
-                });
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private Caja sacarCaja() {
+    private void sacarPsu() {
+        gestorFirestore.sacarPsu(new GestorFirebase.PsuCallback() {
+            @Override
+            public void onPsuObtenida(FuenteAlimentacion fuenteAlimentacion) {
+                ordenador.setFuenteAlimentacion(fuenteAlimentacion);
+                sacarDisipador();
+            }
 
-        return null;
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private DiscoDuro sacarDiscoDuro() {
+    private void sacarDisipador() {
+        gestorFirestore.sacarDisipador(new GestorFirebase.DisipadorCallback() {
+            @Override
+            public void onCoolerObtenido(Disipador disipador) {
+                ordenador.setDisipador(disipador);
+                sacarDiscoDuro();
+            }
 
-        return null;
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private Disipador sacarDisipador() {
+    private void sacarDiscoDuro() {
+        gestorFirestore.sacarDiscoDuro(new GestorFirebase.DiscoDuroCallback() {
+            @Override
+            public void onDiscoDuroObtenido(DiscoDuro discoDuro) {
+                ordenador.setDiscoDuro(discoDuro);
+                sacarCaja();
+            }
 
-        return null;
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private FuenteAlimentacion sacarPsu() {
+    private void sacarCaja() {
+        gestorFirestore.sacarCaja(new GestorFirebase.CajaCallback() {
+            @Override
+            public void onCajaObtenida(Caja caja) {
+                ordenador.setCaja(caja);
+                sacarMemoriaRam();
+            }
 
-        return null;
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 
-    private TarjetaGrafica sacarGpu() {
-        TarjetaGrafica t = null;
+    private void sacarMemoriaRam() {
+        gestorFirestore.sacarMemoriaRam(new GestorFirebase.RamCallback() {
+            @Override
+            public void onRamObtenida(MemoriaRam ram) {
+                ordenador.setMemoriaRam(ram);
+                System.out.println(ordenador);
+            }
 
-        return t;
-    }
-
-    public void generarOrdenador() {
-        sacarInformacionCompatibilidades();
-        sacarPlacaBase();
-//        TarjetaGrafica tarjetaGrafica = sacarGpu();
-//        FuenteAlimentacion fuenteAlimentacion = sacarPsu();
-//        Disipador disipador = sacarDisipador();
-//        DiscoDuro discoDuro = sacarDiscoDuro();
-//        Caja caja = sacarCaja();
-//        Procesador procesador = sacarCpu();
-//        MemoriaRam memoriaRam = sacarMemoriaRam();
-//        Ordenador ordenador = new Ordenador(caja, discoDuro, disipador, fuenteAlimentacion, memoriaRam, placaBase, procesador, tarjetaGrafica);
-//        return ordenador;
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
     }
 }

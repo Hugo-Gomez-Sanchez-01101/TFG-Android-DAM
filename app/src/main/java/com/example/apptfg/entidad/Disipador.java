@@ -34,4 +34,15 @@ public class Disipador {
     public double getPrecio() {
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "Disipador{" +
+                "color='" + color + '\'' +
+                ", revoluciones='" + revoluciones + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", nivelRuido='" + nivelRuido + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }
