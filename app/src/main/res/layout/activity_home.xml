@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="@drawable/fondo_login_">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -17,16 +18,26 @@
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="serif"
+            android:text="GENERADOR"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
-            android:layout_marginTop="80dp"
-            android:background="@color/red_1"
-            android:font="@font/dancing"
-            android:text="Introduzca el precio del ordenador que desee"
+            android:layout_marginTop="27dp"
+            android:fontFamily="serif"
+            android:text="Precio del ordenador"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -34,7 +45,7 @@
             android:layout_height="53dp"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/red_1"
+            android:backgroundTint="@color/white"
             android:entries="@array/precio"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
@@ -43,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
-            android:layout_marginTop="90dp"
-            android:background="@color/red_1"
+            android:layout_marginTop="40dp"
             android:text="Uso del ordenador"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:fontFamily="serif"
+            android:textSize="20dp"
             tools:ignore="MissingConstraints" />
 
         <Spinner
@@ -56,18 +67,19 @@
             android:layout_height="55dp"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/red_1"
+            android:backgroundTint="@color/white"
+
             android:entries="@array/uso"
             tools:ignore="MissingConstraints" />
 
 
         <Button
             android:id="@+id/btnGenerarPc"
-            android:layout_width="299dp"
-            android:layout_height="43dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="90dp"
-            android:backgroundTint="@color/red_1"
+            android:layout_width="215dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/botones_registro"
             android:text="GENERAR ORDENADOR"
             tools:ignore="MissingConstraints" />
 
