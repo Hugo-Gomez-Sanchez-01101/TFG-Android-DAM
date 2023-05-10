@@ -1,70 +1,92 @@
 package com.example.apptfg.entidad;
 
 public class MemoriaRam {
-    private String color, cosLatencia, factorForma, modulos, name, precioXgb;
-    private double precio;
-    private int capacidad, velocidad;
+    private double price_usd;
+    private String color;
+    private int rating;
+    private String name;
+    private String price_x_gb;
+    private String form_factor;
+    private int speed;
+    private String modules;
+    private int rating_count;
+    private int cas_latencia;
+    private int capacity;
 
-    public MemoriaRam(String color, String cosLatencia, String factorForma, String modulos, String name, String precioXgb, double precio, int capacidad, int velocidad) {
+    public MemoriaRam(){}
+
+    public MemoriaRam(double price_usd, String color, int rating, String name, String price_x_gb, String form_factor, int speed, String modules, int rating_count, int cas_latencia, int capacity) {
+        this.price_usd = price_usd;
         this.color = color;
-        this.cosLatencia = cosLatencia;
-        this.factorForma = factorForma;
-        this.modulos = modulos;
+        this.rating = rating;
         this.name = name;
-        this.precioXgb = precioXgb;
-        this.precio = precio;
-        this.capacidad = capacidad;
-        this.velocidad = velocidad;
+        this.price_x_gb = price_x_gb;
+        this.form_factor = form_factor;
+        this.speed = speed;
+        this.modules = modules;
+        this.rating_count = rating_count;
+        this.cas_latencia = cas_latencia;
+        this.capacity = capacity;
+    }
+
+    public double getPrice_usd() {
+        return price_usd;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String getCosLatencia() {
-        return cosLatencia;
-    }
-
-    public String getFactorForma() {
-        return factorForma;
-    }
-
-    public String getModulos() {
-        return modulos;
+    public int getRating() {
+        return rating;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPrecioXgb() {
-        return precioXgb;
+    public String getPrice_x_gb() {
+        return price_x_gb;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getForm_factor() {
+        return form_factor;
     }
 
-    public int getCapacidad() {
-        return capacidad;
+    public int getSpeed() {
+        return speed;
     }
 
-    public int getVelocidad() {
-        return velocidad;
+    public String getModules() {
+        return modules;
+    }
+
+    public int getRating_count() {
+        return rating_count;
+    }
+
+    public int getCas_latencia() {
+        return cas_latencia;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     @Override
     public String toString() {
         return "MemoriaRam{" +
-                "color='" + color + '\'' +
-                ", cosLatencia='" + cosLatencia + '\'' +
-                ", factorForma='" + factorForma + '\'' +
-                ", modulos='" + modulos + '\'' +
+                "price_usd=" + price_usd +
+                ", color='" + color + '\'' +
+                ", rating=" + rating +
                 ", name='" + name + '\'' +
-                ", precioXgb='" + precioXgb + '\'' +
-                ", precio=" + precio +
-                ", capacidad=" + capacidad +
-                ", velocidad=" + velocidad +
+                ", price_x_gb='" + price_x_gb + '\'' +
+                ", form_factor='" + form_factor + '\'' +
+                ", speed=" + speed +
+                ", modules='" + modules + '\'' +
+                ", rating_count=" + rating_count +
+                ", cas_latencia=" + cas_latencia +
+                ", capacity=" + capacity +
                 '}';
     }
 }

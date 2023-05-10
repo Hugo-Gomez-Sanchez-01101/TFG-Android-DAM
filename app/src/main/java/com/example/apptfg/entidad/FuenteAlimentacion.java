@@ -1,58 +1,78 @@
 package com.example.apptfg.entidad;
 
 public class FuenteAlimentacion {
-    private String color, certificacion, factorForma, modular, nombre;
-    private double precio;
+    private String efficiency_rating;
+    private double price_usd;
     private int wattage;
+    private boolean modular;
+    private String color;
+    private int rating;
+    private String name;
+    private String form_factor;
+    private int rating_count;
 
-    public FuenteAlimentacion(String color, String certificacion, String factorForma, String modular, String nombre, double precio, int wattage) {
-        this.color = color;
-        this.certificacion = certificacion;
-        this.factorForma = factorForma;
-        this.modular = modular;
-        this.nombre = nombre;
-        this.precio = precio;
+    public FuenteAlimentacion(){}
+
+    public FuenteAlimentacion(String efficiency_rating, double price_usd, int wattage, boolean modular, String color, int rating, String name, String form_factor, int rating_count) {
+        this.efficiency_rating = efficiency_rating;
+        this.price_usd = price_usd;
         this.wattage = wattage;
+        this.modular = modular;
+        this.color = color;
+        this.rating = rating;
+        this.name = name;
+        this.form_factor = form_factor;
+        this.rating_count = rating_count;
     }
 
-    public String getColor() {
-        return color;
+    public String getEfficiency_rating() {
+        return efficiency_rating;
     }
 
-    public String getCertificacion() {
-        return certificacion;
-    }
-
-    public String getFactorForma() {
-        return factorForma;
-    }
-
-    public String getModular() {
-        return modular;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
+    public double getPrice_usd() {
+        return price_usd;
     }
 
     public int getWattage() {
         return wattage;
     }
 
+    public boolean isModular() {
+        return modular;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getForm_factor() {
+        return form_factor;
+    }
+
+    public int getRating_count() {
+        return rating_count;
+    }
+
     @Override
     public String toString() {
         return "FuenteAlimentacion{" +
-                "color='" + color + '\'' +
-                ", certificacion='" + certificacion + '\'' +
-                ", factorForma='" + factorForma + '\'' +
-                ", modular='" + modular + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
+                "efficiency_rating='" + efficiency_rating + '\'' +
+                ", price_usd=" + price_usd +
                 ", wattage=" + wattage +
+                ", modular=" + modular +
+                ", color='" + color + '\'' +
+                ", rating=" + rating +
+                ", name='" + name + '\'' +
+                ", form_factor='" + form_factor + '\'' +
+                ", rating_count=" + rating_count +
                 '}';
     }
 }

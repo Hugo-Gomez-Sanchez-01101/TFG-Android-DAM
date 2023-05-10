@@ -300,7 +300,6 @@ public class GestorFirebase {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
                         DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        System.out.println(document.getData());
                         FuenteAlimentacion fuenteAlimentacion = document.toObject(FuenteAlimentacion.class);
                         callback.onPsuObtenida(fuenteAlimentacion);
                     }
@@ -360,7 +359,10 @@ public class GestorFirebase {
      */
     public void sacarCaja(CajaCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(reglas.getPRECIO_MAX_CAJA());
+        System.out.println(reglas.getPRECIO_MIN_CAJA());
         db.collection("case")
+                .whereEqualTo("form_factor", placaBase.getFormato())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_CAJA())
                 .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_CAJA())
                 .orderBy("price_usd")
@@ -370,6 +372,7 @@ public class GestorFirebase {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
                         DocumentSnapshot document = snapshot.getDocuments().get(0);
+                        System.out.println(document.getData());
                         Caja caja = document.toObject(Caja.class);
                         callback.onCajaObtenida(caja);
                     }
@@ -382,27 +385,38 @@ public class GestorFirebase {
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_RAM())
                 .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_RAM())
-                .whereLessThanOrEqualTo("speed", placaBase.getVelocidad_max_memoria())
-                .orderBy("price_usd")
-                .limit(1)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
+                        List<DocumentSnapshot> documents = snapshot.getDocuments();
+                        for (DocumentSnapshot document: documents
+                             ) {
+                            if((Long)document.get("speed") > placaBase.getVelocidad_max_memoria())
+                                documents.remove(document);
+                        }
+                        System.out.println("tamaño" + documents.size());
+                        if(documents.size() > 1)
+                            ordenarPorPrecio(documents);
+                        DocumentSnapshot document = documents.get(0);
+                        System.out.println(document.getData());
                         MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
                         callback.onRamObtenida(memoriaRam);
                     }
                 });
     }
 
-    private void ordenarPorPrecio(List<DocumentSnapshot>  documentos){
-        Collections.sort(documentos, new Comparator<DocumentSnapshot>() {
+
+    private void ordenarPorPrecio(List<DocumentSnapshot> documents){
+        Collections.sort(documents, new Comparator<DocumentSnapshot>() {
             @Override
             public int compare(DocumentSnapshot doc1, DocumentSnapshot doc2) {
-                double precio1 = doc1.getDouble("price");
-                double precio2 = doc2.getDouble("price");
-                return Double.compare(precio1, precio2);
+                Double price1 = doc1.getDouble("price");
+                Double price2 = doc2.getDouble("price");
+                if (price1 != null && price2 != null) {
+                    return Double.compare(price2, price1); // Orden descendente
+                }
+                return 0;
             }
         });
     }

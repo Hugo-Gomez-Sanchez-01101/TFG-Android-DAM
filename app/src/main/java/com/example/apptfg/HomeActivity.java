@@ -24,7 +24,7 @@ public class HomeActivity extends FatherView {
     }
 
     private void generarOrdenador() {
-        Generador generador = new Generador(Usos.GAMING, 200, 500);
+        Generador generador = new Generador(Usos.GAMING, 200, 900);
     }
 
 }

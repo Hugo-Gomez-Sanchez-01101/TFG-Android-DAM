@@ -1,63 +1,85 @@
 package com.example.apptfg.entidad;
 
 public class DiscoDuro {
-    private String cache, capacidad, factorForma, interfaz, nombre, precioXgb, revoluciones;
-    private double precio;
+    private double price_usd;
+    private String cache;
+    private String name;
+    private int rating;
+    private String price_gb;
+    private String type;
+    private String interfaze;
+    private String form_factor;
+    private String capacity;
+    private int rating_count;
 
-    public DiscoDuro(String cache, String capacidad, String factorForma, String interfaz, String nombre, String precioXgb, String revoluciones, double precio) {
+    public DiscoDuro(){}
+
+    public DiscoDuro(double price_usd, String cache, String name, int rating, String price_gb, String type, String interfaze, String form_factor, String capacity, int rating_count) {
+        this.price_usd = price_usd;
         this.cache = cache;
-        this.capacidad = capacidad;
-        this.factorForma = factorForma;
-        this.interfaz = interfaz;
-        this.nombre = nombre;
-        this.precioXgb = precioXgb;
-        this.revoluciones = revoluciones;
-        this.precio = precio;
+        this.name = name;
+        this.rating = rating;
+        this.price_gb = price_gb;
+        this.type = type;
+        this.interfaze = interfaze;
+        this.form_factor = form_factor;
+        this.capacity = capacity;
+        this.rating_count = rating_count;
+    }
+
+    public double getPrice_usd() {
+        return price_usd;
     }
 
     public String getCache() {
         return cache;
     }
 
-    public String getCapacidad() {
-        return capacidad;
+    public String getName() {
+        return name;
     }
 
-    public String getFactorForma() {
-        return factorForma;
+    public int getRating() {
+        return rating;
     }
 
-    public String getInterfaz() {
-        return interfaz;
+    public String getPrice_gb() {
+        return price_gb;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getType() {
+        return type;
     }
 
-    public String getPrecioXgb() {
-        return precioXgb;
+    public String getInterfaze() {
+        return interfaze;
     }
 
-    public String getRevoluciones() {
-        return revoluciones;
+    public String getForm_factor() {
+        return form_factor;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public int getRating_count() {
+        return rating_count;
     }
 
     @Override
     public String toString() {
         return "DiscoDuro{" +
-                "cache='" + cache + '\'' +
-                ", capacidad='" + capacidad + '\'' +
-                ", factorForma='" + factorForma + '\'' +
-                ", interfaz='" + interfaz + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", precioXgb='" + precioXgb + '\'' +
-                ", revoluciones='" + revoluciones + '\'' +
-                ", precio=" + precio +
+                "price_usd=" + price_usd +
+                ", cache='" + cache + '\'' +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                ", price_gb='" + price_gb + '\'' +
+                ", type='" + type + '\'' +
+                ", interfaze='" + interfaze + '\'' +
+                ", form_factor='" + form_factor + '\'' +
+                ", capacity='" + capacity + '\'' +
+                ", rating_count=" + rating_count +
                 '}';
     }
 }

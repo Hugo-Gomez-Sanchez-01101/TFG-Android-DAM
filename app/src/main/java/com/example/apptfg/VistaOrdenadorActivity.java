@@ -3,7 +3,6 @@ package com.example.apptfg;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class VistaOrdenadorActivity extends FatherView {
     @Override
