@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="uso">
+        <item>Seleccione</item>
+        <item>Ofimática</item>
+        <item>Gaming</item>
+        <item>Gaming profesional</item>
+        <item>Diseño gráfico / Edición de video</item>
+    </string-array>
+</resources>

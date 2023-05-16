@@ -10,10 +10,11 @@ public class TarjetaGrafica {;
     private String boost_clock;
     private String core_clock;
     private double rating_count;
+    private String length;
 
     public TarjetaGrafica(){}
 
-    public TarjetaGrafica(double price_usd, String memory, String color, String name, double rating, String chipset, String boost_clock, String core_clock, double rating_count) {
+    public TarjetaGrafica(double price_usd, String memory, String color, String name, double rating, String chipset, String boost_clock, String core_clock, double rating_count, String length) {
         this.price_usd = price_usd;
         this.memory = memory;
         this.color = color;
@@ -23,6 +24,7 @@ public class TarjetaGrafica {;
         this.boost_clock = boost_clock;
         this.core_clock = core_clock;
         this.rating_count = rating_count;
+        this.length = length;
     }
 
     public double getPrice_usd() {
@@ -59,5 +61,24 @@ public class TarjetaGrafica {;
 
     public double getRating_count() {
         return rating_count;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    @Override
+    public String toString() {
+        return "TarjetaGrafica{" +
+                "price_usd=" + price_usd +
+                ", memory='" + memory + '\'' +
+                ", color='" + color + '\'' +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                ", chipset='" + chipset + '\'' +
+                ", boost_clock='" + boost_clock + '\'' +
+                ", core_clock='" + core_clock + '\'' +
+                ", rating_count=" + rating_count +
+                '}';
     }
 }

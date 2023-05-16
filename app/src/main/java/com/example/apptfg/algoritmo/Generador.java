@@ -9,17 +9,9 @@ import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
-import com.example.apptfg.exception.MuñonException;
 import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * The type Generador.
@@ -27,20 +19,19 @@ import java.util.List;
 public class Generador {
     private Reglas reglas;
     private Ordenador ordenador;
-    private GestorFirebase gestorFirestore;
 
 
     public Generador(Usos uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
         reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
+        GestorFirebase.getInstance().setReglas(reglas);
         ordenador = new Ordenador();
-        inicializarGestor();
+        comenzar();
     }
 
-    public void inicializarGestor(){
+    public void comenzar(){
         reglas.rellenarCamos(new Reglas.ReglasCallback() {
             @Override
             public void onReglasObtenidas(Reglas reglas) {
-                gestorFirestore = new GestorFirebase(reglas);
                 sacarPlaca();
             }
 
@@ -51,11 +42,15 @@ public class Generador {
         });
     }
 
+    public void setReglas(Reglas reglas){
+        this.reglas = reglas;
+    }
+
     /**
      * obtains a motherboard that is the base to build a pc, then it calls the continuarGenerando() method
      */
     public void sacarPlaca() {
-        gestorFirestore.sacarPlacaBase(new GestorFirebase.PlacaBaseCallback() {
+        GestorFirebase.getInstance().sacarPlacaBase(new GestorFirebase.PlacaBaseCallback() {
             @Override
             public void onPlacaBaseObtenida(PlacaBase placaBase) {
                 ordenador.setPlacaBase(placaBase);
@@ -73,7 +68,7 @@ public class Generador {
       */
     private void sacarCpu() {
         if(reglas.getPRECIO_MAX_GPU() == 0)
-            gestorFirestore.sacarCpuConGrafica(new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuConGrafica(new GestorFirebase.ProcesadorCallback() {
                 @Override
                 public void onProcesadorObtenido(Procesador procesador) {
                     ordenador.setProcesador(procesador);
@@ -87,7 +82,7 @@ public class Generador {
                 }
             });
         else
-            gestorFirestore.sacarCpuNormal(new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuNormal(new GestorFirebase.ProcesadorCallback() {
                 @Override
                 public void onProcesadorObtenido(Procesador procesador) {
                     ordenador.setProcesador(procesador);
@@ -102,7 +97,7 @@ public class Generador {
     }
 
     private void sacarGpu() {
-        gestorFirestore.sacarGpu(new GestorFirebase.GpuCallback() {
+        GestorFirebase.getInstance().sacarGpu(new GestorFirebase.GpuCallback() {
             @Override
             public void onGpuObtenida(TarjetaGrafica tarjetaGrafica) {
                 ordenador.setTarjetaGrafica(tarjetaGrafica);
@@ -117,7 +112,7 @@ public class Generador {
     }
 
     private void sacarPsu() {
-        gestorFirestore.sacarPsu(new GestorFirebase.PsuCallback() {
+        GestorFirebase.getInstance().sacarPsu(new GestorFirebase.PsuCallback() {
             @Override
             public void onPsuObtenida(FuenteAlimentacion fuenteAlimentacion) {
                 ordenador.setFuenteAlimentacion(fuenteAlimentacion);
@@ -132,7 +127,7 @@ public class Generador {
     }
 
     private void sacarDisipador() {
-        gestorFirestore.sacarDisipador(new GestorFirebase.DisipadorCallback() {
+        GestorFirebase.getInstance().sacarDisipador(new GestorFirebase.DisipadorCallback() {
             @Override
             public void onCoolerObtenido(Disipador disipador) {
                 ordenador.setDisipador(disipador);
@@ -147,7 +142,7 @@ public class Generador {
     }
 
     private void sacarDiscoDuro() {
-        gestorFirestore.sacarDiscoDuro(new GestorFirebase.DiscoDuroCallback() {
+        GestorFirebase.getInstance().sacarDiscoDuro(new GestorFirebase.DiscoDuroCallback() {
             @Override
             public void onDiscoDuroObtenido(DiscoDuro discoDuro) {
                 ordenador.setDiscoDuro(discoDuro);
@@ -162,7 +157,7 @@ public class Generador {
     }
 
     private void sacarCaja() {
-        gestorFirestore.sacarCaja(new GestorFirebase.CajaCallback() {
+        GestorFirebase.getInstance().sacarCaja(new GestorFirebase.CajaCallback() {
             @Override
             public void onCajaObtenida(Caja caja) {
                 ordenador.setCaja(caja);
@@ -177,7 +172,7 @@ public class Generador {
     }
 
     private void sacarMemoriaRam() {
-        gestorFirestore.sacarMemoriaRam(new GestorFirebase.RamCallback() {
+        GestorFirebase.getInstance().sacarMemoriaRam(new GestorFirebase.RamCallback() {
             @Override
             public void onRamObtenida(MemoriaRam ram) {
                 ordenador.setMemoriaRam(ram);

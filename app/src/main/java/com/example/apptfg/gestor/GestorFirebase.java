@@ -9,13 +9,16 @@ import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Reglas;
+import com.example.apptfg.regla.Usos;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 
 /**
  * The type Gestor firebase.
@@ -23,14 +26,19 @@ import java.util.List;
 public class GestorFirebase {
     private Reglas reglas;
     private PlacaBase placaBase;
+    private static GestorFirebase gestorFirebase;
 
-    /**
-     * Instantiates a new Gestor firebase.
-     *
-     * @param reglas the reglas
-     */
-    public GestorFirebase(Reglas reglas) {
+    public void setReglas(Reglas reglas) {
         this.reglas = reglas;
+    }
+
+    private GestorFirebase(){}
+
+    public static GestorFirebase getInstance(){
+        if(gestorFirebase == null){
+            gestorFirebase = new GestorFirebase();
+        }
+        return gestorFirebase;
     }
 
     /**
@@ -168,6 +176,13 @@ public class GestorFirebase {
 
     public interface RamCallback {
         void onRamObtenida(MemoriaRam ram);
+
+        void onError(String errorMessage);
+    }
+
+    public interface MinimoMaximosCallback {
+        void onValoresObtenidos(Long[] minimoMaximo);
+
         void onError(String errorMessage);
     }
 
@@ -193,7 +208,7 @@ public class GestorFirebase {
                             this.placaBase = placaBase;
                             callback.onPlacaBaseObtenida(placaBase);
                         } else {
-                            callback.onError("No se encontró ningún documento que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         callback.onError("Hubo un error al realizar la consulta");
@@ -206,25 +221,29 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuConGrafica(ProcesadorCallback callback){
+    public void sacarCpuConGrafica(ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
                 .whereNotEqualTo("integrated_grafics", null)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
-                    for (DocumentSnapshot documento : documentos) {
-                        double precio = documento.getDouble("price");
-                        if (!(precio >= reglas.getPRECIO_MIN_CPU()) || !(precio <= reglas.getPRECIO_MAX_CPU())) {
-                            documentos.remove(documento);
+                    if(!queryDocumentSnapshots.isEmpty()) {
+                        List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot documento : documentos) {
+                            double precio = documento.getDouble("price");
+                            if (!(precio >= reglas.getPRECIO_MIN_CPU()) || !(precio <= reglas.getPRECIO_MAX_CPU())) {
+                                documentos.remove(documento);
+                            }
                         }
-                    }
-                    ordenarPorPrecio(documentos);
+                        ordenarPorPrecio(documentos);
 
-                    if(documentos.size() != 0){
-                        Procesador procesador = documentos.get(documentos.size() / 2).toObject(Procesador.class);
-                        callback.onProcesadorObtenido(procesador);
+                        if (documentos.size() != 0) {
+                            Procesador procesador = documentos.get(documentos.size() / 2).toObject(Procesador.class);
+                            callback.onProcesadorObtenido(procesador);
+                        }
+                    } else {
+                        System.out.println("No se encontró ningún cpu con grafica que cumpliera las condiciones de la consulta");
                     }
                 });
     }
@@ -234,7 +253,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuNormal(ProcesadorCallback callback){
+    public void sacarCpuNormal(ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
@@ -251,7 +270,7 @@ public class GestorFirebase {
                             Procesador procesador = document.toObject(Procesador.class);
                             callback.onProcesadorObtenido(procesador);
                         } else {
-                            System.out.println("No se encontró ningún documento que cumpliera las condiciones de la consulta");
+                            System.out.println("No se encontró ningún cpuNormal que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         System.out.println("hubo un error al realizar la consulta");
@@ -265,7 +284,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarGpu(GpuCallback callback){
+    public void sacarGpu(GpuCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("video-card")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
@@ -276,9 +295,15 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        TarjetaGrafica tarjetaGrafica = document.toObject(TarjetaGrafica.class);
-                        callback.onGpuObtenida(tarjetaGrafica);
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            TarjetaGrafica tarjetaGrafica = document.toObject(TarjetaGrafica.class);
+                            callback.onGpuObtenida(tarjetaGrafica);
+                        } else {
+                            System.out.println("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
@@ -288,7 +313,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarPsu(PsuCallback callback){
+    public void sacarPsu(PsuCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
@@ -299,9 +324,15 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        FuenteAlimentacion fuenteAlimentacion = document.toObject(FuenteAlimentacion.class);
-                        callback.onPsuObtenida(fuenteAlimentacion);
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            FuenteAlimentacion fuenteAlimentacion = document.toObject(FuenteAlimentacion.class);
+                            callback.onPsuObtenida(fuenteAlimentacion);
+                        } else {
+                            System.out.println("No se encontró ningún psu que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
@@ -311,7 +342,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarDisipador(DisipadorCallback callback){
+    public void sacarDisipador(DisipadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("cpu-cooler")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_COOLER())
@@ -322,9 +353,15 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        Disipador disipador = document.toObject(Disipador.class);
-                        callback.onCoolerObtenido(disipador);
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            Disipador disipador = document.toObject(Disipador.class);
+                            callback.onCoolerObtenido(disipador);
+                        } else {
+                            System.out.println("No se encontró ningún disipador que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
@@ -334,7 +371,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarDiscoDuro(DiscoDuroCallback callback){
+    public void sacarDiscoDuro(DiscoDuroCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("internal-hard-drive")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_DISCO())
@@ -345,9 +382,15 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        DiscoDuro discoDuro = document.toObject(DiscoDuro.class);
-                        callback.onDiscoDuroObtenido(discoDuro);
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            DiscoDuro discoDuro = document.toObject(DiscoDuro.class);
+                            callback.onDiscoDuroObtenido(discoDuro);
+                        } else {
+                            System.out.println("No se encontró ningún disco que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
@@ -357,10 +400,8 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCaja(CajaCallback callback){
+    public void sacarCaja(CajaCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(reglas.getPRECIO_MAX_CAJA());
-        System.out.println(reglas.getPRECIO_MIN_CAJA());
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_CAJA())
@@ -371,15 +412,20 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        DocumentSnapshot document = snapshot.getDocuments().get(0);
-                        System.out.println(document.getData());
-                        Caja caja = document.toObject(Caja.class);
-                        callback.onCajaObtenida(caja);
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            Caja caja = document.toObject(Caja.class);
+                            callback.onCajaObtenida(caja);
+                        } else {
+                            System.out.println("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
 
-    public void sacarMemoriaRam(RamCallback callback){
+    public void sacarMemoriaRam(RamCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
@@ -389,25 +435,29 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
+                        if (snapshot != null && !snapshot.isEmpty()) {
                         List<DocumentSnapshot> documents = snapshot.getDocuments();
-                        for (DocumentSnapshot document: documents
-                             ) {
-                            if((Long)document.get("speed") > placaBase.getVelocidad_max_memoria())
+                        for (DocumentSnapshot document : documents
+                        ) {
+                            if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria())
                                 documents.remove(document);
                         }
-                        System.out.println("tamaño" + documents.size());
-                        if(documents.size() > 1)
+                        if (documents.size() > 1)
                             ordenarPorPrecio(documents);
                         DocumentSnapshot document = documents.get(0);
-                        System.out.println(document.getData());
                         MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
                         callback.onRamObtenida(memoriaRam);
+                        } else {
+                            System.out.println("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        System.out.println("hubo un error al realizar la consulta");
                     }
                 });
     }
 
 
-    private void ordenarPorPrecio(List<DocumentSnapshot> documents){
+    private void ordenarPorPrecio(List<DocumentSnapshot> documents) {
         Collections.sort(documents, new Comparator<DocumentSnapshot>() {
             @Override
             public int compare(DocumentSnapshot doc1, DocumentSnapshot doc2) {
@@ -421,4 +471,20 @@ public class GestorFirebase {
         });
     }
 
+    public void obtenerMaximoMinimo(Enum<Usos> u, MinimoMaximosCallback minimoMaximosCallback){
+        String uso = u.toString().toLowerCase(Locale.ROOT);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("reglas")
+                .document(uso)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if(documentSnapshot.exists()) {
+                        Map<String, Object> data = documentSnapshot.getData();
+                        Long[] valores = new Long[2];
+                        valores[1] = (Long) data.get("PRECIO_MAX");
+                        valores[0] = (Long) data.get("PRECIO_MIN");
+                        minimoMaximosCallback.onValoresObtenidos(valores);
+                    }
+                });
+    }
 }
