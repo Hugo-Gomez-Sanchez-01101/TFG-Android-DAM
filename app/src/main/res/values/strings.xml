@@ -10,4 +10,10 @@
     <string name="prefs_file">com.example.apptfg.PREFERENCE.FILE.KEY</string>
     <string name="se_ha_producido_un_error">se ha producido un error</string>
     <string name="olvidar_contrasena"><u>¿Olvidastes tu contraseña?</u></string>
+    <string name="ofimatica">OFIMATICA</string>
+    <string name="diseño">Edicion / Diseño</string>
+    <string name="gamingp">GAMING PROFESIONAL</string>
+    <string name="gaming">GAMING</string>
+    <string name="generador">GENERADOR</string>
+    <string name="uso">Uso del ordenador</string>
 </resources>

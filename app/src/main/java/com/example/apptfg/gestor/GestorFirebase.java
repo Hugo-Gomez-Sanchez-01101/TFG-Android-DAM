@@ -181,7 +181,7 @@ public class GestorFirebase {
     }
 
     public interface MinimoMaximosCallback {
-        void onValoresObtenidos(Long[] minimoMaximo);
+        void onValoresObtenidos(long[] minimoMaximo);
 
         void onError(String errorMessage);
     }
@@ -480,9 +480,9 @@ public class GestorFirebase {
                 .addOnSuccessListener(documentSnapshot -> {
                     if(documentSnapshot.exists()) {
                         Map<String, Object> data = documentSnapshot.getData();
-                        Long[] valores = new Long[2];
-                        valores[1] = (Long) data.get("PRECIO_MAX");
-                        valores[0] = (Long) data.get("PRECIO_MIN");
+                        long[] valores = new long[2];
+                        valores[1] = (long) data.get("PRECIO_MAX");
+                        valores[0] = (long) data.get("PRECIO_MIN");
                         minimoMaximosCallback.onValoresObtenidos(valores);
                     }
                 });

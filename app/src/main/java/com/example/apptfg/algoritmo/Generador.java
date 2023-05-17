@@ -21,7 +21,7 @@ public class Generador {
     private Ordenador ordenador;
 
 
-    public Generador(Usos uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
+    public Generador(Enum<Usos> uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
         reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
         GestorFirebase.getInstance().setReglas(reglas);
         ordenador = new Ordenador();

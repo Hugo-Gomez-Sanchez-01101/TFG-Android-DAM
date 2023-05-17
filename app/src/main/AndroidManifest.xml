@@ -12,6 +12,9 @@
         android:theme="@style/Theme.AppTFG"
         tools:targetApi="31">
         <activity
+            android:name=".PreciosActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecuperContraseñaActivity"
             android:exported="false" />
         <activity

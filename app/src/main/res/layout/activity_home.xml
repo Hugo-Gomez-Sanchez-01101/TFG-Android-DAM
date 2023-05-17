@@ -8,17 +8,74 @@
     tools:context=".HomeActivity"
     android:background="@drawable/fondo_login_">
 
+    <Button
+        android:id="@+id/buttonOfimatica"
+        style="@style/ButtonBlack"
+        android:layout_width="212dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="448dp"
+        android:background="@drawable/boton_app_negro"
+        android:backgroundTint="@color/black"
+        android:text="@string/ofimatica"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
+
+
+    <Button
+        android:id="@+id/buttonEdicion"
+        android:layout_width="212dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/botones_app"
+        android:backgroundTint="@color/black"
+        android:text="@string/diseño"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
+
+    <Button
+        android:id="@+id/buttonGamingP"
+        style="@style/ButtonBlack"
+        android:layout_width="212dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="260dp"
+        android:background="@drawable/botones_app"
+        android:text="@string/gamingp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
+
+    <Button
+        android:id="@+id/buttonGaming"
+        android:layout_width="212dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="356dp"
+        android:background="@drawable/botones_app"
+        android:backgroundTint="@color/black"
+        android:text="@string/gaming"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="serif"
-        android:text="GENERADOR"
+        android:text="@string/generador"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,114 +83,16 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:background="#68FFFFFF"
+        android:layout_marginTop="136dp"
         android:backgroundTint="@color/black"
         android:fontFamily="serif"
-        android:text="Uso del ordenador"
+        android:text="@string/uso"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spinnerUso"
-        android:layout_width="329dp"
-        android:layout_height="55dp"
-
-        android:layout_marginTop="128dp"
-        android:background="#30ffffff"
-        android:backgroundTint="@color/black"
-        android:entries="@array/uso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="476dp"
-        android:background="#68FFFFFF"
-        android:backgroundTint="@color/black"
-        android:fontFamily="serif"
-        android:text="Precio del ordenador"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="428dp"
-        android:fontFamily="serif"
-        android:text="Mínimo"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewMinimo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="428dp"
-        android:fontFamily="serif"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="296dp"
-        android:background="#68FFFFFF"
-        android:fontFamily="serif"
-        android:text="Máximo"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewMaximo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="296dp"
-        android:background="#68FFFFFF"
-        android:fontFamily="serif"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnGenerarPc"
-        android:layout_width="215dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="136dp"
-        android:background="@drawable/botones_registro"
-        android:text="GENERAR ORDENADOR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -153,31 +112,5 @@
         app:menu="@menu/menu" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <SeekBar
-        android:id="@+id/seekBarMinimo"
-        android:layout_width="325dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="376dp"
-        android:progressDrawable="@drawable/bg_custom_seekbar"
-        android:progressTint="@color/red_1"
-        android:thumbTint="@color/red_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBarMaxmio"
-        android:layout_width="325dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="240dp"
-        android:progressDrawable="@drawable/bg_custom_seekbar"
-        android:progressTint="@color/red_1"
-        android:thumbTint="@color/red_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

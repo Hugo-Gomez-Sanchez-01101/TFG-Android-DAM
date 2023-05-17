@@ -4,7 +4,7 @@ public class FuenteAlimentacion {
     private String efficiency_rating;
     private double price_usd;
     private int wattage;
-    private boolean modular;
+    private String modular;
     private String color;
     private int rating;
     private String name;
@@ -13,7 +13,7 @@ public class FuenteAlimentacion {
 
     public FuenteAlimentacion(){}
 
-    public FuenteAlimentacion(String efficiency_rating, double price_usd, int wattage, boolean modular, String color, int rating, String name, String form_factor, int rating_count) {
+    public FuenteAlimentacion(String efficiency_rating, double price_usd, int wattage, String modular, String color, int rating, String name, String form_factor, int rating_count) {
         this.efficiency_rating = efficiency_rating;
         this.price_usd = price_usd;
         this.wattage = wattage;
@@ -37,7 +37,7 @@ public class FuenteAlimentacion {
         return wattage;
     }
 
-    public boolean isModular() {
+    public String getModular() {
         return modular;
     }
 

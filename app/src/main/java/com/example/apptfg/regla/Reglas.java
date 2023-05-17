@@ -44,7 +44,7 @@ public class Reglas {
         void onError(String errorMessage);
     }
 
-    public Reglas(Usos uso, double minimoEstablecidoUsuario, double maximoEstablecidoUsuario) {
+    public Reglas(Enum<Usos> uso, double minimoEstablecidoUsuario, double maximoEstablecidoUsuario) {
         PRECIO_MIN = minimoEstablecidoUsuario;
         this.maximoEstablecidoUsuario = maximoEstablecidoUsuario;
         this.uso = uso.toString().toLowerCase(Locale.ROOT);

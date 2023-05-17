@@ -87,7 +87,7 @@
         android:id="@+id/btnTerminrRegistro"
         android:layout_width="312dp"
         android:layout_height="49dp"
-        android:background="@drawable/botones_registro"
+        android:background="@drawable/botones_app"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
