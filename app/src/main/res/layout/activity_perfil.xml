@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCFBFBFB">
+    android:background="@drawable/fondo_login_">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -12,7 +12,6 @@
         android:layout_height="106dp"
         android:layout_margin="5dp"
         android:elevation="10dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,23 +22,21 @@
             android:id="@+id/imagenPerfil"
             android:layout_width="113dp"
             android:layout_height="match_parent"
-            android:background="@color/white"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/usuariotfg" />
+            android:background="@color/red_1"
+            app:srcCompat="@drawable/usuario_login" />
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnEditar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="208dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="112dp"
         android:background="@drawable/lapiz"
-        android:backgroundTint="#1CB4AF"
         app:iconGravity="textEnd"
         app:iconPadding="1dp"
         app:iconSize="20dp"
-        app:iconTint="@color/red_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,27 +44,12 @@
         android:id="@+id/lblEmail"
         android:layout_width="238dp"
         android:layout_height="37dp"
+        android:layout_marginTop="292dp"
+        android:fontFamily="serif"
+        android:freezesText="false"
         android:text="Email"
         android:textAlignment="center"
-        android:textColor="#131212"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.367" />
-
-    <TextView
-        android:id="@+id/lblPerfil"
-        android:layout_width="238dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="44dp"
-        android:freezesText="false"
-        android:text="Mi Perfil"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
+        android:textColor="@color/white"
         android:textColorHighlight="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,28 +58,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lblPhone"
-        android:layout_width="362dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginBottom="36dp"
-        android:text="hola"
+        android:id="@+id/lblPerfil"
+        android:layout_width="238dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="44dp"
+        android:freezesText="false"
+        android:text="MI PERFIL"
+        android:fontFamily="serif"
         android:textAlignment="center"
-        android:textColor="#0B0A0A"
+        android:textColor="@color/white"
+        android:textColorHighlight="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnListaOrdenadores"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.409"/>
 
     <Button
         android:id="@+id/btnListaOrdenadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="292dp"
-        android:backgroundTint="@color/red_1"
+        android:background="@drawable/botones_app"
         android:text="Lista de ordenadores"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,9 +93,8 @@
         android:id="@+id/btnCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/red_1"
+        android:background="@drawable/botones_app"
         android:text="Cerar Sesion"
-        app:iconTint="@color/red_1"
         app:layout_constraintBottom_toTopOf="@+id/btnAjustes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
