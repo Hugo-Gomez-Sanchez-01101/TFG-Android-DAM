@@ -27,60 +27,21 @@
         android:id="@+id/seekBarMaxmio"
         android:layout_width="325dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="260dp"
+        android:layout_marginBottom="328dp"
         android:progressDrawable="@drawable/bg_custom_seekbar"
-        android:progressTint="@color/black"
-        android:thumb="@drawable/euro"
+        android:progressTint="@color/red_1"
+        android:thumb="@color/red_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="452dp"
-        android:background="#30ffffff"
-        android:fontFamily="serif"
-        android:text="Precio Mínimo"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBarMinimo"
-        android:layout_width="325dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="392dp"
-        android:progressDrawable="@drawable/bg_custom_seekbar"
-        android:progressTint="@color/black"
-        android:thumb="@drawable/euro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewMinimo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="195dp"
-        android:layout_marginBottom="452dp"
-        android:background="#30ffffff"
-        android:fontFamily="serif"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
         android:id="@+id/textViewMaximo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginBottom="388dp"
         android:background="#68FFFFFF"
         android:fontFamily="serif"
         android:text="0"
@@ -94,10 +55,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginBottom="388dp"
         android:background="#68FFFFFF"
         android:fontFamily="serif"
         android:text="Precio Máximo"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarMinimo"
+        android:layout_width="325dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="460dp"
+        android:progressDrawable="@drawable/bg_custom_seekbar"
+        android:progressTint="@color/red_1"
+        android:thumb="@color/red_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewMinimo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="192dp"
+        android:layout_marginBottom="520dp"
+        android:background="#30ffffff"
+        android:fontFamily="serif"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="520dp"
+        android:background="#30ffffff"
+        android:fontFamily="serif"
+        android:text="Precio Mínimo"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

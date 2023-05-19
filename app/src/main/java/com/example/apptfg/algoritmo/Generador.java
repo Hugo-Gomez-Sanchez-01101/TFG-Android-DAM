@@ -19,6 +19,7 @@ import com.example.apptfg.regla.Usos;
 public class Generador {
     private Reglas reglas;
     private Ordenador ordenador;
+    private PlacaBase placaBaseMain;
 
 
     public Generador(Enum<Usos> uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
@@ -54,6 +55,7 @@ public class Generador {
             @Override
             public void onPlacaBaseObtenida(PlacaBase placaBase) {
                 ordenador.setPlacaBase(placaBase);
+                placaBaseMain = placaBase;
                 sacarCpu();
             }
             @Override
@@ -68,7 +70,7 @@ public class Generador {
       */
     private void sacarCpu() {
         if(reglas.getPRECIO_MAX_GPU() == 0)
-            GestorFirebase.getInstance().sacarCpuConGrafica(new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuConGrafica(placaBaseMain, new GestorFirebase.ProcesadorCallback() {
                 @Override
                 public void onProcesadorObtenido(Procesador procesador) {
                     ordenador.setProcesador(procesador);
@@ -82,7 +84,7 @@ public class Generador {
                 }
             });
         else
-            GestorFirebase.getInstance().sacarCpuNormal(new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuNormal(placaBaseMain, new GestorFirebase.ProcesadorCallback() {
                 @Override
                 public void onProcesadorObtenido(Procesador procesador) {
                     ordenador.setProcesador(procesador);
@@ -157,7 +159,7 @@ public class Generador {
     }
 
     private void sacarCaja() {
-        GestorFirebase.getInstance().sacarCaja(new GestorFirebase.CajaCallback() {
+        GestorFirebase.getInstance().sacarCaja(placaBaseMain, new GestorFirebase.CajaCallback() {
             @Override
             public void onCajaObtenida(Caja caja) {
                 ordenador.setCaja(caja);
@@ -172,7 +174,7 @@ public class Generador {
     }
 
     private void sacarMemoriaRam() {
-        GestorFirebase.getInstance().sacarMemoriaRam(new GestorFirebase.RamCallback() {
+        GestorFirebase.getInstance().sacarMemoriaRam(placaBaseMain, new GestorFirebase.RamCallback() {
             @Override
             public void onRamObtenida(MemoriaRam ram) {
                 ordenador.setMemoriaRam(ram);

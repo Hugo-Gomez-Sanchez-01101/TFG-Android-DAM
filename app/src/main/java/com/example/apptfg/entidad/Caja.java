@@ -10,7 +10,7 @@ public class Caja {
     private int rating;
     private String type;
     private String external_525_bays;
-    private String form_fator;
+    private String form_factor;
     private int rating_count;
 
     public Caja(){}
@@ -25,7 +25,7 @@ public class Caja {
         this.rating = rating;
         this.type = type;
         this.external_525_bays = external_525_bays;
-        this.form_fator = form_fator;
+        this.form_factor = form_fator;
         this.rating_count = rating_count;
     }
 
@@ -65,8 +65,8 @@ public class Caja {
         return external_525_bays;
     }
 
-    public String getForm_fator() {
-        return form_fator;
+    public String getForm_factor() {
+        return form_factor;
     }
 
     public int getRating_count() {
@@ -85,7 +85,7 @@ public class Caja {
                 ", rating=" + rating +
                 ", type='" + type + '\'' +
                 ", external_525_bays='" + external_525_bays + '\'' +
-                ", form_fator='" + form_fator + '\'' +
+                ", form_fator='" + form_factor + '\'' +
                 ", rating_count=" + rating_count +
                 '}';
     }

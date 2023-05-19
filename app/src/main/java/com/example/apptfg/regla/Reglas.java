@@ -62,6 +62,7 @@ public class Reglas {
                         if (maximoEstablecidoUsuario < PRECIO_MAX)
                             PRECIO_MAX = maximoEstablecidoUsuario;
 
+
                         MAX_CPU_AMD = (String) data.get("MAX_CPU_AMD");
                         MAX_CPU_INTEL = (String) data.get("MAX_CPU_INTEL");
                         MIN_CPU_AMD = (String) data.get("MIN_CPU_AMD");
@@ -79,7 +80,12 @@ public class Reglas {
                         PRECIO_MAX_DISCO = sacarPrecioDePorcentaje(porcentajeDisco, PRECIO_MAX);
                         PRECIO_MIN_DISCO = sacarPrecioDePorcentaje(porcentajeDisco, PRECIO_MIN);
 
-                        double porcentajeGpu = (double) data.get("PORCENTAJE_MAX_GPU");
+                        double porcentajeGpu;
+                        try {
+                            porcentajeGpu = (double) data.get("PORCENTAJE_MAX_GPU");
+                        }catch (ClassCastException e){
+                            porcentajeGpu = (long) data.get("PORCENTAJE_MAX_GPU");
+                        }
                         PRECIO_MAX_GPU = sacarPrecioDePorcentaje(porcentajeGpu, PRECIO_MAX);
                         PRECIO_MIN_GPU = sacarPrecioDePorcentaje(porcentajeGpu, PRECIO_MIN);
 

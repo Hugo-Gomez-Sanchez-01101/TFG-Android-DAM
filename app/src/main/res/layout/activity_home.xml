@@ -8,34 +8,33 @@
     tools:context=".HomeActivity"
     android:background="@drawable/fondo_login_">
 
-
     <Button
         android:id="@+id/buttonOfimatica"
         style="@style/ButtonBlack"
         android:layout_width="180dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/boton_app_negro"
         android:backgroundTint="@color/black"
         android:text="@string/ofimatica"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGaming"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
 
     <Button
         android:id="@+id/buttonEdicion"
         android:layout_width="180dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="176dp"
         android:background="@drawable/botones_app"
         android:backgroundTint="@color/black"
         android:text="@string/diseño"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
 
     <Button
@@ -43,27 +42,27 @@
         style="@style/ButtonBlack"
         android:layout_width="180dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/botones_app"
         android:text="@string/gamingp"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEdicion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
 
     <Button
         android:id="@+id/buttonGaming"
         android:layout_width="180dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/botones_app"
         android:backgroundTint="@color/black"
         android:text="@string/gaming"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGamingP"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/boton_navegacion" />
 
     <TextView
@@ -71,28 +70,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="serif"
         android:text="@string/generador"
         android:textColor="@color/white"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/black"
         android:fontFamily="serif"
         android:text="@string/uso"
         android:textColor="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonOfimatica"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/boton_navegacion"
@@ -105,10 +107,11 @@
         app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/menu" >
+        app:menu="@menu/menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

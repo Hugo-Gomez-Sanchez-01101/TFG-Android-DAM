@@ -25,7 +25,6 @@ import java.util.Map;
  */
 public class GestorFirebase {
     private Reglas reglas;
-    private PlacaBase placaBase;
     private static GestorFirebase gestorFirebase;
 
     public void setReglas(Reglas reglas) {
@@ -205,7 +204,6 @@ public class GestorFirebase {
                         if (snapshot != null && !snapshot.isEmpty()) {
                             DocumentSnapshot document = snapshot.getDocuments().get(0);
                             PlacaBase placaBase = document.toObject(PlacaBase.class);
-                            this.placaBase = placaBase;
                             callback.onPlacaBaseObtenida(placaBase);
                         } else {
                             callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
@@ -221,7 +219,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuConGrafica(ProcesadorCallback callback) {
+    public void sacarCpuConGrafica(PlacaBase placaBase, ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
@@ -253,8 +251,11 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuNormal(ProcesadorCallback callback) {
+    public void sacarCpuNormal(PlacaBase placaBase, ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(placaBase.getSocket());
+        System.out.println(reglas.getPRECIO_MAX_CPU());
+        System.out.println(reglas.getPRECIO_MIN_CPU());
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
                 .whereLessThanOrEqualTo("price", reglas.getPRECIO_MAX_CPU())
@@ -273,7 +274,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningún cpuNormal que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta cpu");
                     }
 
                 });
@@ -303,7 +304,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta gpu");
                     }
                 });
     }
@@ -332,7 +333,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningún psu que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta psu");
                     }
                 });
     }
@@ -361,7 +362,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningún disipador que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta disipador");
                     }
                 });
     }
@@ -390,7 +391,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningún disco que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta disco");
                     }
                 });
     }
@@ -400,7 +401,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCaja(CajaCallback callback) {
+    public void sacarCaja(PlacaBase placaBase, CajaCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
@@ -412,20 +413,23 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
+                        System.out.println(task.getResult().size());
+                        System.out.println(snapshot.size());
                         if (snapshot != null && !snapshot.isEmpty()) {
-                            DocumentSnapshot document = snapshot.getDocuments().get(0);
+                            DocumentSnapshot
+                                    document = snapshot.getDocuments().get(0);
                             Caja caja = document.toObject(Caja.class);
                             callback.onCajaObtenida(caja);
                         } else {
                             System.out.println("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta caja");
                     }
                 });
     }
 
-    public void sacarMemoriaRam(RamCallback callback) {
+    public void sacarMemoriaRam(PlacaBase placaBase, RamCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
@@ -451,7 +455,7 @@ public class GestorFirebase {
                             System.out.println("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta");
+                        System.out.println("hubo un error al realizar la consulta memoria");
                     }
                 });
     }
