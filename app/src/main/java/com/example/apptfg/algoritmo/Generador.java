@@ -26,7 +26,6 @@ public class Generador {
         reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
         GestorFirebase.getInstance().setReglas(reglas);
         ordenador = new Ordenador();
-        comenzar();
     }
 
     public void comenzar(){

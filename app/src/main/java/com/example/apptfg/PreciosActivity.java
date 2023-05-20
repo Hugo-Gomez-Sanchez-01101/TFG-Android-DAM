@@ -102,8 +102,11 @@ public class PreciosActivity extends FatherView {
     }
 
     private void generarOrdenador() {
+        mostrarCarga();
         int minimo = Integer.parseInt(textViewMinimo.getText().toString().split("€")[0]);
         int maximo = Integer.parseInt(textViewMaximo.getText().toString().split("€")[0]);
         Generador generador = new Generador(uso, minimo, maximo);
+        generador.comenzar();
+        disiparCarga();
     }
 }

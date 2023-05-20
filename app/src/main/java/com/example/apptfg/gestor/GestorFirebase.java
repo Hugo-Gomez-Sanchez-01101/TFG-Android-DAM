@@ -13,6 +13,8 @@ import com.example.apptfg.regla.Usos;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -223,19 +225,19 @@ public class GestorFirebase {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
-                .whereNotEqualTo("integrated_grafics", null)
+                .whereNotEqualTo("integrated_graphics", null)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if(!queryDocumentSnapshots.isEmpty()) {
                         List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
+                        List<DocumentSnapshot> docsFiltrados = new ArrayList<>(documentos);
                         for (DocumentSnapshot documento : documentos) {
                             double precio = documento.getDouble("price");
                             if (!(precio >= reglas.getPRECIO_MIN_CPU()) || !(precio <= reglas.getPRECIO_MAX_CPU())) {
-                                documentos.remove(documento);
+                                docsFiltrados.remove(documento);
                             }
                         }
                         ordenarPorPrecio(documentos);
-
                         if (documentos.size() != 0) {
                             Procesador procesador = documentos.get(documentos.size() / 2).toObject(Procesador.class);
                             callback.onProcesadorObtenido(procesador);
@@ -253,9 +255,6 @@ public class GestorFirebase {
      */
     public void sacarCpuNormal(PlacaBase placaBase, ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(placaBase.getSocket());
-        System.out.println(reglas.getPRECIO_MAX_CPU());
-        System.out.println(reglas.getPRECIO_MIN_CPU());
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
                 .whereLessThanOrEqualTo("price", reglas.getPRECIO_MAX_CPU())
@@ -316,6 +315,8 @@ public class GestorFirebase {
      */
     public void sacarPsu(PsuCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(reglas.getPRECIO_MAX_PSU());
+        System.out.println(reglas.getPERCIO_MIN_PSU());
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
                 .whereGreaterThanOrEqualTo("price_usd", reglas.getPERCIO_MIN_PSU())
@@ -413,8 +414,6 @@ public class GestorFirebase {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
-                        System.out.println(task.getResult().size());
-                        System.out.println(snapshot.size());
                         if (snapshot != null && !snapshot.isEmpty()) {
                             DocumentSnapshot
                                     document = snapshot.getDocuments().get(0);

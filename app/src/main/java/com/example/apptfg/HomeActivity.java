@@ -30,10 +30,12 @@ public class HomeActivity extends FatherView {
     }
 
     private void obtenerValoresPorTipo(Enum<Usos> uso) {
+        mostrarCarga();
         GestorFirebase.getInstance().obtenerMaximoMinimo(uso, new GestorFirebase.MinimoMaximosCallback() {
             @Override
             public void onValoresObtenidos(long[] minimoMaximo) {
                 irPreciosActivity(minimoMaximo, uso);
+                disiparCarga();
             }
 
             @Override

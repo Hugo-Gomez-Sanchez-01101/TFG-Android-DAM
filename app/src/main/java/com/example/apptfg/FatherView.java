@@ -1,16 +1,22 @@
 package com.example.apptfg;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * The type Father view.
+ */
 public class FatherView extends AppCompatActivity {
+    Dialog dialog;
     protected void mostrarToastError() {
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.toast_error_login_registro, (ViewGroup) findViewById(R.id.toastErrorLoginRegistro));
@@ -21,7 +27,7 @@ public class FatherView extends AppCompatActivity {
         t.show();
     }
 
-    protected void mostrarToastContraseña() {
+    protected void mostrarToastContrasena() {
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.toast_contrasenas_iguales, (ViewGroup) findViewById(R.id.toastContrasenaDif));
         Toast t = new Toast(getApplicationContext());
@@ -29,6 +35,24 @@ public class FatherView extends AppCompatActivity {
         t.setDuration(Toast.LENGTH_SHORT);
         t.setView(view);
         t.show();
+    }
+
+    /**
+     * shows an loadig alert dialog
+     */
+    protected void mostrarCarga(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_loading);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    /**
+     * dismiss te loading alert dialog
+     */
+    protected void disiparCarga(){
+        dialog.dismiss();
     }
 
     protected void mostrarToastCamposVacios() {

@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FF0000" /> <!-- Color del círculo de carga (rojo) -->
+    <size android:width="48dp" android:height="48dp" /> <!-- Tamaño del círculo de carga -->
+    <corners android:radius="24dp" /> <!-- Radio del círculo de carga (para hacerlo redondeado) -->
+</shape>

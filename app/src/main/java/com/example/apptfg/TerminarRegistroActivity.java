@@ -1,18 +1,9 @@
 package com.example.apptfg;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.apptfg.provider_tipe.ProviderType;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,7 +63,7 @@ public class TerminarRegistroActivity extends FatherView {
         if(contraseña1.getText().toString().equals(contraseña2.getText().toString()))
             registrar(email.getText().toString(), contraseña1.getText().toString());
         else
-            mostrarToastContraseña();
+            mostrarToastContrasena();
     }
 
     private void registrar(String e, String c) {
