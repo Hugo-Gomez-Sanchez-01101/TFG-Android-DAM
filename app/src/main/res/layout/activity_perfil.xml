@@ -6,33 +6,25 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_login_">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="119dp"
-        android:layout_height="106dp"
-        android:layout_margin="5dp"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <ImageView
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="116dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186">
-
-        <ImageButton
-            android:id="@+id/imagenPerfil"
-            android:layout_width="113dp"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:background="@color/red_1"
-            app:srcCompat="@drawable/usuario_login" />
-    </androidx.cardview.widget.CardView>
+        app:srcCompat="@drawable/usuario_login"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnEditar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="128dp"
         android:background="@drawable/lapiz"
         app:iconGravity="textEnd"
         app:iconPadding="1dp"
@@ -44,7 +36,7 @@
         android:id="@+id/lblEmail"
         android:layout_width="238dp"
         android:layout_height="37dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="280dp"
         android:fontFamily="serif"
         android:freezesText="false"
         android:text="Email"
@@ -81,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="292dp"
         android:background="@drawable/botones_app"
-        android:text="Lista de ordenadores"
+        android:text="Ver ordenadores favoritos"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,33 +85,13 @@
         android:id="@+id/btnCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
         android:background="@drawable/botones_app"
-        android:text="Cerar Sesion"
-        app:layout_constraintBottom_toTopOf="@+id/btnAjustes"
+        android:text="Cerrar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnListaOrdenadores"
         tools:ignore="MissingConstraints"></Button>
-
-    <ImageButton
-        android:id="@+id/btnAjustes"
-        android:layout_width="80dp"
-        android:layout_height="83dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="112dp"
-        android:background="@drawable/ajustestfg"
-        android:backgroundTint="#FFFFFF"
-        android:hapticFeedbackEnabled="false"
-        android:scaleType="centerInside"
-        android:src="@drawable/ajustestfg"
-        android:textColor="@color/red_1"
-        android:textColorHighlight="@color/red_1"
-        android:textStyle="bold"
-        app:iconGravity="top"
-        app:iconTint="@color/red_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/ajustestfg" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/boton_navegacion"
