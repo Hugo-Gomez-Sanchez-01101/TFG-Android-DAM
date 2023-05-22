@@ -10,8 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apptfg.OrdenadorGeneradoActivity;
 import com.example.apptfg.R;
-import com.example.apptfg.VistaOrdenadorActivity;
 import com.example.apptfg.entidad.OrdenadorTarjeta;
 import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
 
@@ -62,7 +62,7 @@ public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenado
        notifyDataSetChanged();
    }
     private void ver(ViewHolder holder, int id) {
-        Intent i = new Intent(holder.itemView.getContext(), VistaOrdenadorActivity.class);
+        Intent i = new Intent(holder.itemView.getContext(), OrdenadorGeneradoActivity.class);
         i.putExtra("id", id);
         holder.itemView.getContext().startActivity(i);
     }
