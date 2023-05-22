@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class Ordenador {
+import java.io.Serializable;
+
+public class Ordenador implements Serializable {
     private Caja caja;
     private DiscoDuro discoDuro;
     private Disipador disipador;

@@ -8,6 +8,7 @@ import com.example.apptfg.entidad.MemoriaRam;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
+import com.example.apptfg.exception.BuildingComputerException;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -221,7 +222,7 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuConGrafica(PlacaBase placaBase, ProcesadorCallback callback) {
+    public void sacarCpuConGrafica(PlacaBase placaBase, ProcesadorCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
@@ -237,13 +238,13 @@ public class GestorFirebase {
                                 docsFiltrados.remove(documento);
                             }
                         }
-                        ordenarPorPrecio(documentos);
-                        if (documentos.size() != 0) {
-                            Procesador procesador = documentos.get(documentos.size() / 2).toObject(Procesador.class);
+                        ordenarPorPrecio(docsFiltrados);
+                        if (docsFiltrados.size() != 0) {
+                            Procesador procesador = docsFiltrados.get(docsFiltrados.size() / 2).toObject(Procesador.class);
                             callback.onProcesadorObtenido(procesador);
                         }
                     } else {
-                        System.out.println("No se encontró ningún cpu con grafica que cumpliera las condiciones de la consulta");
+                        callback.onError("no se ha encontrado ninguna cpu con grafica");
                     }
                 });
     }
@@ -270,10 +271,10 @@ public class GestorFirebase {
                             Procesador procesador = document.toObject(Procesador.class);
                             callback.onProcesadorObtenido(procesador);
                         } else {
-                            System.out.println("No se encontró ningún cpuNormal que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningún cpuNormal que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta cpu");
+                        callback.onError("hubo un error al realizar la consulta cpu");
                     }
 
                 });
@@ -300,10 +301,10 @@ public class GestorFirebase {
                             TarjetaGrafica tarjetaGrafica = document.toObject(TarjetaGrafica.class);
                             callback.onGpuObtenida(tarjetaGrafica);
                         } else {
-                            System.out.println("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
+                           callback.onError("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta gpu");
+                        callback.onError("hubo un error al realizar la consulta gpu");
                     }
                 });
     }
@@ -331,10 +332,10 @@ public class GestorFirebase {
                             FuenteAlimentacion fuenteAlimentacion = document.toObject(FuenteAlimentacion.class);
                             callback.onPsuObtenida(fuenteAlimentacion);
                         } else {
-                            System.out.println("No se encontró ningún psu que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningún psu que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta psu");
+                        callback.onError("hubo un error al realizar la consulta psu");
                     }
                 });
     }
@@ -360,10 +361,10 @@ public class GestorFirebase {
                             Disipador disipador = document.toObject(Disipador.class);
                             callback.onCoolerObtenido(disipador);
                         } else {
-                            System.out.println("No se encontró ningún disipador que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningún disipador que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta disipador");
+                        callback.onError("hubo un error al realizar la consulta disipador");
                     }
                 });
     }
@@ -389,10 +390,10 @@ public class GestorFirebase {
                             DiscoDuro discoDuro = document.toObject(DiscoDuro.class);
                             callback.onDiscoDuroObtenido(discoDuro);
                         } else {
-                            System.out.println("No se encontró ningún disco que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningún disco que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta disco");
+                        callback.onError("hubo un error al realizar la consulta disco");
                     }
                 });
     }
@@ -420,10 +421,10 @@ public class GestorFirebase {
                             Caja caja = document.toObject(Caja.class);
                             callback.onCajaObtenida(caja);
                         } else {
-                            System.out.println("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta caja");
+                        callback.onError("hubo un error al realizar la consulta caja");
                     }
                 });
     }
@@ -451,10 +452,10 @@ public class GestorFirebase {
                         MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
                         callback.onRamObtenida(memoriaRam);
                         } else {
-                            System.out.println("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
                         }
                     } else {
-                        System.out.println("hubo un error al realizar la consulta memoria");
+                        callback.onError("hubo un error al realizar la consulta memoria");
                     }
                 });
     }

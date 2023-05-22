@@ -10,16 +10,30 @@
 
 
     <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="serif"
+        android:text="Rango de precio"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="serif"
         android:text="GENERADOR"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +44,7 @@
         android:layout_marginBottom="328dp"
         android:progressDrawable="@drawable/bg_custom_seekbar"
         android:progressTint="@color/red_1"
-        android:thumb="@color/red_1"
+        android:thumbTint="@color/red_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +85,7 @@
         android:layout_marginBottom="460dp"
         android:progressDrawable="@drawable/bg_custom_seekbar"
         android:progressTint="@color/red_1"
-        android:thumb="@color/red_1"
+        android:thumbTint="@color/red_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -106,14 +120,14 @@
 
     <Button
         android:id="@+id/buttonVolver"
+        style="@style/ButtonBlack"
         android:layout_width="178dp"
         android:layout_height="59dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="140dp"
         android:background="@drawable/botones_app"
         android:text="volver"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -121,13 +135,12 @@
         android:id="@+id/btnGenerarOrdenador"
         android:layout_width="178dp"
         android:layout_height="59dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="140dp"
         android:background="@drawable/botones_app"
         android:text="GENERAR ORDENADOR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
-        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -147,5 +160,4 @@
         app:menu="@menu/menu" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

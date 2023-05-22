@@ -53,4 +53,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.0'
 
+    //animaciones
+    implementation 'com.airbnb.android:lottie:6.0.0'
 }

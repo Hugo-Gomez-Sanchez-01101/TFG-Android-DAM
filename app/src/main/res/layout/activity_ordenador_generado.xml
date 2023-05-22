@@ -2,130 +2,361 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="Es"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_login_">
 
-    <ImageButton
-        android:id="@+id/ram"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
-        android:background="@android:drawable/stat_notify_more"
-        android:backgroundTintMode="add"
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="serif"
+        android:text="Tu Ordenador"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/boton_navegacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/red_1"
+        app:itemBackground="@color/red_1"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416"
-        tools:ignore="MissingConstraints"></ImageButton>
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu">
 
-    <ImageButton
-        android:id="@+id/tarjetaGrafica"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
-        android:background="@android:drawable/stat_notify_more"
-        android:backgroundTintMode="add"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></ImageButton>
-
-    <ImageButton
-        android:id="@+id/caja"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
-        android:background="@android:drawable/stat_notify_more"
-        android:backgroundTintMode="add"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.729"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552"
-        tools:ignore="MissingConstraints"></ImageButton>
-
-    <ImageButton
-        android:id="@+id/ventilador"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
-        android:background="@android:drawable/stat_notify_more"
-        android:backgroundTintMode="add"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
-        tools:ignore="MissingConstraints"></ImageButton>
-
-    <ImageButton
-        android:id="@+id/placaBase"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
-        android:background="@android:drawable/stat_notify_more"
-        android:backgroundTintMode="add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364"
-        tools:ignore="MissingConstraints"></ImageButton>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <ImageView
-        android:id="@+id/planetInfoCard"
+        android:id="@+id/imageViewordenador"
         android:layout_width="342dp"
         android:layout_height="361dp"
         android:layout_weight="1"
         android:background="@drawable/daco_2725881"
+        android:contentDescription="@string/nada"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="6dp"
-        android:text="Test"
+        android:text="@string/nada"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:layout_width="156dp"
-        android:layout_height="90dp"
-        android:backgroundTint="@color/black"
-        android:text="Ficha tecnica"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.827"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.294" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="156dp"
-        android:layout_height="90dp"
-        android:backgroundTint="@color/black"
-        android:text="guardar ordenador"
+        android:id="@+id/btnBorrarOrdenador"
+        style="@style/ButtonBlack"
+        android:layout_width="178dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/botones_app"
+        android:text="@string/borrar_ordenador"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926"
         app:rippleColor="#FFEB3B" />
+
+    <Button
+        android:id="@+id/btnGuardarOrdenador"
+        android:layout_width="178dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/botones_app"
+        android:text="@string/guardar_ordenador"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/layoutPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="196dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniPlacaBase"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textViewPlaca"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Placa Base" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutCpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="224dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniCpu"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cpu" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="252dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniRam"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ram" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutGpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="284dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniTarjetaGrafica"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tarjeta Gráfica" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutDisipador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="172dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniDisipador"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disipador" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutCaja"
+        style="Es"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="260dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btniCaja"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Caja" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutDisco"
+        style="Es"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="304dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnDiscoDuro"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disco" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPsu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="384dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnPsu"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="26dp"
+            android:layout_height="21dp"
+            android:background="@android:drawable/stat_notify_more"
+            android:backgroundTintMode="add"
+            android:contentDescription="@android:string/yes"
+            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/EstiloTextViewBlancoNegrita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fuente Alimentación" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

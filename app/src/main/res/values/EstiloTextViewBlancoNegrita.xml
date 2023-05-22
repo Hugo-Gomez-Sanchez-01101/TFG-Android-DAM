@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EstiloTextViewBlancoNegrita">
+        <item name="android:textColor">#FFFFFF</item> <!-- Color blanco -->
+        <item name="android:textStyle">bold</item> <!-- Texto en negrita -->
+    </style>
+</resources>

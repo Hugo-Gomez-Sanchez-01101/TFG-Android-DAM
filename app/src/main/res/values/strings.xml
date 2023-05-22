@@ -16,4 +16,8 @@
     <string name="gaming">GAMING</string>
     <string name="generador">GENERADOR</string>
     <string name="uso">Uso del ordenador</string>
+    <string name="nada" />
+    <string name="ficha_tecnica">Ficha tecnica</string>
+    <string name="guardar_ordenador">guardar ordenador</string>
+    <string name="borrar_ordenador">borrar Ordenador</string>
 </resources>

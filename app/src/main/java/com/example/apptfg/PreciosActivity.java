@@ -7,6 +7,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.apptfg.algoritmo.Generador;
+import com.example.apptfg.entidad.Ordenador;
+import com.example.apptfg.exception.BuildingComputerException;
 import com.example.apptfg.regla.Usos;
 
 public class PreciosActivity extends FatherView {
@@ -14,8 +16,9 @@ public class PreciosActivity extends FatherView {
     private SeekBar seekBarMaximo;
     private TextView textViewMinimo;
     private TextView textViewMaximo;
-    int current;
-    Enum<Usos> uso;
+    private int current;
+    private Enum<Usos> uso;
+    private int minimo, maximo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +26,12 @@ public class PreciosActivity extends FatherView {
         setContentView(R.layout.activity_precios);
         darFuncionalidadMenu();
         setup();
-        definirValores();
-    }
-
-    private void definirValores() {
-
     }
 
     private void setup() {
         Bundle bundle = getIntent().getExtras();
-        int minimo = bundle.getInt("minimo");
-        int maximo = bundle.getInt("maximo");
+        minimo = bundle.getInt("minimo");
+        maximo = bundle.getInt("maximo");
         current = minimo;
         findViewById(R.id.btnGenerarOrdenador).setOnClickListener(V -> generarOrdenador());
         findViewById(R.id.buttonVolver).setOnClickListener(v -> volver());
@@ -101,12 +99,24 @@ public class PreciosActivity extends FatherView {
         finish();
     }
 
+    public void mostrarError(){
+        mostrarToastErrorRango();
+        disiparCarga();
+    }
+
     private void generarOrdenador() {
         mostrarCarga();
         int minimo = Integer.parseInt(textViewMinimo.getText().toString().split("€")[0]);
         int maximo = Integer.parseInt(textViewMaximo.getText().toString().split("€")[0]);
-        Generador generador = new Generador(uso, minimo, maximo);
+        Generador generador = new Generador(uso, minimo, maximo, this);
         generador.comenzar();
+    }
+
+    public void terminarGenerar(Ordenador ordenador){
         disiparCarga();
+        Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
+        i.putExtra("ordenador", ordenador);
+        startActivity(i);
+        finish();
     }
 }

@@ -1,5 +1,8 @@
 package com.example.apptfg.algoritmo;
 
+import android.content.Context;
+
+import com.example.apptfg.PreciosActivity;
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
@@ -13,22 +16,20 @@ import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
 
-/**
- * The type Generador.
- */
-public class Generador {
+public class Generador{
     private Reglas reglas;
     private Ordenador ordenador;
     private PlacaBase placaBaseMain;
+    private PreciosActivity preciosActivity;
 
-
-    public Generador(Enum<Usos> uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario) {
+    public Generador(Enum<Usos> uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario, PreciosActivity preciosActivity) {
+        this.preciosActivity = preciosActivity;
         reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
         GestorFirebase.getInstance().setReglas(reglas);
         ordenador = new Ordenador();
     }
 
-    public void comenzar(){
+    public void comenzar() {
         reglas.rellenarCamos(new Reglas.ReglasCallback() {
             @Override
             public void onReglasObtenidas(Reglas reglas) {
@@ -37,7 +38,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -59,7 +60,7 @@ public class Generador {
             }
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -79,7 +80,7 @@ public class Generador {
 
                 @Override
                 public void onError(String errorMessage) {
-                    System.out.println(errorMessage);
+                    preciosActivity.mostrarError();
                 }
             });
         else
@@ -92,7 +93,7 @@ public class Generador {
 
                 @Override
                 public void onError(String errorMessage) {
-                    System.out.println(errorMessage);
+                    preciosActivity.mostrarError();
                 }
             });
     }
@@ -107,7 +108,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -122,7 +123,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -137,7 +138,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -152,7 +153,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -167,7 +168,7 @@ public class Generador {
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
@@ -178,12 +179,15 @@ public class Generador {
             public void onRamObtenida(MemoriaRam ram) {
                 ordenador.setMemoriaRam(ram);
                 System.out.println(ordenador);
+                preciosActivity.terminarGenerar(ordenador);
             }
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
             }
         });
     }
+
+
 }
