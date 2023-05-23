@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class Caja {
+import java.io.Serializable;
+
+public class Caja implements Serializable {
     private double price_usd;
     private String side_panel_window;
     private String color;

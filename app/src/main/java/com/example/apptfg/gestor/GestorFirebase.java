@@ -316,8 +316,6 @@ public class GestorFirebase {
      */
     public void sacarPsu(PsuCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(reglas.getPRECIO_MAX_PSU());
-        System.out.println(reglas.getPERCIO_MIN_PSU());
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
                 .whereGreaterThanOrEqualTo("price_usd", reglas.getPERCIO_MIN_PSU())

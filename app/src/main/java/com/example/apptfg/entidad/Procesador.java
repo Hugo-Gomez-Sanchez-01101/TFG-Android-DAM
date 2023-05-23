@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class Procesador {
+import java.io.Serializable;
+
+public class Procesador implements Serializable {
     private String integrated_grafics;
     private double price;
     private String name;

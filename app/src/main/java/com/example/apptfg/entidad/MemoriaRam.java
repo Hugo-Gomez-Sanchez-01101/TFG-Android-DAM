@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class MemoriaRam {
+import java.io.Serializable;
+
+public class MemoriaRam implements Serializable {
     private double price_usd;
     private String color;
     private int rating;

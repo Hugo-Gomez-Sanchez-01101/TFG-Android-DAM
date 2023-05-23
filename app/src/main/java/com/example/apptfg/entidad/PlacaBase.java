@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class PlacaBase {
+import java.io.Serializable;
+
+public class PlacaBase implements Serializable {
     private int memoria_maxima;
     private double precio;
     private String puertos_almacenamiento;

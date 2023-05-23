@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class Disipador {
+import java.io.Serializable;
+
+public class Disipador implements Serializable {
     private double price_usd;
     private String color;
     private String radiator_size;

@@ -69,7 +69,6 @@ public class FatherView extends AppCompatActivity {
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.toast_error_rago, (ViewGroup) findViewById(R.id.toastRangoValoresError));
         Toast t = new Toast(getApplicationContext());
-        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
         t.setDuration(Toast.LENGTH_SHORT);
         t.setView(view);
         t.show();

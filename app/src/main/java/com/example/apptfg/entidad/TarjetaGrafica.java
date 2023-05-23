@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class TarjetaGrafica {;
+import java.io.Serializable;
+
+public class TarjetaGrafica implements Serializable {;
     private double price_usd;
     private String memory;
     private String color;

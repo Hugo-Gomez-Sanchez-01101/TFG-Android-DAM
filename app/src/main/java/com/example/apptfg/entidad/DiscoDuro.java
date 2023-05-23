@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class DiscoDuro {
+import java.io.Serializable;
+
+public class DiscoDuro implements Serializable {
     private double price_usd;
     private String cache;
     private String name;

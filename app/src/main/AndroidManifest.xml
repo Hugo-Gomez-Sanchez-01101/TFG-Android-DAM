@@ -15,6 +15,9 @@
             android:name=".PreciosActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity android:name=".OrdenadorGeneradoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RecuperContraseñaActivity"
             android:exported="false"

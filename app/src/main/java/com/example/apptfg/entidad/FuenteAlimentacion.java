@@ -1,6 +1,8 @@
 package com.example.apptfg.entidad;
 
-public class FuenteAlimentacion {
+import java.io.Serializable;
+
+public class FuenteAlimentacion implements Serializable {
     private String efficiency_rating;
     private double price_usd;
     private int wattage;
