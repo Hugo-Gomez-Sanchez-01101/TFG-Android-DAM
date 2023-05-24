@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textoVariablesComponentes">
+        <item name="android:textColor">@color/black</item> <!-- Color blanco -->
+        <item name="android:textStyle">bold</item> <!-- Texto en negrita -->
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

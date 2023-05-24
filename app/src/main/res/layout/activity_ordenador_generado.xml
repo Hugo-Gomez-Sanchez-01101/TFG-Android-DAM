@@ -301,7 +301,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btnDiscoDuro"
+            android:id="@+id/btniDiscoDuro"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="26dp"
             android:layout_height="21dp"
@@ -335,7 +335,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btnPsu"
+            android:id="@+id/btniPsu"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="26dp"
             android:layout_height="21dp"

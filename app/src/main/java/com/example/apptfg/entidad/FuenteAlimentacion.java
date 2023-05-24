@@ -2,7 +2,7 @@ package com.example.apptfg.entidad;
 
 import java.io.Serializable;
 
-public class FuenteAlimentacion implements Serializable {
+public class FuenteAlimentacion extends Componente {
     private String efficiency_rating;
     private double price_usd;
     private int wattage;

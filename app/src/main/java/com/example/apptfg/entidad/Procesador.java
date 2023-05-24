@@ -2,7 +2,7 @@ package com.example.apptfg.entidad;
 
 import java.io.Serializable;
 
-public class Procesador implements Serializable {
+public class Procesador extends Componente {
     private String integrated_grafics;
     private double price;
     private String name;

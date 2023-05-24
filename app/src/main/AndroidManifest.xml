@@ -12,26 +12,33 @@
         android:theme="@style/Theme.AppTFG"
         tools:targetApi="31">
         <activity
+            android:name=".VistaComponenteActivity"
+            android:exported="false" />
+        <activity
             android:name=".PreciosActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OrdenadorGeneradoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrdenadorGeneradoActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RecuperContraseñaActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TerminarRegistroActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PerfilActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ListaOrdenadoresActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HomeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PerfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListaOrdenadoresActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RegistroLoginActivity"
             android:exported="true"

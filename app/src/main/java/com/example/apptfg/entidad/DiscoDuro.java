@@ -2,7 +2,7 @@ package com.example.apptfg.entidad;
 
 import java.io.Serializable;
 
-public class DiscoDuro implements Serializable {
+public class DiscoDuro extends Componente {
     private double price_usd;
     private String cache;
     private String name;

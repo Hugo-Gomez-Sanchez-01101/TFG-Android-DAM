@@ -2,7 +2,7 @@ package com.example.apptfg.entidad;
 
 import java.io.Serializable;
 
-public class TarjetaGrafica implements Serializable {;
+public class TarjetaGrafica extends Componente {;
     private double price_usd;
     private String memory;
     private String color;

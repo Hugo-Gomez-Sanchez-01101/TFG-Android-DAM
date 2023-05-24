@@ -2,7 +2,7 @@ package com.example.apptfg.entidad;
 
 import java.io.Serializable;
 
-public class MemoriaRam implements Serializable {
+public class MemoriaRam extends Componente {
     private double price_usd;
     private String color;
     private int rating;
