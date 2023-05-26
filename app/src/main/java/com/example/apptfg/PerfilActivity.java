@@ -1,10 +1,13 @@
 package com.example.apptfg;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +19,15 @@ public class PerfilActivity extends FatherView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        darFuncionalidadMenu();
+        setup();
+    }
+
+    private void setup(){
+        TextView txt_email = findViewById(R.id.lblEmail);
+        txt_email.setText((FirebaseAuth.getInstance().getCurrentUser().getEmail()));
         findViewById(R.id.btnListaOrdenadores).setOnClickListener(view -> verListaOrdenadores());
         findViewById(R.id.btnCerrarSesion).setOnClickListener(View -> cerrarSesion());
-        darFuncionalidadMenu();
     }
 
 

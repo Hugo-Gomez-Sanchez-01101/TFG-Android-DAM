@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appTFG</string>
+    <string name="app_name">Generador</string>
     <string name="titulo">TITULO</string>
     <string name="eliminar">Eliminar</string>
     <string name="nombre_pc">NOMBRE PC</string>
