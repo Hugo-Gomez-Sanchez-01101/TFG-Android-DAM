@@ -1,7 +1,5 @@
 package com.example.apptfg.algoritmo;
 
-import android.content.Context;
-
 import com.example.apptfg.PreciosActivity;
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.DiscoDuro;

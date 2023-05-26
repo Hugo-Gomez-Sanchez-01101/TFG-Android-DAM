@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.Ordenador;
+
+import java.text.DecimalFormat;
 
 public class OrdenadorGeneradoActivity extends FatherView {
     private Ordenador ordenador;
@@ -16,11 +19,6 @@ public class OrdenadorGeneradoActivity extends FatherView {
         setContentView(R.layout.activity_ordenador_generado);
         darFuncionalidadMenu();
         setUp();
-        LinearLayout layoutGpu = findViewById(R.id.layoutGpu);
-        Intent i = getIntent();
-        this.ordenador = (Ordenador) i.getSerializableExtra("ordenador");
-        if(ordenador.getTarjetaGrafica() == null)
-            layoutGpu.setVisibility(View.GONE);
     }
 
     private void setUp() {
@@ -32,6 +30,15 @@ public class OrdenadorGeneradoActivity extends FatherView {
         findViewById(R.id.btniTarjetaGrafica).setOnClickListener(v -> verComponente(ordenador.getTarjetaGrafica()));
         findViewById(R.id.btniDiscoDuro).setOnClickListener(v -> verComponente(ordenador.getDiscoDuro()));
         findViewById(R.id.btniPsu).setOnClickListener(v -> verComponente(ordenador.getFuenteAlimentacion()));
+        LinearLayout layoutGpu = findViewById(R.id.layoutGpu);
+        Intent i = getIntent();
+        this.ordenador = (Ordenador) i.getSerializableExtra("ordenador");
+        if(ordenador.getTarjetaGrafica() == null)
+            layoutGpu.setVisibility(View.GONE);
+        TextView txtPrecio = findViewById(R.id.txtPrecioOrdenador);
+        DecimalFormat formato = new DecimalFormat("#.##");
+        String resultado = "PRECIO: " + formato.format(ordenador.getPrice());
+        txtPrecio.setText(resultado);
     }
 
     private void verComponente(Componente componente){

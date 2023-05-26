@@ -30,7 +30,6 @@ public class VistaComponenteActivity extends FatherView {
         Intent i = getIntent();
         componente = (Componente) i.getSerializableExtra("componente");
         mostrarComponente(componente);
-
     }
 
     private void setup() {
@@ -101,6 +100,8 @@ public class VistaComponenteActivity extends FatherView {
         txt.setText(p.getNombre());
         txt = findViewById(R.id.txtAudioPlacaBase);
         txt.setText(p.getAudio());
+        txt = findViewById(R.id.txtFactorFormaPlacaBase);
+        txt.setText(p.getFormato());
         txt = findViewById(R.id.txtChipsetPlacaBase);
         txt.setText(p.getChipset());
         txt = findViewById(R.id.txtPrecioPlacaBase);
@@ -127,7 +128,7 @@ public class VistaComponenteActivity extends FatherView {
         txt = findViewById(R.id.txtModularPsu);
         txt.setText(f.getModular());
         txt = findViewById(R.id.txtPotenciaPsu);
-        txt.setText(f.getWattage());
+        txt.setText(f.getWattage() + "W");
         txt = findViewById(R.id.txtPrecioPsu);
         txt.setText(f.getPrice_usd() + "");
         txt = findViewById(R.id.txtFactorFormaPsu);
@@ -159,7 +160,10 @@ public class VistaComponenteActivity extends FatherView {
         txt = findViewById(R.id.txtColorCaja);
         txt.setText(c.getColor());
         txt = findViewById(R.id.txtFuenteCaja);
-        txt.setText(c.getPower_supply());
+        if(c.getPower_supply() == null)
+            txt.setText("Sin fuente");
+        else
+            txt.setText(c.getPower_supply());
         txt = findViewById(R.id.txtPrecioCaja);
         txt.setText(c.getPrice_usd() + "");
         txt = findViewById(R.id.txtTipoCaja);
@@ -171,11 +175,56 @@ public class VistaComponenteActivity extends FatherView {
     private void mostrarDisco() {
         DiscoDuro d = (DiscoDuro) componente;
         TextView txt;
+        txt = findViewById(R.id.txtNombreDisco);
+        txt.setText(d.getName());
+        txt = findViewById(R.id.txtCacheDisco);
+        txt.setText(d.getCache());
+        txt = findViewById(R.id.txtCapacidadDisco);
+        txt.setText(d.getCapacity());
+        txt = findViewById(R.id.txtPrecioDisco);
+        txt.setText(d.getPrice_usd() + "");
+        txt = findViewById(R.id.txtTipoDisco);
+        txt.setText(d.getType());
+        txt = findViewById(R.id.txtFactorFormaDisco);
+        txt.setText(d.getForm_factor());
     }
 
     private void mostrarMemoria() {
+        MemoriaRam m = (MemoriaRam) componente;
+        TextView txt;
+        txt = findViewById(R.id.txtNombreRam);
+        txt.setText(m.getName());
+        txt = findViewById(R.id.txtCapacidadRam);
+        txt.setText(m.getCapacity() + "");
+        txt = findViewById(R.id.txtLatenciaRam);
+        txt.setText(m.getCas_latency());
+        txt = findViewById(R.id.txtPrecioRam);
+        txt.setText(m.getPrice_usd() + "");
+        txt = findViewById(R.id.txtVelocidadRam);
+        txt.setText(m.getSpeed() + "");
+        txt = findViewById(R.id.txtFactorFormaRam);
+        txt.setText(m.getForm_factor());
+        txt = findViewById(R.id.txtNumModulosRam);
+        txt.setText(m.getModules());
     }
 
     private void mostrarProcesador() {
+        Procesador p = (Procesador) componente;
+        TextView txt;
+        txt = findViewById(R.id.txtNombreProcesador);
+        txt.setText(p.getName());
+        txt = findViewById(R.id.txtPrecioProcesador);
+        txt.setText(p.getPrice() + "");
+        txt = findViewById(R.id.txtSocketProcesador);
+        txt.setText(p.getSocket());
+        txt = findViewById(R.id.txtGigaherciosBaseProcesador);
+        txt.setText(p.getCore_clock());
+        txt = findViewById(R.id.txtGigaherciosOverclockedProcesador);
+        txt.setText(p.getBoost_clock());
+        txt = findViewById(R.id.txtGraficosIntegradosProcesador);
+        if(p.getIntegrated_grafics() == null)
+            txt.setText("Sin gráficos integrados");
+        else
+            txt.setText(p.getIntegrated_grafics());
     }
 }

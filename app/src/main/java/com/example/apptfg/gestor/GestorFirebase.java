@@ -196,8 +196,8 @@ public class GestorFirebase {
     public void sacarPlacaBase(PlacaBaseCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("placas_base")
-                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX())
-                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN())
+                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
+                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN_PLACA())
                 .orderBy("precio")
                 .limit(1)
                 .get()

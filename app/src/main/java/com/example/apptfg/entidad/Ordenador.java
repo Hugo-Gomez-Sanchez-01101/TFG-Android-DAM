@@ -12,15 +12,28 @@ public class Ordenador implements Serializable {
     private Procesador procesador;
     private TarjetaGrafica tarjetaGrafica;
 
-    public Ordenador(Caja caja, DiscoDuro discoDuro, Disipador disipador, FuenteAlimentacion fuenteAlimentacion, MemoriaRam memoriaRam, PlacaBase placaBasem, Procesador procesador, TarjetaGrafica tarjetaGrafica) {
+    public Ordenador(Caja caja, DiscoDuro discoDuro, Disipador disipador, FuenteAlimentacion fuenteAlimentacion, MemoriaRam memoriaRam, PlacaBase placaBase, Procesador procesador, TarjetaGrafica tarjetaGrafica) {
         this.caja = caja;
         this.discoDuro = discoDuro;
         this.disipador = disipador;
         this.fuenteAlimentacion = fuenteAlimentacion;
         this.memoriaRam = memoriaRam;
-        this.placaBase = placaBasem;
+        this.placaBase = placaBase;
         this.procesador = procesador;
         this.tarjetaGrafica = tarjetaGrafica;
+    }
+
+    public double getPrice(){
+        double total = 0;
+        total += caja.getPrice_usd();
+        total += discoDuro.getPrice_usd();
+        total += disipador.getPrice_usd();
+        total += fuenteAlimentacion.getPrice_usd();
+        total += memoriaRam.getPrice_usd();
+        total += placaBase.getPrecio();
+        total += procesador.getPrice();
+        total += tarjetaGrafica.getPrice_usd();
+        return total;
     }
 
     public Ordenador() {}

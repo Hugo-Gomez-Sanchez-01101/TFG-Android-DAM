@@ -1,7 +1,5 @@
 package com.example.apptfg.entidad;
 
-import java.io.Serializable;
-
 public class MemoriaRam extends Componente {
     private double price_usd;
     private String color;
@@ -12,12 +10,12 @@ public class MemoriaRam extends Componente {
     private int speed;
     private String modules;
     private int rating_count;
-    private int cas_latencia;
+    private String cas_latency;
     private int capacity;
 
     public MemoriaRam(){}
 
-    public MemoriaRam(double price_usd, String color, int rating, String name, String price_x_gb, String form_factor, int speed, String modules, int rating_count, int cas_latencia, int capacity) {
+    public MemoriaRam(double price_usd, String color, int rating, String name, String price_x_gb, String form_factor, int speed, String modules, int rating_count, String cas_latency, int capacity) {
         this.price_usd = price_usd;
         this.color = color;
         this.rating = rating;
@@ -27,7 +25,7 @@ public class MemoriaRam extends Componente {
         this.speed = speed;
         this.modules = modules;
         this.rating_count = rating_count;
-        this.cas_latencia = cas_latencia;
+        this.cas_latency = cas_latency;
         this.capacity = capacity;
     }
 
@@ -67,8 +65,8 @@ public class MemoriaRam extends Componente {
         return rating_count;
     }
 
-    public int getCas_latencia() {
-        return cas_latencia;
+    public String getCas_latency() {
+        return cas_latency;
     }
 
     public int getCapacity() {
@@ -87,7 +85,7 @@ public class MemoriaRam extends Componente {
                 ", speed=" + speed +
                 ", modules='" + modules + '\'' +
                 ", rating_count=" + rating_count +
-                ", cas_latencia=" + cas_latencia +
+                ", cas_latencia=" + cas_latency +
                 ", capacity=" + capacity +
                 '}';
     }
