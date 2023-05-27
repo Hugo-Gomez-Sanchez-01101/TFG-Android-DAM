@@ -195,6 +195,8 @@ public class GestorFirebase {
      */
     public void sacarPlacaBase(PlacaBaseCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(reglas.getPRECIO_MAX_PLACA());
+        System.out.println(reglas.getPRECIO_MIN_PLACA());
         db.collection("placas_base")
                 .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
                 .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN_PLACA())
@@ -209,7 +211,7 @@ public class GestorFirebase {
                             PlacaBase placaBase = document.toObject(PlacaBase.class);
                             callback.onPlacaBaseObtenida(placaBase);
                         } else {
-                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna placa base que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         callback.onError("Hubo un error al realizar la consulta");

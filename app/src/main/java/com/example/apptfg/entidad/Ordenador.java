@@ -32,7 +32,11 @@ public class Ordenador implements Serializable {
         total += memoriaRam.getPrice_usd();
         total += placaBase.getPrecio();
         total += procesador.getPrice();
-        total += tarjetaGrafica.getPrice_usd();
+        try {
+            total += tarjetaGrafica.getPrice_usd();
+        } catch (NullPointerException e){
+            System.out.println(e);
+        }
         return total;
     }
 

@@ -116,6 +116,7 @@ public class PreciosActivity extends FatherView {
         disiparCarga();
         Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
         i.putExtra("ordenador", ordenador);
+        i.putExtra("tipo", true);
         startActivity(i);
         finish();
     }

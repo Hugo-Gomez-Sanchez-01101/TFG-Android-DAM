@@ -147,6 +147,8 @@ public class VistaComponenteActivity extends FatherView {
         txt = findViewById(R.id.txtRevolucionesDisipador);
         txt.setText(d.getFan_rpm());
         txt = findViewById(R.id.txtTamañoDisipador);
+        System.out.println(d.getFan_rpm());
+        System.out.println(d.getRadiator_size());
         txt.setText(d.getRadiator_size());
         txt = findViewById(R.id.txtNivelRuidoDisipador);
         txt.setText(d.getNoise_level());

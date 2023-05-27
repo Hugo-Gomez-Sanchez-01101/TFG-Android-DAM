@@ -1,15 +1,27 @@
 package com.example.apptfg;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+
 import com.example.apptfg.provider_tipe.ProviderType;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TerminarRegistroActivity extends FatherView {
     EditText email;
@@ -54,12 +66,12 @@ public class TerminarRegistroActivity extends FatherView {
             }
         }
         if (todoOk)
-            comprobarContraseña();
+            comprobarContrasena();
         else
             mostrarToastCamposVacios();
     }
 
-    private void comprobarContraseña() {
+    private void comprobarContrasena() {
         if(contraseña1.getText().toString().equals(contraseña2.getText().toString()))
             registrar(email.getText().toString(), contraseña1.getText().toString());
         else
@@ -71,6 +83,8 @@ public class TerminarRegistroActivity extends FatherView {
                 .createUserWithEmailAndPassword(e, c)
                 .addOnCompleteListener((task) -> {
                     if (task.isSuccessful()) {
+                        crearListaOrdenadores();
+                        guardarDatosUsuario(ProviderType.BASIC);
                         irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                     } else {
                         mostrarToastCamposIncompletos();
@@ -79,13 +93,45 @@ public class TerminarRegistroActivity extends FatherView {
     }
 
     private void irHome(String email, ProviderType proveedor) {
-        Intent i = new Intent(this, ListaOrdenadoresActivity.class);
+        Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email", email);
         i.putExtra("proveedor", proveedor + "");
         startActivity(i);
     }
 
+    private void crearListaOrdenadores() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
+
+        Map<String, Object> listaOrdenadores = new HashMap<>();
+
+        userDocRef.set(listaOrdenadores, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println(e);
+                    }
+                });
+    }
+
     private void vaciarCampos(EditText e){
         e.setText("");
+    }
+
+    private void guardarDatosUsuario(ProviderType proveedor) {
+        SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        prefs.putString("email", email);
+        prefs.putString("proveedor",proveedor + "");
+
+        prefs.apply();
     }
 }

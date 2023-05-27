@@ -23,10 +23,10 @@ public class HomeActivity extends FatherView {
     }
 
     private void setup() {
+        findViewById(R.id.buttonOfimatica).setOnClickListener(v -> obtenerValoresPorTipo(Usos.OFIMATICA));
         findViewById(R.id.buttonGaming).setOnClickListener(v -> obtenerValoresPorTipo(Usos.GAMING));
         findViewById(R.id.buttonGamingP).setOnClickListener(v -> obtenerValoresPorTipo(Usos.GAMING_PROFESIONAL));
         findViewById(R.id.buttonEdicion).setOnClickListener(v -> obtenerValoresPorTipo(Usos.EDICION));
-        findViewById(R.id.buttonOfimatica).setOnClickListener(v -> obtenerValoresPorTipo(Usos.OFIMATICA));
     }
 
     private void obtenerValoresPorTipo(Enum<Usos> uso) {

@@ -45,7 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation group: 'com.google.firebase', name: 'firebase-firestore', version: '24.6.0'
+    implementation group: 'com.google.firebase', name: 'firebase-firestore', version: '24.6.1'
     implementation 'com.google.api-client:google-api-client:2.0.0'
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson

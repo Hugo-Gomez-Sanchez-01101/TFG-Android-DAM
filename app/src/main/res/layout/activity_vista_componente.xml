@@ -408,7 +408,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="356dp"
+            android:layout_marginTop="368dp"
             android:text="Audio:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -452,7 +452,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="224dp"
-            android:layout_marginTop="188dp"
+            android:layout_marginTop="190dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -472,9 +472,9 @@
             android:id="@+id/txtAudioPlacaBase"
             style="@style/textoVariablesComponentes"
             android:layout_width="384dp"
-            android:layout_height="55dp"
+            android:layout_height="38dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="376dp"
+            android:layout_marginTop="388dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -482,8 +482,8 @@
         <TextView
             android:id="@+id/txtPuertosUsbPlacaBase"
             style="@style/textoVariablesComponentes"
-            android:layout_width="384dp"
-            android:layout_height="55dp"
+            android:layout_width="389dp"
+            android:layout_height="71dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="288dp"
             android:text="@string/nule"
@@ -1071,7 +1071,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnModificarComponente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
