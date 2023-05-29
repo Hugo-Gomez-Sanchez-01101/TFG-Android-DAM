@@ -23,11 +23,11 @@
 
         <TextView
             android:id="@+id/tituloLBL"
-            android:layout_width="85dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/titulo"
             android:textColor="@color/design_default_color_on_secondary"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/nombrePc"
@@ -43,11 +43,11 @@
             android:layout_height="118dp"
             android:contentDescription="@string/todo"
             tools:ignore="ContentDescription"
-            android:src="@drawable/ordenador"/>
+            android:src="@drawable/imagen_ordenador"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:gravity="">
 
@@ -55,6 +55,7 @@
                 android:id="@+id/btnVerOrdenador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/botones_app"
                 android:layout_weight="1"
                 android:text="VER" />
 
@@ -62,6 +63,7 @@
                 android:id="@+id/btnEliminarOrdenador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/botones_app"
                 android:layout_weight="1"
                 android:text="@string/eliminarO" />
         </LinearLayout>

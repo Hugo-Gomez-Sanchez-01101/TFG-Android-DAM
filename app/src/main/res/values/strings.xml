@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Generador</string>
-    <string name="titulo">TITULO</string>
+    <string name="titulo">NOMBRE PC</string>
     <string name="eliminar">Eliminar</string>
-    <string name="nombre_pc">NOMBRE PC</string>
+    <string name="nombre_pc">TIPO</string>
     <string name="todo">TODO</string>
     <string name="logopc">LOGOPC</string>
     <string name="ver">Ver</string>
