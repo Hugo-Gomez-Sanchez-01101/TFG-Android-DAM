@@ -42,6 +42,12 @@ public class VistaComponenteActivity extends FatherView {
         lProcesador = findViewById(R.id.cLayoutProcesador);
         lTarjetaGrafica = findViewById(R.id.cLayoutTarjetaGrafica);
         findViewById(R.id.btnVolverVistaComponentes).setOnClickListener(v -> finish());
+        findViewById(R.id.btnModificarComponente).setOnClickListener(v -> irListaComponentes());
+    }
+
+    private void irListaComponentes() {
+        Intent i = new Intent(this, ModificarComponenteActivity.class);
+        startActivity(i);
     }
 
     private void mostrarComponente(Object componente) {

@@ -1,7 +1,6 @@
 package com.example.apptfg.listaPc;
 
 import com.example.apptfg.entidad.OrdenadorTarjeta;
-
 import java.util.ArrayList;
 import java.util.List;
 

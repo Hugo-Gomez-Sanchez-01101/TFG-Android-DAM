@@ -10,9 +10,10 @@
 
     <EditText
         android:id="@+id/emailRecuperarEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="66dp"
         android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
         android:background="#30ffffff"
         android:drawablePadding="10dp"
         android:hint="Email"
@@ -21,23 +22,22 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
         android:id="@+id/btnRecuperar"
         android:layout_width="181dp"
         android:layout_height="57dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginStart="112dp"
         android:background="@drawable/botones_app"
         android:text="RECUPERAR"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431"
         tools:ignore="MissingConstraints" />
 
     <ImageView

@@ -212,7 +212,6 @@
         android:id="@+id/cLayoutProcesador"
         android:layout_width="412dp"
         android:layout_height="530dp"
-        android:background="@drawable/monitor_1"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -222,8 +221,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="340dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="320dp"
             android:text="Precio:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -233,9 +232,10 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="295dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="270dp"
             android:text="Gigahercios overclocked:"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -244,8 +244,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="193dp"
-            android:layout_marginTop="195dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="170dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -255,8 +255,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="107dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="120dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -266,8 +266,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="178dp"
-            android:layout_marginTop="245dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="220dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -277,8 +277,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:layout_marginTop="295dp"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="270dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -288,8 +288,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="340dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="320dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -299,8 +299,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="195dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="170dp"
             android:text="Graficos integrados:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -310,8 +310,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
             android:text="Socket:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -321,8 +321,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="245dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="220dp"
             android:text="Gigahercios base:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -332,8 +332,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="72dp"
             android:text="@string/nule"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -343,8 +343,8 @@
             style="@style/textoVariablesComponentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="72dp"
             android:text="Nombre:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -1078,7 +1078,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="140dp"
         android:background="@drawable/botones_app"
-        android:text="Button"
+        android:text="Modificar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
