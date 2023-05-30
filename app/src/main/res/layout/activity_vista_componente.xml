@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="412dp"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
+    android:background="#c2c2c2"
     android:visibility="visible"
     tools:context=".VistaComponenteActivity">
 
