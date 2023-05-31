@@ -1,6 +1,7 @@
 package com.example.apptfg.gestor;
 
 import com.example.apptfg.entidad.Caja;
+import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
 import com.example.apptfg.entidad.FuenteAlimentacion;
@@ -8,7 +9,6 @@ import com.example.apptfg.entidad.MemoriaRam;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
-import com.example.apptfg.exception.BuildingComputerException;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,10 +34,11 @@ public class GestorFirebase {
         this.reglas = reglas;
     }
 
-    private GestorFirebase(){}
+    private GestorFirebase() {
+    }
 
-    public static GestorFirebase getInstance(){
-        if(gestorFirebase == null){
+    public static GestorFirebase getInstance() {
+        if (gestorFirebase == null) {
             gestorFirebase = new GestorFirebase();
         }
         return gestorFirebase;
@@ -188,6 +189,121 @@ public class GestorFirebase {
         void onError(String errorMessage);
     }
 
+    public interface ListaComponentesCallback {
+        void onListaComponentesObtenidos(List<Componente> listaComponentes);
+
+        void onError(String errorMessage);
+    }
+
+    public void sacarListaRam(ListaComponentesCallback callback, PlacaBase placaBase) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("memory_ram")
+                .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
+                .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_RAM())
+                .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_RAM())
+                .limit(10)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot snapshot = task.getResult();
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            List<Componente> lista = new ArrayList<>();
+                            for (DocumentSnapshot d:
+                                 documents) {
+                                lista.add(d.toObject(MemoriaRam.class));
+                            }
+                            callback.onListaComponentesObtenidos(lista);
+                        } else {
+                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        callback.onError("hubo un error al realizar la consulta memoria");
+                    }
+                });
+    }
+
+    public void sacarListaCpuNormal(ListaComponentesCallback callback, PlacaBase placaBase){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("procesadores")
+                .whereEqualTo("socket", placaBase.getSocket())
+                .whereLessThanOrEqualTo("price", reglas.getPRECIO_MAX_CPU())
+                .whereGreaterThanOrEqualTo("price", reglas.getPRECIO_MIN_CPU())
+                .orderBy("price")
+                .limit(10)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot snapshot = task.getResult();
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            List<Componente> lista = new ArrayList<>();
+                            for (DocumentSnapshot d:
+                                 documents) {
+                                lista.add(d.toObject(Procesador.class));
+                            }
+                            callback.onListaComponentesObtenidos(lista);
+                        } else {
+                            callback.onError("No se encontró ningún cpuNormal que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        callback.onError("hubo un error al realizar la consulta cpu");
+                    }
+
+                });
+    }
+
+    public void sacarListaCpuConGrafica(ListaComponentesCallback callback, PlacaBase placaBase){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("procesadores")
+                .whereEqualTo("socket", placaBase.getSocket())
+                .whereNotEqualTo("integrated_graphics", null)
+                .limit(10)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
+                        ordenarPorPrecio(documentos);
+                        List<Componente> lista = new ArrayList<>();
+                        for (DocumentSnapshot d:
+                             documentos) {
+                            lista.add(d.toObject(Procesador.class));
+                        }
+                        callback.onListaComponentesObtenidos(lista);
+                    } else {
+                        callback.onError("no se ha encontrado ninguna cpu con grafica");
+                    }
+                });
+    }
+
+    public void sacarListaGpu(ListaComponentesCallback callback, PlacaBase placaBase){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("video-card")
+                .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
+                .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_GPU())
+                .orderBy("price_usd")
+                .limit(10)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot snapshot = task.getResult();
+                        if (snapshot != null && !snapshot.isEmpty()) {
+                            List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            List<Componente> lista = new ArrayList<>();
+                            for (DocumentSnapshot d:
+                                 documents) {
+                                lista.add(d.toObject(TarjetaGrafica.class));
+                            }
+                            callback.onListaComponentesObtenidos(lista);
+                        } else {
+                            callback.onError("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
+                        }
+                    } else {
+                        callback.onError("hubo un error al realizar la consulta gpu");
+                    }
+                });
+    }
+
     /**
      * Sacar placa base.
      *
@@ -222,14 +338,14 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarCpuConGrafica(PlacaBase placaBase, ProcesadorCallback callback){
+    public void sacarCpuConGrafica(PlacaBase placaBase, ProcesadorCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("procesadores")
                 .whereEqualTo("socket", placaBase.getSocket())
                 .whereNotEqualTo("integrated_graphics", null)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if(!queryDocumentSnapshots.isEmpty()) {
+                    if (!queryDocumentSnapshots.isEmpty()) {
                         List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
                         List<DocumentSnapshot> docsFiltrados = new ArrayList<>(documentos);
                         for (DocumentSnapshot documento : documentos) {
@@ -301,7 +417,7 @@ public class GestorFirebase {
                             TarjetaGrafica tarjetaGrafica = document.toObject(TarjetaGrafica.class);
                             callback.onGpuObtenida(tarjetaGrafica);
                         } else {
-                           callback.onError("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningún gpu que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         callback.onError("hubo un error al realizar la consulta gpu");
@@ -438,17 +554,17 @@ public class GestorFirebase {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
                         if (snapshot != null && !snapshot.isEmpty()) {
-                        List<DocumentSnapshot> documents = snapshot.getDocuments();
-                        for (DocumentSnapshot document : documents
-                        ) {
-                            if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria())
-                                documents.remove(document);
-                        }
-                        if (documents.size() > 1)
-                            ordenarPorPrecio(documents);
-                        DocumentSnapshot document = documents.get(0);
-                        MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
-                        callback.onRamObtenida(memoriaRam);
+                            List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            for (DocumentSnapshot document : documents
+                            ) {
+                                if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria())
+                                    documents.remove(document);
+                            }
+                            if (documents.size() > 1)
+                                ordenarPorPrecio(documents);
+                            DocumentSnapshot document = documents.get(0);
+                            MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
+                            callback.onRamObtenida(memoriaRam);
                         } else {
                             callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
                         }
@@ -473,14 +589,14 @@ public class GestorFirebase {
         });
     }
 
-    public void obtenerMaximoMinimo(Enum<Usos> u, MinimoMaximosCallback minimoMaximosCallback){
+    public void obtenerMaximoMinimo(Enum<Usos> u, MinimoMaximosCallback minimoMaximosCallback) {
         String uso = u.toString().toLowerCase(Locale.ROOT);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("reglas")
                 .document(uso)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
-                    if(documentSnapshot.exists()) {
+                    if (documentSnapshot.exists()) {
                         Map<String, Object> data = documentSnapshot.getData();
                         long[] valores = new long[2];
                         valores[1] = (long) data.get("PRECIO_MAX");

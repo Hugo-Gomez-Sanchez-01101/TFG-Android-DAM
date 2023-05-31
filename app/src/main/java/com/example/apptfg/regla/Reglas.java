@@ -1,9 +1,6 @@
 package com.example.apptfg.regla;
 
-import com.example.apptfg.algoritmo.Generador;
-import com.example.apptfg.entidad.PlacaBase;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Locale;
 import java.util.Map;
 
