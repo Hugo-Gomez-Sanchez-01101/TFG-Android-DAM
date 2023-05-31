@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apptfg.adaptador.AdaptadorOrdenadorVH;
-import com.example.apptfg.entidad.OrdenadorTarjeta;
-import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
+import com.example.apptfg.adaptador.OrdenadorTarjeta;
+import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class ListaOrdenadoresActivity extends FatherView {
     }
 
     private void setupRecicler() {
-        recyclerViewUser = findViewById(R.id.rViewUsuario);
+        recyclerViewUser = findViewById(R.id.reciclerViewComponentes);
         recyclerViewUser.setHasFixedSize(true);
 
         // use a linear layout manager, esta vez horizontal

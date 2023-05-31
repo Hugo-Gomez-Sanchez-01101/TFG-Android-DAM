@@ -3,16 +3,16 @@ package com.example.apptfg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
 import com.example.apptfg.entidad.FuenteAlimentacion;
 import com.example.apptfg.entidad.MemoriaRam;
+import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
@@ -20,6 +20,8 @@ import com.example.apptfg.entidad.TarjetaGrafica;
 public class VistaComponenteActivity extends FatherView {
     private ConstraintLayout lCaja, lDiscoDuro, lDisipador, lFuente, lMemoria, lPlacaBase, lProcesador, lTarjetaGrafica;
     private Componente componente;
+    private Ordenador ordenador;
+    private Button botonModificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,6 @@ public class VistaComponenteActivity extends FatherView {
         setContentView(R.layout.activity_vista_componente);
         darFuncionalidadMenu();
         setup();
-        Intent i = getIntent();
-        componente = (Componente) i.getSerializableExtra("componente");
         mostrarComponente(componente);
     }
 
@@ -42,11 +42,16 @@ public class VistaComponenteActivity extends FatherView {
         lProcesador = findViewById(R.id.cLayoutProcesador);
         lTarjetaGrafica = findViewById(R.id.cLayoutTarjetaGrafica);
         findViewById(R.id.btnVolverVistaComponentes).setOnClickListener(v -> finish());
-        findViewById(R.id.btnModificarComponente).setOnClickListener(v -> irListaComponentes());
+        botonModificar = findViewById(R.id.btnModificarComponente);
+        botonModificar.setOnClickListener(v -> irListaComponentes());
+        Intent i = getIntent();
+        componente = (Componente) i.getSerializableExtra("componente");
+        ordenador = (Ordenador) i.getSerializableExtra("ordenador");
     }
 
     private void irListaComponentes() {
         Intent i = new Intent(this, ModificarComponenteActivity.class);
+        i.putExtra("ordenador", ordenador);
         startActivity(i);
     }
 
@@ -70,6 +75,7 @@ public class VistaComponenteActivity extends FatherView {
             lFuente.setVisibility(View.VISIBLE);
             mostrarFuete();
         } else if(componente instanceof PlacaBase) {
+            botonModificar.setVisibility(View.GONE);
             lPlacaBase.setVisibility(View.VISIBLE);
             motrarPlaca();
         } else if(componente instanceof TarjetaGrafica) {

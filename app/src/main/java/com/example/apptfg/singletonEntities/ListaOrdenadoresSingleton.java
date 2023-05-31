@@ -1,6 +1,6 @@
-package com.example.apptfg.listaPc;
+package com.example.apptfg.singletonEntities;
 
-import com.example.apptfg.entidad.OrdenadorTarjeta;
+import com.example.apptfg.adaptador.OrdenadorTarjeta;
 import java.util.ArrayList;
 import java.util.List;
 

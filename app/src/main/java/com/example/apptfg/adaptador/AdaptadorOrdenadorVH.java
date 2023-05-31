@@ -9,12 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.apptfg.OrdenadorGeneradoActivity;
 import com.example.apptfg.R;
-import com.example.apptfg.entidad.OrdenadorTarjeta;
-import com.example.apptfg.listaPc.ListaOrdenadoresSingleton;
-
+import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 import java.util.List;
 
 public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenadorVH.ViewHolder> {
@@ -43,8 +40,7 @@ public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenado
    @Override
    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.ordenador_view_holder, parent, false);
-       ViewHolder viewHolder = new ViewHolder(v);
-       return viewHolder;
+       return new ViewHolder(v);
    }
 
 

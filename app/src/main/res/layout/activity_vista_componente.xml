@@ -12,8 +12,8 @@
         android:id="@+id/cLayoutTarjetaGrafica"
         android:layout_width="412dp"
         android:layout_height="530dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
+        android:background="#c2c2c2"
+        android:backgroundTint="#c2c2c2"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

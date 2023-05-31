@@ -91,4 +91,14 @@ public class Caja extends Componente {
                 ", rating_count=" + rating_count +
                 '}';
     }
+
+    @Override
+    public String getNombre() {
+        return name;
+    }
+
+    @Override
+    public double getPrecio() {
+        return price_usd;
+    }
 }

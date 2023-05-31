@@ -89,4 +89,14 @@ public class MemoriaRam extends Componente {
                 ", capacity=" + capacity +
                 '}';
     }
+
+    @Override
+    public String getNombre() {
+        return name;
+    }
+
+    @Override
+    public double getPrecio() {
+        return price_usd;
+    }
 }

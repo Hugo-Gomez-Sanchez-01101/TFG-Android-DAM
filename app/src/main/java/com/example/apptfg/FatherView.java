@@ -111,4 +111,10 @@ public class FatherView extends AppCompatActivity {
             finish();
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish(); // Llama al método finish() al presionar el botón de retroceso
+    }
 }

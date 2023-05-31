@@ -62,4 +62,14 @@ public class Procesador extends Componente {
                 ", boost_clock='" + boost_clock + '\'' +
                 '}';
     }
+
+    @Override
+    public String getNombre() {
+        return name;
+    }
+
+    @Override
+    public double getPrecio() {
+        return price;
+    }
 }

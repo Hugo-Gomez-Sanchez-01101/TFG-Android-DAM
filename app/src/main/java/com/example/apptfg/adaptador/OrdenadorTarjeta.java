@@ -1,4 +1,4 @@
-package com.example.apptfg.entidad;
+package com.example.apptfg.adaptador;
 
 public class OrdenadorTarjeta {
     //Esta clase tiene que ser reemplazada por la clase Ordenador
