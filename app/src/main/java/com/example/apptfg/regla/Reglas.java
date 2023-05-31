@@ -110,10 +110,10 @@ public class Reglas {
                 });
     }
 
-    private double sacarPrecioDePorcentaje(double porcentaje, double precio) {
+    private double sacarPrecioDePorcentaje(double porcentaje, double precioMax) {
         double resultado;
         try {
-            resultado = porcentaje * precio / 100;
+            resultado = porcentaje * precioMax / 100;
         } catch (ArithmeticException e) {
             resultado = 0;
         }
