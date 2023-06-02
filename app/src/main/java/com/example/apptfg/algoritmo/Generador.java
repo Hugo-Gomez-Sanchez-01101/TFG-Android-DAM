@@ -2,6 +2,7 @@ package com.example.apptfg.algoritmo;
 
 import com.example.apptfg.PreciosActivity;
 import com.example.apptfg.entidad.Caja;
+import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
 import com.example.apptfg.entidad.FuenteAlimentacion;
@@ -13,6 +14,8 @@ import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
+
+import org.checkerframework.checker.compilermsgs.qual.CompilerMessageKey;
 
 public class Generador{
     private Reglas reglas;
@@ -50,9 +53,10 @@ public class Generador{
      * obtains a motherboard that is the base to build a pc, then it calls the continuarGenerando() method
      */
     public void sacarPlaca() {
-        GestorFirebase.getInstance().sacarPlacaBase(new GestorFirebase.PlacaBaseCallback() {
+        GestorFirebase.getInstance().sacarPlacaBase(new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onPlacaBaseObtenida(PlacaBase placaBase) {
+            public void onComponenteObtenido(Componente componente) {
+                PlacaBase placaBase = (PlacaBase) componente;
                 ordenador.setPlacaBase(placaBase);
                 placaBaseMain = placaBase;
                 sacarCpu();
@@ -70,9 +74,10 @@ public class Generador{
       */
     private void sacarCpu() {
         if(reglas.getPRECIO_MAX_GPU() == 0)
-            GestorFirebase.getInstance().sacarCpuConGrafica(placaBaseMain, new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuConGrafica(placaBaseMain, new GestorFirebase.ComponenteCallback() {
                 @Override
-                public void onProcesadorObtenido(Procesador procesador) {
+                public void onComponenteObtenido(Componente componente) {
+                    Procesador procesador = (Procesador) componente;
                     ordenador.setProcesador(procesador);
                     ordenador.setTarjetaGrafica(null);
                     sacarPsu();
@@ -85,9 +90,10 @@ public class Generador{
                 }
             });
         else
-            GestorFirebase.getInstance().sacarCpuNormal(placaBaseMain, new GestorFirebase.ProcesadorCallback() {
+            GestorFirebase.getInstance().sacarCpuNormal(placaBaseMain, new GestorFirebase.ComponenteCallback() {
                 @Override
-                public void onProcesadorObtenido(Procesador procesador) {
+                public void onComponenteObtenido(Componente componente) {
+                    Procesador procesador = (Procesador) componente;
                     ordenador.setProcesador(procesador);
                     sacarGpu();
                 }
@@ -101,9 +107,10 @@ public class Generador{
     }
 
     private void sacarGpu() {
-        GestorFirebase.getInstance().sacarGpu(new GestorFirebase.GpuCallback() {
+        GestorFirebase.getInstance().sacarGpu(new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onGpuObtenida(TarjetaGrafica tarjetaGrafica) {
+            public void onComponenteObtenido(Componente componente) {
+                TarjetaGrafica tarjetaGrafica = (TarjetaGrafica) componente;
                 ordenador.setTarjetaGrafica(tarjetaGrafica);
                 sacarPsu();
             }
@@ -117,9 +124,10 @@ public class Generador{
     }
 
     private void sacarPsu() {
-        GestorFirebase.getInstance().sacarPsu(new GestorFirebase.PsuCallback() {
+        GestorFirebase.getInstance().sacarPsu(new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onPsuObtenida(FuenteAlimentacion fuenteAlimentacion) {
+            public void onComponenteObtenido(Componente componente) {
+                FuenteAlimentacion fuenteAlimentacion = (FuenteAlimentacion) componente;
                 ordenador.setFuenteAlimentacion(fuenteAlimentacion);
                 sacarDisipador();
             }
@@ -133,9 +141,10 @@ public class Generador{
     }
 
     private void sacarDisipador() {
-        GestorFirebase.getInstance().sacarDisipador(new GestorFirebase.DisipadorCallback() {
+        GestorFirebase.getInstance().sacarDisipador(new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onCoolerObtenido(Disipador disipador) {
+            public void onComponenteObtenido(Componente componente) {
+                Disipador disipador = (Disipador) componente;
                 ordenador.setDisipador(disipador);
                 sacarDiscoDuro();
             }
@@ -149,9 +158,10 @@ public class Generador{
     }
 
     private void sacarDiscoDuro() {
-        GestorFirebase.getInstance().sacarDiscoDuro(new GestorFirebase.DiscoDuroCallback() {
+        GestorFirebase.getInstance().sacarDiscoDuro(new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onDiscoDuroObtenido(DiscoDuro discoDuro) {
+            public void onComponenteObtenido(Componente componente) {
+                DiscoDuro discoDuro = (DiscoDuro) componente;
                 ordenador.setDiscoDuro(discoDuro);
                 sacarCaja();
             }
@@ -165,9 +175,10 @@ public class Generador{
     }
 
     private void sacarCaja() {
-        GestorFirebase.getInstance().sacarCaja(placaBaseMain, new GestorFirebase.CajaCallback() {
+        GestorFirebase.getInstance().sacarCaja(placaBaseMain, new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onCajaObtenida(Caja caja) {
+            public void onComponenteObtenido(Componente componente) {
+                Caja caja = (Caja) componente;
                 ordenador.setCaja(caja);
                 sacarMemoriaRam();
             }
@@ -181,9 +192,10 @@ public class Generador{
     }
 
     private void sacarMemoriaRam() {
-        GestorFirebase.getInstance().sacarMemoriaRam(placaBaseMain, new GestorFirebase.RamCallback() {
+        GestorFirebase.getInstance().sacarMemoriaRam(placaBaseMain, new GestorFirebase.ComponenteCallback() {
             @Override
-            public void onRamObtenida(MemoriaRam ram) {
+            public void onComponenteObtenido(Componente componente) {
+                MemoriaRam ram = (MemoriaRam) componente;
                 ordenador.setMemoriaRam(ram);
                 System.out.println(ordenador);
                 preciosActivity.terminarGenerar(ordenador);
