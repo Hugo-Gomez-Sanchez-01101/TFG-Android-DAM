@@ -141,7 +141,7 @@ public class GestorFirebase {
                 });
     }
 
-    public void sacarListaGpu(PlacaBase placaBase, ListaComponentesCallback callback){
+    public void sacarListaGpu(ListaComponentesCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("video-card")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
@@ -197,7 +197,7 @@ public class GestorFirebase {
                 });
     }
 
-    private void sacarListaDisipador(PlacaBase placaBase,ListaComponentesCallback callback){
+    public void sacarListaDisipador(ListaComponentesCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("cpu-cooler")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_COOLER())
@@ -224,7 +224,7 @@ public class GestorFirebase {
                     }
                 });
     }
-    public void sacarListaDiscoDuro(PlacaBase placaBase, ListaComponentesCallback callback){
+    public void sacarListaDiscoDuro(ListaComponentesCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("internal-hard-drive")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_DISCO())
@@ -248,7 +248,7 @@ public class GestorFirebase {
                 });
     }
 
-    public void sacarListaCaja(PlacaBase placaBase, ComponenteCallback callback){
+    public void sacarListaCaja(PlacaBase placaBase, ListaComponentesCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
@@ -261,10 +261,13 @@ public class GestorFirebase {
                     if (task.isSuccessful()) {
                         QuerySnapshot snapshot = task.getResult();
                         if (snapshot != null && !snapshot.isEmpty()) {
-                            DocumentSnapshot
-                                    document = snapshot.getDocuments().get(0);
-                            Caja caja = document.toObject(Caja.class);
-                            callback.onComponenteObtenido(caja);
+                            List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            List<Componente> lista = new ArrayList<>();
+                            for (DocumentSnapshot d:
+                                 documents) {
+                                lista.add(d.toObject(Caja.class));
+                            }
+                            callback.onListaComponentesObtenidos(lista);
                         } else {
                             callback.onError("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
                         }

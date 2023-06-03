@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.Ordenador;
+import com.example.apptfg.regla.Usos;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +38,7 @@ import java.util.UUID;
 public class OrdenadorGeneradoActivity extends FatherView {
     private Ordenador ordenador;
     private boolean ordenadorNuevo;
+    private Enum<Usos> uso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,8 @@ public class OrdenadorGeneradoActivity extends FatherView {
         Intent i = getIntent();
         this.ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         ordenadorNuevo = (boolean) i.getSerializableExtra("tipo");
+        uso =            (Enum<Usos>) i.getSerializableExtra("uso");
+
         if(ordenadorNuevo)
             findViewById(R.id.btnBorrarOrdenador).setOnClickListener(v -> finish());
         else
@@ -146,6 +150,8 @@ public class OrdenadorGeneradoActivity extends FatherView {
     private void verComponente(Componente componente){
         Intent i = new Intent(this, VistaComponenteActivity.class);
         i.putExtra("componente", componente);
+        i.putExtra("uso", uso);
+        i.putExtra("ordenador", ordenador);
         startActivity(i);
     }
 }

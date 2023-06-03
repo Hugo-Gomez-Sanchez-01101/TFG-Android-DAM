@@ -2,14 +2,9 @@ package com.example.apptfg;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.apptfg.adaptador.AdaptadorComponentesViewHolder;
-import com.example.apptfg.adaptador.AdaptadorOrdenadorVH;
-import com.example.apptfg.adaptador.ComponenteTarjeta;
-import com.example.apptfg.adaptador.OrdenadorTarjeta;
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.DiscoDuro;
@@ -19,13 +14,14 @@ import com.example.apptfg.entidad.MemoriaRam;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
+import com.example.apptfg.regla.Usos;
 import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
-import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 
 import java.util.List;
 
 public class ModificarComponenteActivity extends FatherView {
     private Ordenador ordenador;
+    private Componente componente;
     private RecyclerView recyclerViewUser;
     private AdaptadorComponentesViewHolder adaptadorComponentesViewHolder;
 
@@ -34,34 +30,30 @@ public class ModificarComponenteActivity extends FatherView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_componente);
         setup();
-        List<Componente> listaComponentes = obtenerListaComponentes();
-        setUpReciclerView();
-    }
-
-    private List<Componente> obtenerListaComponentes() {
-
-        return null;
-    }
-
-    private void setUpReciclerView() {
-        recyclerViewUser = findViewById(R.id.reciclerViewComponentes);
-        recyclerViewUser.setHasFixedSize(true);
-
-        // use a linear layout manager, esta vez horizontal
-        recyclerViewUser.setLayoutManager(
-                new LinearLayoutManager(
-                        this,
-                        LinearLayoutManager.VERTICAL,
-                        false));
-        ListaComponentesSingleton.getInstance().inicializar();
-        List<Componente> listaComponentes = ListaComponentesSingleton.getInstance().getListaComponentes();
-        adaptadorComponentesViewHolder = new AdaptadorComponentesViewHolder(this, listaComponentes);
-        recyclerViewUser.setAdapter(adaptadorComponentesViewHolder);
+        setUpRecycler();
     }
 
     private void setup() {
         Intent i = getIntent();
         ordenador = (Ordenador) i.getSerializableExtra("ordenador");
+        componente = (Componente) i.getSerializableExtra("componente");
+    }
+
+    public void setUpRecycler(){
+        recyclerViewUser = findViewById(R.id.recyclerViewComponentes);
+        recyclerViewUser.setHasFixedSize(true);
+        recyclerViewUser.setLayoutManager(
+                new LinearLayoutManager(
+                        this,
+                        LinearLayoutManager.VERTICAL,
+                        false));
+        for (Componente c:
+             ListaComponentesSingleton.getInstance().getListaComponentesSingleton()) {
+            System.out.println(c);
+        }
+        System.out.println("AAAAAAAAAAAA");
+        adaptadorComponentesViewHolder = new AdaptadorComponentesViewHolder(this, ListaComponentesSingleton.getInstance().getListaComponentesSingleton());
+        recyclerViewUser.setAdapter(adaptadorComponentesViewHolder);
     }
 
     public void recibirComponente(Componente componente){

@@ -16,12 +16,15 @@ import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
+import com.example.apptfg.regla.Usos;
+import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
 
 public class VistaComponenteActivity extends FatherView {
     private ConstraintLayout lCaja, lDiscoDuro, lDisipador, lFuente, lMemoria, lPlacaBase, lProcesador, lTarjetaGrafica;
     private Componente componente;
     private Ordenador ordenador;
     private Button botonModificar;
+    private Enum<Usos> uso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +46,31 @@ public class VistaComponenteActivity extends FatherView {
         lTarjetaGrafica = findViewById(R.id.cLayoutTarjetaGrafica);
         findViewById(R.id.btnVolverVistaComponentes).setOnClickListener(v -> finish());
         botonModificar = findViewById(R.id.btnModificarComponente);
-        botonModificar.setOnClickListener(v -> irListaComponentes());
+        botonModificar.setOnClickListener(v -> iniciarListaComponentes());
         Intent i = getIntent();
         componente = (Componente) i.getSerializableExtra("componente");
         ordenador = (Ordenador) i.getSerializableExtra("ordenador");
+        uso = (Enum<Usos>) i.getSerializableExtra("uso");
     }
 
-    private void irListaComponentes() {
+    private void iniciarListaComponentes() {
+        ListaComponentesSingleton.getInstance().inicializar(ordenador, componente, uso, this);
+    }
+
+    public void irModificarComponentes(){
+        disiparCarga();
         Intent i = new Intent(this, ModificarComponenteActivity.class);
         i.putExtra("ordenador", ordenador);
+        i.putExtra("componente",componente);
         startActivity(i);
+    }
+
+    public void terminarCarga(){
+        disiparCarga();
+    }
+
+    public void carga(){
+        mostrarCarga();
     }
 
     private void mostrarComponente(Object componente) {

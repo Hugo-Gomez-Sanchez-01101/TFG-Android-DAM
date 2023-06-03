@@ -1,7 +1,6 @@
 package com.example.apptfg.adaptador;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.apptfg.ModificarComponenteActivity;
 import com.example.apptfg.R;
 import com.example.apptfg.entidad.Componente;
@@ -18,19 +16,11 @@ import java.util.List;
 
 public class AdaptadorComponentesViewHolder extends RecyclerView.Adapter<AdaptadorComponentesViewHolder.ViewHolder>{
     private List<Componente> listaComponentes;
-    private OnItemClickListener listener;
     private Context context;
 
     public AdaptadorComponentesViewHolder(Context context, List<Componente> listaComponentes) {
         this.context = context;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(Componente componente);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
+        this.listaComponentes = listaComponentes;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +34,7 @@ public class AdaptadorComponentesViewHolder extends RecyclerView.Adapter<Adaptad
             nombre = v.findViewById(R.id.txtCartaNombre);
             precio = v.findViewById(R.id.txtCartaPrecio);
             btnSeleccionar = v.findViewById(R.id.btnSeleccionarComponente);
-            btnVer = v.findViewById(R.id.btnVerOrdenador);
+            btnVer = v.findViewById(R.id.btnVerComponente);
         }
     }
 
@@ -62,14 +52,14 @@ public class AdaptadorComponentesViewHolder extends RecyclerView.Adapter<Adaptad
     public void onBindViewHolder(AdaptadorComponentesViewHolder.ViewHolder holder, int position) {
         //holder es una clase que contiene los atributos del viewHolderXML
         //onBindViewHolder sirve como controlador para la vista
-        holder.nombre.setText(ListaComponentesSingleton.getInstance().getListaComponentes().get(position).getNombre());
-        holder.precio.setText(ListaComponentesSingleton.getInstance().getListaComponentes().get(position).getPrecio() + "");
+        holder.nombre.setText(ListaComponentesSingleton.getInstance().getListaComponentesSingleton().get(position).getNombre());
+        holder.precio.setText(ListaComponentesSingleton.getInstance().getListaComponentesSingleton().get(position).getPrecio() + "");
         holder.btnVer.setOnClickListener(v -> verComponente(position));
         holder.btnSeleccionar.setOnClickListener(v -> seleccionar(position));
     }
 
     private void seleccionar(int position) {
-        Componente componente = ListaComponentesSingleton.getInstance().getListaComponentes().get(position); // Obtén el objeto Componente según la posición del adaptador
+        Componente componente = ListaComponentesSingleton.getInstance().getListaComponentesSingleton().get(position); // Obtén el objeto Componente según la posición del adaptador
         ModificarComponenteActivity activity = (ModificarComponenteActivity) context;
         activity.recibirComponente(componente); // Envía el objeto Componente a la actividad ModificarComponenteActivity
     }

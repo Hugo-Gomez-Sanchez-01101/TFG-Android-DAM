@@ -25,7 +25,7 @@ public class ListaOrdenadoresActivity extends FatherView {
     }
 
     private void setupRecicler() {
-        recyclerViewUser = findViewById(R.id.reciclerViewComponentes);
+        recyclerViewUser = findViewById(R.id.recyclerViewComponentes);
         recyclerViewUser.setHasFixedSize(true);
 
         // use a linear layout manager, esta vez horizontal
