@@ -15,7 +15,7 @@
             android:name=".ModificarComponenteActivity"
             android:exported="false" />
         <activity
-            android:name=".VistaComponenteActivity"
+            android:name=".VerComponenteActivity"
             android:exported="false" />
         <activity
             android:name=".PreciosActivity"

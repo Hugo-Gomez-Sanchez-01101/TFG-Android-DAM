@@ -29,6 +29,7 @@ public class ModificarComponenteActivity extends FatherView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_componente);
+        darFuncionalidadMenu();
         setup();
         setUpRecycler();
     }
@@ -37,6 +38,7 @@ public class ModificarComponenteActivity extends FatherView {
         Intent i = getIntent();
         ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         componente = (Componente) i.getSerializableExtra("componente");
+        findViewById(R.id.btnVolverModificarComponente).setOnClickListener(v -> finish());
     }
 
     public void setUpRecycler(){
@@ -51,7 +53,6 @@ public class ModificarComponenteActivity extends FatherView {
              ListaComponentesSingleton.getInstance().getListaComponentesSingleton()) {
             System.out.println(c);
         }
-        System.out.println("AAAAAAAAAAAA");
         adaptadorComponentesViewHolder = new AdaptadorComponentesViewHolder(this, ListaComponentesSingleton.getInstance().getListaComponentesSingleton());
         recyclerViewUser.setAdapter(adaptadorComponentesViewHolder);
     }
@@ -79,6 +80,14 @@ public class ModificarComponenteActivity extends FatherView {
             TarjetaGrafica c = (TarjetaGrafica) componente;
             ordenador.setTarjetaGrafica(c);
         }
+        finish();
+    }
+
+    public void verComponente() {
+        Intent i = new Intent(this, VerComponenteActivity.class);
+        i.putExtra("modificando", true);
+        i.putExtra("componente", componente);
+        startActivity(i);
     }
 
 //    private void agregarComponenteLayout(int veces) {

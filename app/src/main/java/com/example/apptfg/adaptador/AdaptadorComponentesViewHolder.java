@@ -65,6 +65,9 @@ public class AdaptadorComponentesViewHolder extends RecyclerView.Adapter<Adaptad
     }
 
     private void verComponente(int id) {
+        ModificarComponenteActivity activity = (ModificarComponenteActivity) context;
+        System.out.println("AA");
+        activity.verComponente();
     }
 
     private void eliminar(AdaptadorComponentesViewHolder.ViewHolder holder, int id){

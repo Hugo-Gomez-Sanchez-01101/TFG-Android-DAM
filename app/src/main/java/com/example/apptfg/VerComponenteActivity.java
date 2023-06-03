@@ -19,7 +19,7 @@ import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Usos;
 import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
 
-public class VistaComponenteActivity extends FatherView {
+public class VerComponenteActivity extends FatherView {
     private ConstraintLayout lCaja, lDiscoDuro, lDisipador, lFuente, lMemoria, lPlacaBase, lProcesador, lTarjetaGrafica;
     private Componente componente;
     private Ordenador ordenador;
@@ -51,6 +51,9 @@ public class VistaComponenteActivity extends FatherView {
         componente = (Componente) i.getSerializableExtra("componente");
         ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         uso = (Enum<Usos>) i.getSerializableExtra("uso");
+        boolean modificando = i.getBooleanExtra("modificando", false);
+        if(modificando)
+            botonModificar.setVisibility(View.GONE);
     }
 
     private void iniciarListaComponentes() {

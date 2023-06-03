@@ -86,7 +86,7 @@ public class TarjetaGrafica extends Componente {;
 
     @Override
     public String getNombre() {
-        return name;
+        return chipset;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.apptfg.singletonEntities;
 
-import com.example.apptfg.VistaComponenteActivity;
+import com.example.apptfg.VerComponenteActivity;
 import com.example.apptfg.entidad.Caja;
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.DiscoDuro;
@@ -31,7 +31,7 @@ public class ListaComponentesSingleton {
         return instance;
     }
 
-    public void inicializar(Ordenador ordenador, Componente componente, Enum<Usos> uso, VistaComponenteActivity vistaComponenteActivity){
+    public void inicializar(Ordenador ordenador, Componente componente, Enum<Usos> uso, VerComponenteActivity vistaComponenteActivity){
         vistaComponenteActivity.carga();
         listaComponentesSingleton = new ArrayList<>();
         if(componente instanceof Procesador && uso != Usos.OFIMATICA) {

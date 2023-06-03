@@ -6,34 +6,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.regla.Usos;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class OrdenadorGeneradoActivity extends FatherView {
     private Ordenador ordenador;
@@ -148,7 +125,7 @@ public class OrdenadorGeneradoActivity extends FatherView {
     }
 
     private void verComponente(Componente componente){
-        Intent i = new Intent(this, VistaComponenteActivity.class);
+        Intent i = new Intent(this, VerComponenteActivity.class);
         i.putExtra("componente", componente);
         i.putExtra("uso", uso);
         i.putExtra("ordenador", ordenador);
