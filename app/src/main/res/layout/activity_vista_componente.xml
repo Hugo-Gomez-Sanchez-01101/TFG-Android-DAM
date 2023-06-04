@@ -18,6 +18,230 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="458dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView48"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Precio:" />
+
+            <TextView
+                android:id="@+id/txtPrecioTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="404dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView47"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Tamaño:" />
+
+            <TextView
+                android:id="@+id/txtTamañoTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="352dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView100"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Gigahercios overclocked:" />
+
+            <TextView
+                android:id="@+id/txtGigaherciosOverclockedTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="299dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView101"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Gigahercios base:" />
+
+            <TextView
+                android:id="@+id/txtGigaherciosBaseTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="245dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView109"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Memoria:" />
+
+            <TextView
+                android:id="@+id/txtMemoriaTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="190dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView107"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Color:" />
+
+            <TextView
+                android:id="@+id/txtColorTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="136dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView108"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Chipset:" />
+
+            <TextView
+                android:id="@+id/txtChipsetTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="84dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView110"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nombre:" />
+
+            <TextView
+                android:id="@+id/txtNombreTarjetaGrafica"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/textView111"
             style="@style/textoTituloComponente"
@@ -30,181 +254,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView110"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView101"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="272dp"
-            android:text="Gigahercios base:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtColorTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="172dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtChipsetTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="122dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtMemoriaTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="222dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtGigaherciosBaseTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="272dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView100"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="322dp"
-            android:text="Gigahercios overclocked:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtGigaherciosOverclockedTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="320dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTamañoTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="372dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtPrecioTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="422dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView107"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="172dp"
-            android:text="Color:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView108"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="122dp"
-            android:text="Chipset:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView109"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="222dp"
-            android:text="Memoria:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtNombreTarjetaGrafica"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView47"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="372dp"
-            android:text="Tamaño:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView48"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="422dp"
-            android:text="Precio:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -407,203 +456,257 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView60"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="484dp"
-            android:text="Precio:"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView61"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            <TextView
+                android:id="@+id/textView60"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Precio:" />
+
+            <TextView
+                android:id="@+id/txtPrecioPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="444dp"
-            android:text="Factor de forma:"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView62"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="270dp"
-            android:text="Puertos usb:"
+            <TextView
+                android:id="@+id/textView61"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Factor de forma:" />
+
+            <TextView
+                android:id="@+id/txtFactorFormaPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="364dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView26"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="368dp"
-            android:text="Audio:"
+            <TextView
+                android:id="@+id/textView26"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Audio:" />
+
+            <TextView
+                android:id="@+id/txtAudioPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-43dp"
+                android:layout_marginTop="22dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="272dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView63"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="230dp"
-            android:text="Socket:"
+            <TextView
+                android:id="@+id/textView62"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Puertos usb:" />
+
+            <TextView
+                android:id="@+id/txtPuertosUsbPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="389dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="-85dp"
+                android:layout_marginTop="22dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="232dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtChipsetPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
-            android:layout_marginTop="110dp"
-            android:text="@string/nule"
+            <TextView
+                android:id="@+id/textView63"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Socket:" />
+
+            <TextView
+                android:id="@+id/txtSocketPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="192dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtVelocidadMaxRamPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
-            android:layout_marginTop="150dp"
-            android:text="@string/nule"
+            <TextView
+                android:id="@+id/textView46"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Factor Forma Memoria RAM:" />
+
+            <TextView
+                android:id="@+id/txtFactorFormaMemoriaPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="152dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtFactorFormaMemoriaPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="224dp"
-            android:layout_marginTop="190dp"
-            android:text="@string/nule"
+            <TextView
+                android:id="@+id/textView31"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Velocidad máxima RAM:" />
+
+            <TextView
+                android:id="@+id/txtVelocidadMaxRamPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="112dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtSocketPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="230dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView65"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Chipset:" />
 
-        <TextView
-            android:id="@+id/txtAudioPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="384dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="388dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtChipsetPlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtPuertosUsbPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="389dp"
-            android:layout_height="71dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="288dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtFactorFormaPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="444dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtPrecioPlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="484dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView65"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="110dp"
-            android:text="Chipset:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView31"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="150dp"
-            android:text="Velocidad máxima RAM:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView46"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="190dp"
-            android:text="Factor Forma Memoria RAM:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtNombrePlacaBase"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="72dp"
-            android:text="@string/nule"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView66"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView66"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nombre:" />
+
+            <TextView
+                android:id="@+id/txtNombrePlacaBase"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView67"
@@ -626,137 +729,173 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView50"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="372dp"
-            android:text="Precio:"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="352dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView51"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="312dp"
-            android:text="FactorForma:"
+            <TextView
+                android:id="@+id/textView50"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Precio:" />
+
+            <TextView
+                android:id="@+id/txtPrecioCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="298dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView52"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="252dp"
-            android:text="Fuente de alimentación:"
+            <TextView
+                android:id="@+id/textView51"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="FactorForma:" />
+
+            <TextView
+                android:id="@+id/txtFactorFormaCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="245dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView53"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            <TextView
+                android:id="@+id/textView52"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Fuente de alimentación:" />
+
+            <TextView
+                android:id="@+id/txtFuenteCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="192dp"
-            android:text="Tipo:"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtColorCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="132dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView53"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Tipo:" />
 
-        <TextView
-            android:id="@+id/txtTipoCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="192dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtTipoCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtFuenteCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
-            android:layout_marginTop="252dp"
-            android:text="@string/nule"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="140dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtFactorFormaCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="312dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView54"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Color:" />
 
-        <TextView
-            android:id="@+id/txtPrecioCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="372dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtColorCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView54"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="132dp"
-            android:text="Color:"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="88dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtNombreCaja"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView55"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nombre:" />
 
-        <TextView
-            android:id="@+id/textView55"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtNombreCaja"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView56"
@@ -969,137 +1108,173 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView32"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="372dp"
-            android:text="Precio:"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="351dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView33"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="312dp"
-            android:text="Revoluciones:"
+            <TextView
+                android:id="@+id/textView32"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Precio:" />
+
+            <TextView
+                android:id="@+id/txtPrecioDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="298dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView34"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="252dp"
-            android:text="Tamaño de radiador:"
+            <TextView
+                android:id="@+id/textView33"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Revoluciones:" />
+
+            <TextView
+                android:id="@+id/txtRevolucionesDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="245dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView35"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            <TextView
+                android:id="@+id/textView34"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Tamaño de radiador:" />
+
+            <TextView
+                android:id="@+id/txtTamañoDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="192dp"
-            android:text="Nivel de ruido:"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtColorDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="132dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView35"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nivel de ruido:" />
 
-        <TextView
-            android:id="@+id/txtNivelRuidoDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="192dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtNivelRuidoDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtTamañoDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="172dp"
-            android:layout_marginTop="252dp"
-            android:text="@string/nule"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="140dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtRevolucionesDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="312dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView36"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Color:" />
 
-        <TextView
-            android:id="@+id/txtPrecioDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="372dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtColorDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView36"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="132dp"
-            android:text="Color:"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="88dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtNombreDisipador"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView37"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nombre:" />
 
-        <TextView
-            android:id="@+id/textView37"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtNombreDisipador"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView38"
@@ -1381,159 +1556,201 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView30"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="432dp"
-            android:text="Precio:"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="407dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView29"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="372dp"
-            android:text="Eficiencia:"
+            <TextView
+                android:id="@+id/textView30"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Precio:" />
+
+            <TextView
+                android:id="@+id/txtPrecioPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="352dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView28"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="312dp"
-            android:text="Factor forma:"
+            <TextView
+                android:id="@+id/textView29"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Eficiencia:" />
+
+            <TextView
+                android:id="@+id/txtEficienciaPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="299dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView27"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="252dp"
-            android:text="Color:"
+            <TextView
+                android:id="@+id/textView28"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Factor forma:" />
+
+            <TextView
+                android:id="@+id/txtFactorFormaPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="245dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView24"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            <TextView
+                android:id="@+id/textView27"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Color:" />
+
+            <TextView
+                android:id="@+id/txtColorPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
             android:layout_marginTop="192dp"
-            android:text="Modular:"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtPotenciaPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="132dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView24"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Modular:" />
 
-        <TextView
-            android:id="@+id/txtModularPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="192dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtModularPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtColorPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="252dp"
-            android:text="@string/nule"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="140dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtFactorFormaPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="312dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView22"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Potencia:" />
 
-        <TextView
-            android:id="@+id/txtPrecioPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="432dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtPotenciaPsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtEficienciaPsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="372dp"
-            android:text="@string/nule"
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="88dp"
+            android:background="#c2c2c2"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView22"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="132dp"
-            android:text="Potencia:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView25"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Nombre:" />
 
-        <TextView
-            android:id="@+id/txtNombrePsu"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/nule"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView25"
-            style="@style/textoVariablesComponentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtNombrePsu"
+                style="@style/textoVariablesComponentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/nule" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView23"
