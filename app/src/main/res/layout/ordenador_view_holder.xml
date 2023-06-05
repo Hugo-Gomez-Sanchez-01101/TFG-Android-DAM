@@ -16,7 +16,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#029C27B0"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="6dp">
@@ -42,30 +43,32 @@
             android:layout_width="match_parent"
             android:layout_height="118dp"
             android:contentDescription="@string/todo"
-            tools:ignore="ContentDescription"
-            android:src="@drawable/imagen_ordenador"/>
+            android:src="@drawable/imagen_ordenador"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="">
+            android:gravity=""
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnVerOrdenador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/botones_app"
                 android:layout_weight="1"
-                android:text="VER" />
+                android:background="@drawable/botones_app"
+                android:text="VER"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/btnEliminarOrdenador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/botones_app"
                 android:layout_weight="1"
-                android:text="@string/eliminarO" />
+                android:background="@drawable/botones_app"
+                android:text="@string/eliminarO"
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
     </LinearLayout>

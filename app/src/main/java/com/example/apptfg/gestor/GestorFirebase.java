@@ -240,6 +240,10 @@ public class GestorFirebase {
                         if (snapshot != null && !snapshot.isEmpty()) {
                             List<DocumentSnapshot> documents = snapshot.getDocuments();
                             List<Componente> lista = new ArrayList<>();
+                            for (DocumentSnapshot d:
+                                 documents) {
+                                lista.add(d.toObject(DiscoDuro.class));
+                            }
                             callback.onListaComponentesObtenidos(lista);
                         } else {
                             callback.onError("No se encontró ningúna lista disco que cumpliera las condiciones de la consulta");
