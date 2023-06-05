@@ -10,6 +10,7 @@ import com.example.apptfg.algoritmo.Generador;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.exception.BuildingComputerException;
 import com.example.apptfg.regla.Usos;
+import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
 public class PreciosActivity extends FatherView {
     private SeekBar seekBarMinimo;
@@ -115,7 +116,7 @@ public class PreciosActivity extends FatherView {
     public void terminarGenerar(Ordenador ordenador){
         disiparCarga();
         Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
-        i.putExtra("ordenador", ordenador);
+        OrdenadorGeneradoSingleton.getInstance().setOrdenador(ordenador);
         i.putExtra("tipo", true);
         i.putExtra("uso", uso);
         startActivity(i);

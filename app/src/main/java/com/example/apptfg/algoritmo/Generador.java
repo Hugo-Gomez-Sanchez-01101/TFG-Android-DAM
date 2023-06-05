@@ -21,6 +21,7 @@ public class Generador{
     private Reglas reglas;
     private Ordenador ordenador;
     private PlacaBase placaBaseMain;
+    private int regenerar;
     private PreciosActivity preciosActivity;
 
     public Generador(Enum<Usos> uso, int minimoEstablecidoUsuario, int maximoEstablecidoUsuario, PreciosActivity preciosActivity) {
@@ -28,6 +29,7 @@ public class Generador{
         reglas = new Reglas(uso ,minimoEstablecidoUsuario,maximoEstablecidoUsuario);
         GestorFirebase.getInstance().setReglas(reglas);
         ordenador = new Ordenador();
+        regenerar = 1;
     }
 
     public void comenzar() {
@@ -53,7 +55,7 @@ public class Generador{
      * obtains a motherboard that is the base to build a pc, then it calls the continuarGenerando() method
      */
     public void sacarPlaca() {
-        GestorFirebase.getInstance().sacarPlacaBase(new GestorFirebase.ComponenteCallback() {
+        GestorFirebase.getInstance().sacarPlacaBase(null, new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
                 PlacaBase placaBase = (PlacaBase) componente;
@@ -186,7 +188,10 @@ public class Generador{
             @Override
             public void onError(String errorMessage) {
                 System.out.println(errorMessage);
-                preciosActivity.mostrarError();
+                if(regenerar == 1)
+                    regenerar();
+                else
+                    preciosActivity.mostrarError();
             }
         });
     }
@@ -209,5 +214,21 @@ public class Generador{
         });
     }
 
-
+    private void regenerar() {
+        ordenador = new Ordenador();
+        GestorFirebase.getInstance().sacarPlacaBase("ATX",new GestorFirebase.ComponenteCallback() {
+            @Override
+            public void onComponenteObtenido(Componente componente) {
+                PlacaBase placaBase = (PlacaBase) componente;
+                ordenador.setPlacaBase(placaBase);
+                placaBaseMain = placaBase;
+                sacarCpu();
+            }
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+                preciosActivity.mostrarError();
+            }
+        });
+    }
 }

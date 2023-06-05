@@ -142,6 +142,8 @@ public class GestorFirebase {
     }
 
     public void sacarListaGpu(ListaComponentesCallback callback){
+        System.out.println(reglas.getPRECIO_MAX_GPU());
+        System.out.println(reglas.getPRECIO_MIN_GPU());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("video-card")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
@@ -269,7 +271,7 @@ public class GestorFirebase {
                             }
                             callback.onListaComponentesObtenidos(lista);
                         } else {
-                            callback.onError("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna lista caja que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         callback.onError("hubo un error al realizar la consulta caja");
@@ -282,28 +284,55 @@ public class GestorFirebase {
      *
      * @param callback the callback
      */
-    public void sacarPlacaBase(ComponenteCallback callback) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("placas_base")
-                .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
-                .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN_PLACA())
-                .orderBy("precio")
-                .limit(1)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        QuerySnapshot snapshot = task.getResult();
-                        if (snapshot != null && !snapshot.isEmpty()) {
-                            DocumentSnapshot document = snapshot.getDocuments().get(0);
-                            PlacaBase placaBase = document.toObject(PlacaBase.class);
-                            callback.onComponenteObtenido(placaBase);
+    public void sacarPlacaBase(String formato, ComponenteCallback callback) {
+        if(formato == null) {
+            System.out.println(reglas.getPRECIO_MAX_PLACA());
+            System.out.println(reglas.getPRECIO_MIN_PLACA());
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("placas_base")
+                    .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
+                    .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN_PLACA())
+                    .orderBy("precio")
+                    .limit(1)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot snapshot = task.getResult();
+                            if (snapshot != null && !snapshot.isEmpty()) {
+                                DocumentSnapshot document = snapshot.getDocuments().get(0);
+                                PlacaBase placaBase = document.toObject(PlacaBase.class);
+                                callback.onComponenteObtenido(placaBase);
+                            } else {
+                                callback.onError("No se encontró ningúna placa base que cumpliera las condiciones de la consulta");
+                            }
                         } else {
-                            callback.onError("No se encontró ningúna placa base que cumpliera las condiciones de la consulta");
+                            callback.onError("Hubo un error al realizar la consulta");
                         }
-                    } else {
-                        callback.onError("Hubo un error al realizar la consulta");
-                    }
-                });
+                    });
+        } else {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("placas_base")
+                    .whereEqualTo("formato", formato)
+                    .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
+                    .whereGreaterThanOrEqualTo("precio", reglas.getPRECIO_MIN_PLACA())
+                    .orderBy("precio")
+                    .limit(1)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot snapshot = task.getResult();
+                            if (snapshot != null && !snapshot.isEmpty()) {
+                                DocumentSnapshot document = snapshot.getDocuments().get(0);
+                                PlacaBase placaBase = document.toObject(PlacaBase.class);
+                                callback.onComponenteObtenido(placaBase);
+                            } else {
+                                callback.onError("No se encontró ningúna placa base que cumpliera las condiciones de la consulta");
+                            }
+                        } else {
+                            callback.onError("Hubo un error al realizar la consulta");
+                        }
+                    });
+        }
     }
 
     /**
@@ -492,6 +521,9 @@ public class GestorFirebase {
      */
     public void sacarCaja(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(placaBase.getFormato());
+        System.out.println(reglas.getPRECIO_MAX_CAJA());
+        System.out.println(reglas.getPRECIO_MIN_CAJA());
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_CAJA())
@@ -508,7 +540,7 @@ public class GestorFirebase {
                             Caja caja = document.toObject(Caja.class);
                             callback.onComponenteObtenido(caja);
                         } else {
-                            callback.onError("No se encontró ningúna caja que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna CAJAAAA que cumpliera las condiciones de la consulta");
                         }
                     } else {
                         callback.onError("hubo un error al realizar la consulta caja");
@@ -518,6 +550,9 @@ public class GestorFirebase {
 
     public void sacarMemoriaRam(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(reglas.getPRECIO_MIN_RAM());
+        System.out.println(reglas.getPRECIO_MAX_RAM());
+        System.out.println(placaBase.getFactor_forma_memoria());
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_RAM())

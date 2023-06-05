@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.regla.Usos;
+import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
 import java.text.DecimalFormat;
 
@@ -25,6 +26,7 @@ public class OrdenadorGeneradoActivity extends FatherView {
     }
 
     private void setUp() {
+        ordenador = OrdenadorGeneradoSingleton.getInstance().getOrdenador();
         findViewById(R.id.btniCaja).setOnClickListener(v -> verComponente(ordenador.getCaja()));
         findViewById(R.id.btniCpu).setOnClickListener(v -> verComponente(ordenador.getProcesador()));
         findViewById(R.id.btniDisipador).setOnClickListener(v -> verComponente(ordenador.getDisipador()));
@@ -37,12 +39,11 @@ public class OrdenadorGeneradoActivity extends FatherView {
         LinearLayout layoutGpu = findViewById(R.id.layoutGpu);
 
         Intent i = getIntent();
-        this.ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         ordenadorNuevo = (boolean) i.getSerializableExtra("tipo");
         uso =            (Enum<Usos>) i.getSerializableExtra("uso");
 
         if(ordenadorNuevo)
-            findViewById(R.id.btnBorrarOrdenador).setOnClickListener(v -> finish());
+            findViewById(R.id.btnBorrarOrdenador).setOnClickListener(v -> volver());
         else
             findViewById(R.id.btnBorrarOrdenador).setOnClickListener(v -> borrar());
 
@@ -53,6 +54,12 @@ public class OrdenadorGeneradoActivity extends FatherView {
         DecimalFormat formato = new DecimalFormat("#.##");
         String resultado = "PRECIO: " + formato.format(ordenador.getPrice());
         txtPrecio.setText(resultado);
+    }
+
+    private void volver() {
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
 
 //    public void guardarOrdenador() {
@@ -128,7 +135,6 @@ public class OrdenadorGeneradoActivity extends FatherView {
         Intent i = new Intent(this, VerComponenteActivity.class);
         i.putExtra("componente", componente);
         i.putExtra("uso", uso);
-        i.putExtra("ordenador", ordenador);
         startActivity(i);
     }
 }

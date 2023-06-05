@@ -18,6 +18,7 @@ import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Usos;
 import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
+import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
 public class VerComponenteActivity extends FatherView {
     private ConstraintLayout lCaja, lDiscoDuro, lDisipador, lFuente, lMemoria, lPlacaBase, lProcesador, lTarjetaGrafica;
@@ -36,6 +37,7 @@ public class VerComponenteActivity extends FatherView {
     }
 
     private void setup() {
+        ordenador = OrdenadorGeneradoSingleton.getInstance().getOrdenador();
         lCaja = findViewById(R.id.cLayoutCaja);
         lDiscoDuro = findViewById(R.id.cLayoutDisco);
         lDisipador = findViewById(R.id.cLayoutDisipador);
@@ -46,26 +48,25 @@ public class VerComponenteActivity extends FatherView {
         lTarjetaGrafica = findViewById(R.id.cLayoutTarjetaGrafica);
         findViewById(R.id.btnVolverVistaComponentes).setOnClickListener(v -> finish());
         botonModificar = findViewById(R.id.btnModificarComponente);
-        botonModificar.setOnClickListener(v -> iniciarListaComponentes());
+        botonModificar.setOnClickListener(v -> modificar());
         Intent i = getIntent();
         componente = (Componente) i.getSerializableExtra("componente");
-        ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         uso = (Enum<Usos>) i.getSerializableExtra("uso");
         boolean modificando = i.getBooleanExtra("modificando", false);
         if(modificando)
             botonModificar.setVisibility(View.GONE);
     }
 
-    private void iniciarListaComponentes() {
+    private void modificar() {
         ListaComponentesSingleton.getInstance().inicializar(ordenador, componente, uso, this);
     }
 
     public void irModificarComponentes(){
         disiparCarga();
         Intent i = new Intent(this, ModificarComponenteActivity.class);
-        i.putExtra("ordenador", ordenador);
         i.putExtra("componente",componente);
         startActivity(i);
+        finish();
     }
 
     public void terminarCarga(){

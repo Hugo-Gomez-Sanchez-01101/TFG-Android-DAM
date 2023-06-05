@@ -14,10 +14,8 @@ import com.example.apptfg.entidad.MemoriaRam;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
-import com.example.apptfg.regla.Usos;
 import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
-
-import java.util.List;
+import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
 public class ModificarComponenteActivity extends FatherView {
     private Ordenador ordenador;
@@ -35,10 +33,17 @@ public class ModificarComponenteActivity extends FatherView {
     }
 
     private void setup() {
+        ordenador = OrdenadorGeneradoSingleton.getInstance().getOrdenador();
         Intent i = getIntent();
-        ordenador = (Ordenador) i.getSerializableExtra("ordenador");
         componente = (Componente) i.getSerializableExtra("componente");
-        findViewById(R.id.btnVolverModificarComponente).setOnClickListener(v -> finish());
+        findViewById(R.id.btnVolverModificarComponente).setOnClickListener(v -> volver());
+    }
+
+    private void volver() {
+        Intent i = new Intent(this, VerComponenteActivity.class);
+        i.putExtra("componente", componente);
+        startActivity(i);
+        finish();
     }
 
     public void setUpRecycler(){
@@ -79,13 +84,18 @@ public class ModificarComponenteActivity extends FatherView {
         } else if(componente instanceof TarjetaGrafica) {
             TarjetaGrafica c = (TarjetaGrafica) componente;
             ordenador.setTarjetaGrafica(c);
+            System.out.println("MODIFICAR: " + ordenador.getTarjetaGrafica());
         }
+        Intent i = new Intent(this, VerComponenteActivity.class);
+        i.putExtra("componente", componente);
+        startActivity(i);
         finish();
     }
 
-    public void verComponente() {
+    public void verComponente(int posicion) {
         Intent i = new Intent(this, VerComponenteActivity.class);
         i.putExtra("modificando", true);
+        Componente componente = ListaComponentesSingleton.getInstance().getListaComponentesSingleton().get(posicion);
         i.putExtra("componente", componente);
         startActivity(i);
     }
