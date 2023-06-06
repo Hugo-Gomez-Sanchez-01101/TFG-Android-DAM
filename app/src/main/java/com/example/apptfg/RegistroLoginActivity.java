@@ -75,8 +75,6 @@ public class RegistroLoginActivity extends FatherView {
         }
     }
 
-
-
     private void regitrarConGoogle() {
         GoogleSignInOptions googleConf;
         googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -89,28 +87,44 @@ public class RegistroLoginActivity extends FatherView {
         startActivityForResult(googleClient.getSignInIntent(), GOOGLE_SIGN_IN);
     }
 
-    private void crearListaOrdenadores() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
-
-        Map<String, Object> listaOrdenadores = new HashMap<>();
-
-        userDocRef.set(listaOrdenadores)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        System.out.println("Lista de ordenadores creada");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e);
-                    }
-                });
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GOOGLE_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount account = null;
+            try {
+                account = task.getResult(ApiException.class);
+                if (account != null) {
+                    AuthCredential credetial = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+                    GoogleSignInAccount finalAccount = account;
+                    FirebaseAuth.getInstance().signInWithCredential(credetial).addOnCompleteListener((it) -> {
+                        if (it.isSuccessful()) {
+                            //crearListaOrdenadores();
+                            irHome(finalAccount.getEmail(), ProviderType.GOOGLE);
+                        } else {
+                            mostrarToastError();
+                        }
+                    });
+                }
+            } catch (ApiException e) {
+                mostrarToastError();
+            }
+        }
     }
+
+//    private void crearListaOrdenadores() {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+//        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
+//
+//        Map<String, Object> listaOrdenadores = new HashMap<>();
+//
+//        userDocRef.set(listaOrdenadores)
+//                .addOnSuccessListener(aVoid -> System.out.println("Lista de ordenadores creada"))
+//                .addOnFailureListener(System.out::println);
+//    }
 
     private void irTerminarRegistro() {
         Intent i = new Intent(this, TerminarRegistroActivity.class);
@@ -135,49 +149,20 @@ public class RegistroLoginActivity extends FatherView {
         }
     }
 
+    private void saveUserData(ProviderType proveedor){
+        SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        prefs.putString("email", email);
+        prefs.putString("proveedor", proveedor + "");
+        prefs.apply();
+    }
+
     private void irHome(String email, ProviderType proveedor){
         Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("email",email);
         i.putExtra("proveedor",proveedor + "");
-        guardarDatosUsuario(proveedor);
+        saveUserData(proveedor);
         startActivity(i);
         finish();
-    }
-
-
-    private void guardarDatosUsuario(ProviderType proveedor) {
-        SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
-        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
-        prefs.putString("email", email);
-        prefs.putString("proveedor",proveedor + "");
-
-        prefs.apply();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GOOGLE_SIGN_IN){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            GoogleSignInAccount account = null;
-            try {
-                account = task.getResult(ApiException.class);
-                if(account != null) {
-                    AuthCredential credetial = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-                    GoogleSignInAccount finalAccount = account;
-                    FirebaseAuth.getInstance().signInWithCredential(credetial).addOnCompleteListener((it) -> {
-                        if(it.isSuccessful()){
-                            crearListaOrdenadores();
-                            irHome(finalAccount.getEmail(), ProviderType.GOOGLE);
-                        } else{
-                            mostrarToastError();
-                        }
-                    });
-                }
-            } catch (ApiException e) {
-                mostrarToastError();
-            }
-        }
     }
 }

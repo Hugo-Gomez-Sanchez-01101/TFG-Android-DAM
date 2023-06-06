@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.widget.EditText;
-
 import androidx.annotation.NonNull;
-
 import com.example.apptfg.provider_tipe.ProviderType;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,7 +15,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +80,7 @@ public class TerminarRegistroActivity extends FatherView {
                 .createUserWithEmailAndPassword(e, c)
                 .addOnCompleteListener((task) -> {
                     if (task.isSuccessful()) {
-                        crearListaOrdenadores();
+                        //crearListaOrdenadores();
                         guardarDatosUsuario(ProviderType.BASIC);
                         irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                     } else {
@@ -99,27 +96,27 @@ public class TerminarRegistroActivity extends FatherView {
         startActivity(i);
     }
 
-    private void crearListaOrdenadores() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
-
-        Map<String, Object> listaOrdenadores = new HashMap<>();
-
-        userDocRef.set(listaOrdenadores, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e);
-                    }
-                });
-    }
+//    private void crearListaOrdenadores() {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+//        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
+//
+//        Map<String, Object> listaOrdenadores = new HashMap<>();
+//
+//        userDocRef.set(listaOrdenadores, SetOptions.merge())
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        System.out.println(e);
+//                    }
+//                });
+//    }
 
     private void vaciarCampos(EditText e){
         e.setText("");

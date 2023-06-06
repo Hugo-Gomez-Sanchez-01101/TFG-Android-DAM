@@ -11,14 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.apptfg.OrdenadorGeneradoActivity;
 import com.example.apptfg.R;
+import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 import java.util.List;
 
 public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenadorVH.ViewHolder> {
 
-   private List<OrdenadorTarjeta> listaOrdenadores;
+   private List<Ordenador> listaOrdenadores;
 
-    public AdaptadorOrdenadorVH(List<OrdenadorTarjeta> listaOrdenadores) {
+    public AdaptadorOrdenadorVH(List<Ordenador> listaOrdenadores) {
         this.listaOrdenadores = listaOrdenadores;
     }
 
@@ -46,17 +47,18 @@ public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenado
 
    @Override
    public void onBindViewHolder(ViewHolder holder, int position) {
-        //holder es una clase que contiene los atributos del viewHolderXML
-       holder.nombre.setText(ListaOrdenadoresSingleton.getInstance().getListaOrdenadores().get(position).getNombre());
-       holder.btnEliminar.setOnClickListener(view -> eliminar(holder, position));
-       holder.btnVer.setOnClickListener(view -> ver(holder, position));
+       //holder es una clase que contiene los atributos del viewHolderXML
+       //onBindViewHolder sirve como controlador para la vista
+//       holder.nombre.setText(ListaOrdenadoresSingleton.getInstance().getOrdenadores().get(position).getNombre());
+//       holder.btnEliminar.setOnClickListener(view -> eliminar(holder, position));
+//       holder.btnVer.setOnClickListener(view -> ver(holder, position));
    }
 
-   private void eliminar(ViewHolder holder, int id){
-       Toast.makeText(holder.itemView.getContext(), "Eliminando ordenador ", Toast.LENGTH_SHORT).show();
-       ListaOrdenadoresSingleton.getInstance().borrar(listaOrdenadores.get(id));
-       notifyDataSetChanged();
-   }
+//   private void eliminar(ViewHolder holder, int id){
+//       Toast.makeText(holder.itemView.getContext(), "Eliminando ordenador ", Toast.LENGTH_SHORT).show();
+//       ListaOrdenadoresSingleton.getInstance().borrar(listaOrdenadores.get(id));
+//       notifyDataSetChanged();
+//   }
     private void ver(ViewHolder holder, int id) {
         Intent i = new Intent(holder.itemView.getContext(), OrdenadorGeneradoActivity.class);
         i.putExtra("id", id);
