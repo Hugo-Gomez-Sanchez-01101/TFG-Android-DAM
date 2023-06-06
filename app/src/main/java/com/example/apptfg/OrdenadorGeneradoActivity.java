@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.apptfg.entidad.Componente;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.regla.Usos;
+import com.example.apptfg.singletonEntities.ListaComponentesSingleton;
 import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
 import java.text.DecimalFormat;
@@ -40,7 +41,7 @@ public class OrdenadorGeneradoActivity extends FatherView {
 
         Intent i = getIntent();
         ordenadorNuevo = (boolean) i.getSerializableExtra("tipo");
-        uso =            (Enum<Usos>) i.getSerializableExtra("uso");
+        uso = OrdenadorGeneradoSingleton.getInstance().getOrdenador().getUso();
 
         if(ordenadorNuevo)
             findViewById(R.id.btnBorrarOrdenador).setOnClickListener(v -> volver());
@@ -58,6 +59,8 @@ public class OrdenadorGeneradoActivity extends FatherView {
 
     private void volver() {
         Intent i = new Intent(this, HomeActivity.class);
+        Ordenador ordenador = new Ordenador();
+        OrdenadorGeneradoSingleton.getInstance().setOrdenador(ordenador);
         startActivity(i);
         finish();
     }
@@ -134,7 +137,6 @@ public class OrdenadorGeneradoActivity extends FatherView {
     private void verComponente(Componente componente){
         Intent i = new Intent(this, VerComponenteActivity.class);
         i.putExtra("componente", componente);
-        i.putExtra("uso", uso);
         startActivity(i);
     }
 }

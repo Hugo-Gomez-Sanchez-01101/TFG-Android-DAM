@@ -118,7 +118,6 @@ public class PreciosActivity extends FatherView {
         Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
         OrdenadorGeneradoSingleton.getInstance().setOrdenador(ordenador);
         i.putExtra("tipo", true);
-        i.putExtra("uso", uso);
         startActivity(i);
         finish();
     }

@@ -51,14 +51,14 @@ public class VerComponenteActivity extends FatherView {
         botonModificar.setOnClickListener(v -> modificar());
         Intent i = getIntent();
         componente = (Componente) i.getSerializableExtra("componente");
-        uso = (Enum<Usos>) i.getSerializableExtra("uso");
+        uso = OrdenadorGeneradoSingleton.getInstance().getOrdenador().getUso();
         boolean modificando = i.getBooleanExtra("modificando", false);
         if(modificando)
             botonModificar.setVisibility(View.GONE);
     }
 
     private void modificar() {
-        ListaComponentesSingleton.getInstance().inicializar(ordenador, componente, uso, this);
+        ListaComponentesSingleton.getInstance().inicializar(componente, this);
     }
 
     public void irModificarComponentes(){

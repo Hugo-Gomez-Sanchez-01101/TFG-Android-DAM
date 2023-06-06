@@ -31,7 +31,9 @@ public class ListaComponentesSingleton {
         return instance;
     }
 
-    public void inicializar(Ordenador ordenador, Componente componente, Enum<Usos> uso, VerComponenteActivity vistaComponenteActivity){
+    public void inicializar(Componente componente, VerComponenteActivity vistaComponenteActivity){
+        Ordenador ordenador = OrdenadorGeneradoSingleton.getInstance().getOrdenador();
+        Enum<Usos> uso = OrdenadorGeneradoSingleton.getInstance().getOrdenador().getUso();
         vistaComponenteActivity.carga();
         listaComponentesSingleton = new ArrayList<>();
         if(componente instanceof Procesador && uso != Usos.OFIMATICA) {

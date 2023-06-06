@@ -1,8 +1,11 @@
 package com.example.apptfg.entidad;
 
+import com.example.apptfg.regla.Usos;
+
 import java.io.Serializable;
 
 public class Ordenador implements Serializable {
+    private Enum<Usos> uso;
     private Caja caja;
     private DiscoDuro discoDuro;
     private Disipador disipador;
@@ -12,7 +15,7 @@ public class Ordenador implements Serializable {
     private Procesador procesador;
     private TarjetaGrafica tarjetaGrafica;
 
-    public Ordenador(Caja caja, DiscoDuro discoDuro, Disipador disipador, FuenteAlimentacion fuenteAlimentacion, MemoriaRam memoriaRam, PlacaBase placaBase, Procesador procesador, TarjetaGrafica tarjetaGrafica) {
+    public Ordenador(Caja caja, DiscoDuro discoDuro, Disipador disipador, FuenteAlimentacion fuenteAlimentacion, MemoriaRam memoriaRam, PlacaBase placaBase, Procesador procesador, TarjetaGrafica tarjetaGrafica, Enum<Usos> uso) {
         this.caja = caja;
         this.discoDuro = discoDuro;
         this.disipador = disipador;
@@ -21,6 +24,7 @@ public class Ordenador implements Serializable {
         this.placaBase = placaBase;
         this.procesador = procesador;
         this.tarjetaGrafica = tarjetaGrafica;
+        this.uso = uso;
     }
 
     public double getPrice(){
@@ -41,6 +45,14 @@ public class Ordenador implements Serializable {
     }
 
     public Ordenador() {}
+
+    public Enum<Usos> getUso() {
+        return uso;
+    }
+
+    public void setUso(Enum<Usos> uso) {
+        this.uso = uso;
+    }
 
     public Caja getCaja() {
         return caja;
