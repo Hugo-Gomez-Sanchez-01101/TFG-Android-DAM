@@ -7,16 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.example.apptfg.provider_tipe.ProviderType;
+
+import com.example.apptfg.entidad.Ordenador;
+import com.example.apptfg.gestor.GestorFirebase;
+import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +25,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegistroLoginActivity extends FatherView {
@@ -37,7 +39,6 @@ public class RegistroLoginActivity extends FatherView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
-
         setup();
         sesion();
     }
@@ -69,9 +70,9 @@ public class RegistroLoginActivity extends FatherView {
         String email = prefs.getString("email", null);
         String proveedor = prefs.getString("proveedor", null);
 
-        if(email != null && proveedor != null) {
+        if (email != null) {
             findViewById(R.id.authLayout).setVisibility(View.INVISIBLE);
-            irHome(email, ProviderType.valueOf(proveedor));
+            irHome();
         }
     }
 
@@ -100,8 +101,8 @@ public class RegistroLoginActivity extends FatherView {
                     GoogleSignInAccount finalAccount = account;
                     FirebaseAuth.getInstance().signInWithCredential(credetial).addOnCompleteListener((it) -> {
                         if (it.isSuccessful()) {
-                            //crearListaOrdenadores();
-                            irHome(finalAccount.getEmail(), ProviderType.GOOGLE);
+                            crearUsuario();
+                            irHome();
                         } else {
                             mostrarToastError();
                         }
@@ -113,18 +114,17 @@ public class RegistroLoginActivity extends FatherView {
         }
     }
 
-//    private void crearListaOrdenadores() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-//        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-//        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
-//
-//        Map<String, Object> listaOrdenadores = new HashMap<>();
-//
-//        userDocRef.set(listaOrdenadores)
-//                .addOnSuccessListener(aVoid -> System.out.println("Lista de ordenadores creada"))
-//                .addOnFailureListener(System.out::println);
-//    }
+    private void crearUsuario() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
+
+        Map<String, List<Ordenador>> mapa = new HashMap<>();
+        userDocRef.set(mapa)
+                .addOnSuccessListener(aVoid -> System.out.println("Lista de ordenadores creada"))
+                .addOnFailureListener(System.out::println);
+    }
 
     private void irTerminarRegistro() {
         Intent i = new Intent(this, TerminarRegistroActivity.class);
@@ -137,31 +137,33 @@ public class RegistroLoginActivity extends FatherView {
             FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(email.getText().toString(), c.getText().toString())
                     .addOnCompleteListener((task) -> {
-                        if(task.isSuccessful() ){
-                            irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-
-                        } else{
+                        if (task.isSuccessful()) {
+                            irHome();
+                        } else {
                             mostrarToastError();
                         }
                     });
-        }else{
+        } else {
             mostrarToastCamposVacios();
         }
     }
 
-    private void saveUserData(ProviderType proveedor){
+    private void saveUserData() {
         SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         prefs.putString("email", email);
-        prefs.putString("proveedor", proveedor + "");
         prefs.apply();
     }
 
-    private void irHome(String email, ProviderType proveedor){
+    private void irHome() {
         Intent i = new Intent(this, HomeActivity.class);
-        i.putExtra("email",email);
-        i.putExtra("proveedor",proveedor + "");
-        saveUserData(proveedor);
+        saveUserData();
+        inicializarListaOrdenadores(i);
+    }
+
+
+    private void inicializarListaOrdenadores(Intent i) {
+        ListaOrdenadoresSingleton.getInstance().inicializar();
         startActivity(i);
         finish();
     }

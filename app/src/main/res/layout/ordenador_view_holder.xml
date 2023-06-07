@@ -23,7 +23,7 @@
         android:padding="6dp">
 
         <TextView
-            android:id="@+id/tituloLBL"
+            android:id="@+id/nombrePc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/titulo"
@@ -31,7 +31,7 @@
             android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/nombrePc"
+            android:id="@+id/usoPc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nombre_pc"

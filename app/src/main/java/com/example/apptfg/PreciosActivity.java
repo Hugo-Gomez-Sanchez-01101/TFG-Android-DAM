@@ -109,6 +109,8 @@ public class PreciosActivity extends FatherView {
         mostrarCarga();
         int minimo = Integer.parseInt(textViewMinimo.getText().toString().split("€")[0]);
         int maximo = Integer.parseInt(textViewMaximo.getText().toString().split("€")[0]);
+        System.out.println(maximo);
+        System.out.println(minimo);
         Generador generador = new Generador(uso, minimo, maximo, this);
         generador.comenzar();
     }
@@ -116,8 +118,9 @@ public class PreciosActivity extends FatherView {
     public void terminarGenerar(Ordenador ordenador){
         disiparCarga();
         Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
+        ordenador.setUso(uso);
         OrdenadorGeneradoSingleton.getInstance().setOrdenador(ordenador);
-        i.putExtra("tipo", true);
+        i.putExtra("nuevo", true);
         startActivity(i);
         finish();
     }

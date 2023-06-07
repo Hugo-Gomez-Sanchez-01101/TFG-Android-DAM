@@ -6,20 +6,31 @@ import com.example.apptfg.entidad.DiscoDuro;
 import com.example.apptfg.entidad.Disipador;
 import com.example.apptfg.entidad.FuenteAlimentacion;
 import com.example.apptfg.entidad.MemoriaRam;
+import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.entidad.PlacaBase;
 import com.example.apptfg.entidad.Procesador;
 import com.example.apptfg.entidad.TarjetaGrafica;
 import com.example.apptfg.regla.Reglas;
 import com.example.apptfg.regla.Usos;
+import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.LinkedTreeMap;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * The type Gestor firebase.
@@ -54,9 +65,19 @@ public class GestorFirebase {
         void onError(String errorMessage);
     }
 
+    public interface ListaOrdenadoresCallback{
+        void onListaOrenadoresObtenida(List<Ordenador> listaOrdenadores);
+        void onError(String errorMessage);
+    }
+
     public interface ComponenteCallback {
         void onComponenteObtenido(Componente componente);
 
+        void onError(String errorMessage);
+    }
+
+    public interface OrdenadoresActualizadosCallback{
+        void onListaActualizada(String okMessage);
         void onError(String errorMessage);
     }
 
@@ -142,8 +163,6 @@ public class GestorFirebase {
     }
 
     public void sacarListaGpu(ListaComponentesCallback callback){
-        System.out.println(reglas.getPRECIO_MAX_GPU());
-        System.out.println(reglas.getPRECIO_MIN_GPU());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("video-card")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
@@ -171,7 +190,7 @@ public class GestorFirebase {
                 });
     }
 
-    public void sacarListaPsu(PlacaBase placaBase, ListaComponentesCallback callback){
+    public void sacarListaPsu( ListaComponentesCallback callback){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
@@ -290,8 +309,6 @@ public class GestorFirebase {
      */
     public void sacarPlacaBase(String formato, ComponenteCallback callback) {
         if(formato == null) {
-            System.out.println(reglas.getPRECIO_MAX_PLACA());
-            System.out.println(reglas.getPRECIO_MIN_PLACA());
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("placas_base")
                     .whereLessThanOrEqualTo("precio", reglas.getPRECIO_MAX_PLACA())
@@ -356,7 +373,7 @@ public class GestorFirebase {
                         List<DocumentSnapshot> docsFiltrados = new ArrayList<>(documentos);
                         for (DocumentSnapshot documento : documentos) {
                             double precio = documento.getDouble("price");
-                            if (!(precio >= reglas.getPRECIO_MIN_CPU()) || !(precio <= reglas.getPRECIO_MAX_CPU())) {
+                            if (precio < reglas.getPRECIO_MIN_CPU() || precio > reglas.getPRECIO_MAX_CPU()) {
                                 docsFiltrados.remove(documento);
                             }
                         }
@@ -364,6 +381,8 @@ public class GestorFirebase {
                         if (docsFiltrados.size() != 0) {
                             Procesador procesador = docsFiltrados.get(docsFiltrados.size() / 2).toObject(Procesador.class);
                             callback.onComponenteObtenido(procesador);
+                        } else {
+                            callback.onError("no se ha encontrado ninguna cpu con grafica 1");
                         }
                     } else {
                         callback.onError("no se ha encontrado ninguna cpu con grafica");
@@ -525,9 +544,6 @@ public class GestorFirebase {
      */
     public void sacarCaja(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(placaBase.getFormato());
-        System.out.println(reglas.getPRECIO_MAX_CAJA());
-        System.out.println(reglas.getPRECIO_MIN_CAJA());
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_CAJA())
@@ -554,8 +570,6 @@ public class GestorFirebase {
 
     public void sacarMemoriaRam(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(reglas.getPRECIO_MIN_RAM());
-        System.out.println(reglas.getPRECIO_MAX_RAM());
         System.out.println(placaBase.getFactor_forma_memoria());
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
@@ -567,18 +581,28 @@ public class GestorFirebase {
                         QuerySnapshot snapshot = task.getResult();
                         if (snapshot != null && !snapshot.isEmpty()) {
                             List<DocumentSnapshot> documents = snapshot.getDocuments();
+                            List<DocumentSnapshot> listaFiltrada = new ArrayList<>(documents);
                             for (DocumentSnapshot document : documents
                             ) {
-                                if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria())
-                                    documents.remove(document);
+                                if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria()) {
+                                    listaFiltrada.remove(document);
+                                    System.out.println("A3");
+                                }
+
+                                System.out.println("A2");
                             }
-                            if (documents.size() > 1)
-                                ordenarPorPrecio(documents);
-                            DocumentSnapshot document = documents.get(0);
-                            MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
-                            callback.onComponenteObtenido(memoriaRam);
+                            System.out.println("A1");
+                            if (listaFiltrada.size() > 1) {
+                                ordenarPorPrecio(listaFiltrada);
+                                DocumentSnapshot document = listaFiltrada.get(0);
+                                MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
+                                System.out.println("obtenido me");
+                                callback.onComponenteObtenido(memoriaRam);
+                            } else {
+                                callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta 1");
+                            }
                         } else {
-                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta");
+                            callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta 2");
                         }
                     } else {
                         callback.onError("hubo un error al realizar la consulta memoria");
@@ -616,5 +640,60 @@ public class GestorFirebase {
                         minimoMaximosCallback.onValoresObtenidos(valores);
                     }
                 });
+    }
+
+    public void sacarListaOrdenadores(ListaOrdenadoresCallback callback) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("usuarios")
+                .document(userId)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()){
+                            Gson gson = new Gson();
+                            String json = document.get("listaOrdenadores", String.class);
+                            JsonArray listaJson = gson.fromJson(json, JsonArray.class);
+                            List<Ordenador> listaOrdenadores = new ArrayList<>();
+                            for (JsonElement j: listaJson
+                                 ) {
+                                listaOrdenadores.add(gson.fromJson(j, Ordenador.class));
+                            }
+                            if (listaOrdenadores != null && !listaOrdenadores.isEmpty()) {
+                                callback.onListaOrenadoresObtenida(listaOrdenadores);
+                            } else{
+                                listaOrdenadores = new ArrayList<>();
+                                callback.onListaOrenadoresObtenida(listaOrdenadores);
+                            }
+                        } else {
+                            callback.onError("no existe el usuario");
+                        }
+                    } else {
+                        callback.onError("Se ha producido un error al hacer la consulta de la lista de ordenadores");
+                    }
+                });
+    }
+
+    public void actualizarListaOrdenadores(OrdenadoresActualizadosCallback callback){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            Gson gson = new Gson();
+            String listaJson = gson.toJson(ListaOrdenadoresSingleton.getInstance().getListaOrdenadores());
+            db.collection("usuarios").document(userId)
+                    .update("listaOrdenadores", listaJson)
+                    .addOnSuccessListener(aVoid -> {
+                        callback.onListaActualizada("Lista Actualizada");
+                    })
+                    .addOnFailureListener(e -> {
+                        callback.onError("Error al actualizar la lista");
+                    });
+        } else {
+            callback.onError("no se ha encontrado el usuario");
+        }
     }
 }

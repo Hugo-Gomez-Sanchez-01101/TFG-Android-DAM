@@ -80,55 +80,40 @@ public class TerminarRegistroActivity extends FatherView {
                 .createUserWithEmailAndPassword(e, c)
                 .addOnCompleteListener((task) -> {
                     if (task.isSuccessful()) {
-                        //crearListaOrdenadores();
-                        guardarDatosUsuario(ProviderType.BASIC);
-                        irHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
+                        crearUsuario();
+                        irHome(task.getResult().getUser().getEmail());
                     } else {
                         mostrarToastCamposIncompletos();
                     }
                 });
     }
 
-    private void irHome(String email, ProviderType proveedor) {
-        Intent i = new Intent(this, HomeActivity.class);
-        i.putExtra("email", email);
-        i.putExtra("proveedor", proveedor + "");
-        startActivity(i);
+    private void crearUsuario() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
+        Map<String, Object> listaOrdenadores = new HashMap<>();
+        userDocRef.set(listaOrdenadores)
+                .addOnSuccessListener(aVoid -> System.out.println("Usuario Creado"))
+                .addOnFailureListener(System.out::println);
     }
 
-//    private void crearListaOrdenadores() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-//        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-//        DocumentReference userDocRef = firestore.collection("usuarios").document(uid);
-//
-//        Map<String, Object> listaOrdenadores = new HashMap<>();
-//
-//        userDocRef.set(listaOrdenadores, SetOptions.merge())
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        System.out.println(e);
-//                    }
-//                });
-//    }
+    private void irHome(String email) {
+        Intent i = new Intent(this, HomeActivity.class);
+        i.putExtra("email", email);
+        guardarDatosUsuario();
+        startActivity(i);
+    }
 
     private void vaciarCampos(EditText e){
         e.setText("");
     }
 
-    private void guardarDatosUsuario(ProviderType proveedor) {
+    private void guardarDatosUsuario() {
         SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
         prefs.putString("email", email);
-        prefs.putString("proveedor",proveedor + "");
-
         prefs.apply();
     }
 }

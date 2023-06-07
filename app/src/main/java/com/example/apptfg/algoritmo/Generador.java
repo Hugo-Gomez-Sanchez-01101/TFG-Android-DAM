@@ -48,10 +48,6 @@ public class Generador{
         });
     }
 
-    public void setReglas(Reglas reglas){
-        this.reglas = reglas;
-    }
-
     /**
      * obtains a motherboard that is the base to build a pc, then it calls the continuarGenerando() method
      */
@@ -59,6 +55,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarPlacaBase(null, new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("placa base Obtenida");
                 PlacaBase placaBase = (PlacaBase) componente;
                 ordenador.setPlacaBase(placaBase);
                 placaBaseMain = placaBase;
@@ -83,6 +80,7 @@ public class Generador{
                     Procesador procesador = (Procesador) componente;
                     ordenador.setProcesador(procesador);
                     ordenador.setTarjetaGrafica(null);
+                    System.out.println("cpu grafica obtenida");
                     sacarPsu();
                 }
 
@@ -96,6 +94,7 @@ public class Generador{
             GestorFirebase.getInstance().sacarCpuNormal(placaBaseMain, new GestorFirebase.ComponenteCallback() {
                 @Override
                 public void onComponenteObtenido(Componente componente) {
+                    System.out.println("cpu normal obtenida");
                     Procesador procesador = (Procesador) componente;
                     ordenador.setProcesador(procesador);
                     sacarGpu();
@@ -113,6 +112,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarGpu(new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("gpu Obtenida");
                 TarjetaGrafica tarjetaGrafica = (TarjetaGrafica) componente;
                 ordenador.setTarjetaGrafica(tarjetaGrafica);
                 sacarPsu();
@@ -130,6 +130,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarPsu(new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("psu Obtenida");
                 FuenteAlimentacion fuenteAlimentacion = (FuenteAlimentacion) componente;
                 ordenador.setFuenteAlimentacion(fuenteAlimentacion);
                 sacarDisipador();
@@ -147,6 +148,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarDisipador(new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("disipador Obtenida");
                 Disipador disipador = (Disipador) componente;
                 ordenador.setDisipador(disipador);
                 sacarDiscoDuro();
@@ -164,6 +166,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarDiscoDuro(new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("disco Obtenida");
                 DiscoDuro discoDuro = (DiscoDuro) componente;
                 ordenador.setDiscoDuro(discoDuro);
                 sacarCaja();
@@ -181,6 +184,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarCaja(placaBaseMain, new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("caja Obtenida");
                 Caja caja = (Caja) componente;
                 ordenador.setCaja(caja);
                 sacarMemoriaRam();
@@ -189,10 +193,12 @@ public class Generador{
             @Override
             public void onError(String errorMessage) {
                 System.out.println(errorMessage);
-                if(regenerar == 1)
+                if(regenerar == 1) {
                     regenerar();
-                else
+                }else{
                     preciosActivity.mostrarError();
+                    System.out.println("regenerando");
+                }
             }
         });
     }
@@ -201,6 +207,7 @@ public class Generador{
         GestorFirebase.getInstance().sacarMemoriaRam(placaBaseMain, new GestorFirebase.ComponenteCallback() {
             @Override
             public void onComponenteObtenido(Componente componente) {
+                System.out.println("memoria Obtenida");
                 MemoriaRam ram = (MemoriaRam) componente;
                 ordenador.setMemoriaRam(ram);
                 System.out.println(ordenador);

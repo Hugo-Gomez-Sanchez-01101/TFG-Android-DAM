@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apptfg.adaptador.AdaptadorOrdenadorVH;
-import com.example.apptfg.adaptador.OrdenadorTarjeta;
 import com.example.apptfg.entidad.Ordenador;
 import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 
@@ -16,7 +15,6 @@ import java.util.List;
 
 public class ListaOrdenadoresActivity extends FatherView {
     private RecyclerView recyclerViewUser;
-    private AdaptadorOrdenadorVH adaptadorOrdenadorVH;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,16 +26,13 @@ public class ListaOrdenadoresActivity extends FatherView {
     private void setupRecicler() {
         recyclerViewUser = findViewById(R.id.recyclerViewComponentes);
         recyclerViewUser.setHasFixedSize(true);
-
-        // use a linear layout manager, esta vez horizontal
         recyclerViewUser.setLayoutManager(
                 new LinearLayoutManager(
                         this,
                         LinearLayoutManager.VERTICAL,
                         false));
-        ListaOrdenadoresSingleton.getInstance().inicializar();
-        List<Ordenador> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getOrdenadores();
-        adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores);
+        List<Ordenador> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getListaOrdenadores();
+        AdaptadorOrdenadorVH adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores);
         recyclerViewUser.setAdapter(adaptadorOrdenadorVH);
     }
 

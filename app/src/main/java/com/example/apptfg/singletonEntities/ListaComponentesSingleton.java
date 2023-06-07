@@ -120,7 +120,7 @@ public class ListaComponentesSingleton {
                 }
             });
         } else if(componente instanceof FuenteAlimentacion) {
-            GestorFirebase.getInstance().sacarListaPsu(ordenador.getPlacaBase(), new GestorFirebase.ListaComponentesCallback() {
+            GestorFirebase.getInstance().sacarListaPsu(new GestorFirebase.ListaComponentesCallback() {
                 @Override
                 public void onListaComponentesObtenidos(List<Componente> listaComponentes) {
                     listaComponentesSingleton = listaComponentes;

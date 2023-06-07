@@ -2,13 +2,10 @@ package com.example.apptfg;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Spinner;
 import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Usos;
 
 public class HomeActivity extends FatherView {
-    private Spinner spinner;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

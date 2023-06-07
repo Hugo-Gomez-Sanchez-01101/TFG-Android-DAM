@@ -1,6 +1,5 @@
 package com.example.apptfg.singletonEntities;
 
-import com.example.apptfg.adaptador.OrdenadorTarjeta;
 import com.example.apptfg.entidad.Ordenador;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 public class ListaOrdenadoresSingleton {
 
     private static ListaOrdenadoresSingleton instance;
-    private List<Ordenador> ordenadores;
+    private List<Ordenador> listaOrdenadores;
     private int contador = 1;
 
     private ListaOrdenadoresSingleton(){
@@ -24,17 +23,14 @@ public class ListaOrdenadoresSingleton {
     }
 
     public void inicializar(){
-        //
+        listaOrdenadores = new ArrayList<>();
     }
 
-    public List<Ordenador> getOrdenadores() {
-        return ordenadores;
+    public List<Ordenador> getListaOrdenadores() {
+        return listaOrdenadores;
     }
 
     public int añadirId(){
         return contador++;
-    }
-    public void borrar(OrdenadorTarjeta ordenador){
-        ordenadores.remove(ordenador);
     }
 }

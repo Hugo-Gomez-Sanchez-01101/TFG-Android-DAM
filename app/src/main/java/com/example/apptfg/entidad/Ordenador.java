@@ -5,6 +5,7 @@ import com.example.apptfg.regla.Usos;
 import java.io.Serializable;
 
 public class Ordenador implements Serializable {
+    private String nombre;
     private Enum<Usos> uso;
     private Caja caja;
     private DiscoDuro discoDuro;
@@ -45,6 +46,14 @@ public class Ordenador implements Serializable {
     }
 
     public Ordenador() {}
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public Enum<Usos> getUso() {
         return uso;
