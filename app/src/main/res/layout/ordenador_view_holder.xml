@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardUseCompatPadding="true"
-    card_view:cardElevation="4dp"
-    card_view:cardCornerRadius="3dp"
     android:layout_margin="6dp"
+    android:backgroundTint="@color/transparente"
     android:orientation="horizontal"
-    >
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo_carta_pc"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="6dp">
@@ -28,7 +26,8 @@
             android:layout_height="wrap_content"
             android:text="@string/titulo"
             android:textColor="@color/design_default_color_on_secondary"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/usoPc"
@@ -36,12 +35,13 @@
             android:layout_height="wrap_content"
             android:text="@string/nombre_pc"
             android:textColor="@color/red_1"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="118dp"
+            android:layout_height="111dp"
             android:contentDescription="@string/todo"
             android:src="@drawable/imagen_ordenador"
             tools:ignore="ContentDescription" />
@@ -53,6 +53,21 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnEliminarOrdenador"
+                style="@style/ButtonBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/botones_app"
+                android:text="@string/eliminarO"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
                 android:id="@+id/btnVerOrdenador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,14 +76,6 @@
                 android:text="VER"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <Button
-                android:id="@+id/btnEliminarOrdenador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/botones_app"
-                android:text="@string/eliminarO"
-                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
     </LinearLayout>

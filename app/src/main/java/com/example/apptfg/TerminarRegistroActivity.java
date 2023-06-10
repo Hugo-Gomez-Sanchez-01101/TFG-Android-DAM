@@ -6,15 +6,12 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.widget.EditText;
-import androidx.annotation.NonNull;
-import com.example.apptfg.provider_tipe.ProviderType;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +97,7 @@ public class TerminarRegistroActivity extends FatherView {
     }
 
     private void irHome(String email) {
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, UsosActivity.class);
         i.putExtra("email", email);
         guardarDatosUsuario();
         startActivity(i);

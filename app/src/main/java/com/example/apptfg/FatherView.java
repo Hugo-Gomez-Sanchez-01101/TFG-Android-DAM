@@ -112,7 +112,7 @@ public class FatherView extends AppCompatActivity {
             finish();
         });
         findViewById(R.id.iOrdenador).setOnClickListener(v ->{
-            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, UsosActivity.class);
             startActivity(intent);
             finish();
         } );

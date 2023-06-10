@@ -10,7 +10,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 
 import com.example.apptfg.entidad.Ordenador;
-import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -25,7 +24,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,7 +154,7 @@ public class RegistroLoginActivity extends FatherView {
     }
 
     private void irHome() {
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, UsosActivity.class);
         saveUserData();
         inicializarListaOrdenadores(i);
     }

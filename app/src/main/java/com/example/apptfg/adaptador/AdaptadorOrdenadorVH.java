@@ -11,14 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apptfg.OrdenadorGeneradoActivity;
+import com.example.apptfg.VerOrdenadorActivity;
 import com.example.apptfg.R;
 import com.example.apptfg.entidad.Ordenador;
-import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.singletonEntities.ListaOrdenadoresSingleton;
 import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenadorVH.ViewHolder> {
@@ -71,7 +69,7 @@ public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenado
     }
 
     private void ver(ViewHolder holder, int position) {
-        Intent i = new Intent(holder.itemView.getContext(), OrdenadorGeneradoActivity.class);
+        Intent i = new Intent(holder.itemView.getContext(), VerOrdenadorActivity.class);
         i.putExtra("nuevo", false);
         OrdenadorGeneradoSingleton.getInstance().setOrdenador(ListaOrdenadoresSingleton.getInstance().getListaOrdenadores().get(position));
         holder.itemView.getContext().startActivity(i);

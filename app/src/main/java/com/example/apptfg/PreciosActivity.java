@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.example.apptfg.algoritmo.Generador;
 import com.example.apptfg.entidad.Ordenador;
-import com.example.apptfg.exception.BuildingComputerException;
 import com.example.apptfg.regla.Usos;
 import com.example.apptfg.singletonEntities.OrdenadorGeneradoSingleton;
 
@@ -95,7 +94,7 @@ public class PreciosActivity extends FatherView {
     }
 
     private void volver() {
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, UsosActivity.class);
         startActivity(i);
         finish();
     }
@@ -117,7 +116,7 @@ public class PreciosActivity extends FatherView {
 
     public void terminarGenerar(Ordenador ordenador){
         disiparCarga();
-        Intent i = new Intent(this, OrdenadorGeneradoActivity.class);
+        Intent i = new Intent(this, VerOrdenadorActivity.class);
         ordenador.setUso(uso);
         OrdenadorGeneradoSingleton.getInstance().setOrdenador(ordenador);
         i.putExtra("nuevo", true);

@@ -22,7 +22,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".OrdenadorGeneradoActivity"
+            android:name=".VerOrdenadorActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -40,7 +40,7 @@
             android:name=".ListaOrdenadoresActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".UsosActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegistroLoginActivity"

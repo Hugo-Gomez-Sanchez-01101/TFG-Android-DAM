@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.example.apptfg.gestor.GestorFirebase;
 import com.example.apptfg.regla.Usos;
 
-public class HomeActivity extends FatherView {
+public class UsosActivity extends FatherView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -571,6 +571,9 @@ public class GestorFirebase {
     public void sacarMemoriaRam(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         System.out.println(placaBase.getFactor_forma_memoria());
+        System.out.println(placaBase.getVelocidad_max_memoria());
+        System.out.println(reglas.getPRECIO_MAX_RAM());
+        System.out.println(reglas.getPRECIO_MIN_RAM());
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_RAM())
@@ -584,19 +587,17 @@ public class GestorFirebase {
                             List<DocumentSnapshot> listaFiltrada = new ArrayList<>(documents);
                             for (DocumentSnapshot document : documents
                             ) {
+                                System.out.println(document.get("speed"));
                                 if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria()) {
                                     listaFiltrada.remove(document);
-                                    System.out.println("A3");
+                                    System.out.println("removida");
                                 }
-
-                                System.out.println("A2");
                             }
-                            System.out.println("A1");
-                            if (listaFiltrada.size() > 1) {
+                            System.out.println("tamaño lista" + listaFiltrada.size());
+                            if (listaFiltrada.size() != 0) {
                                 ordenarPorPrecio(listaFiltrada);
                                 DocumentSnapshot document = listaFiltrada.get(0);
                                 MemoriaRam memoriaRam = document.toObject(MemoriaRam.class);
-                                System.out.println("obtenido me");
                                 callback.onComponenteObtenido(memoriaRam);
                             } else {
                                 callback.onError("No se encontró ningúna memoria que cumpliera las condiciones de la consulta 1");

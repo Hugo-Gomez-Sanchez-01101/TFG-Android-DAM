@@ -24,7 +24,7 @@ public class ListaOrdenadoresActivity extends FatherView {
     }
 
     private void setupRecicler() {
-        recyclerViewUser = findViewById(R.id.recyclerViewComponentes);
+        recyclerViewUser = findViewById(R.id.recyclerViewOrdenador);
         recyclerViewUser.setHasFixedSize(true);
         recyclerViewUser.setLayoutManager(
                 new LinearLayoutManager(

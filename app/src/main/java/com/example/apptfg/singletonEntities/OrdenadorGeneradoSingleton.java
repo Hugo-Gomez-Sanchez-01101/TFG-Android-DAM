@@ -1,6 +1,5 @@
 package com.example.apptfg.singletonEntities;
 
-import com.example.apptfg.OrdenadorGeneradoActivity;
 import com.example.apptfg.entidad.Ordenador;
 
 public class OrdenadorGeneradoSingleton {
