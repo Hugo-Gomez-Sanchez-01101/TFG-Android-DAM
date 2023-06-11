@@ -193,7 +193,7 @@ public class Reglas {
         return PRECIO_MIN_DISCO;
     }
 
-    public double getPERCIO_MIN_PSU() {
+    public double getPRECIO_MIN_PSU() {
         return PERCIO_MIN_PSU;
     }
 

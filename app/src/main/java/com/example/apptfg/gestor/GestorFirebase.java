@@ -21,8 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.LinkedTreeMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +28,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * The type Gestor firebase.
@@ -194,7 +191,7 @@ public class GestorFirebase {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
-                .whereGreaterThanOrEqualTo("price_usd", reglas.getPERCIO_MIN_PSU())
+                .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_PSU())
                 .orderBy("price_usd")
                 .limit(10)
                 .get()
@@ -427,6 +424,8 @@ public class GestorFirebase {
      * @param callback the callback
      */
     public void sacarGpu(ComponenteCallback callback) {
+        System.out.println("precio max gpu: " + reglas.getPRECIO_MAX_GPU());
+        System.out.println("precio min gpu: " + reglas.getPRECIO_MIN_GPU());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("video-card")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_GPU())
@@ -456,10 +455,12 @@ public class GestorFirebase {
      * @param callback the callback
      */
     public void sacarPsu(ComponenteCallback callback) {
+        System.out.println("precio max psu: " + reglas.getPRECIO_MAX_PSU());
+        System.out.println("precio min psu: " + reglas.getPRECIO_MIN_PSU());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("power_supply")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_PSU())
-                .whereGreaterThanOrEqualTo("price_usd", reglas.getPERCIO_MIN_PSU())
+                .whereGreaterThanOrEqualTo("price_usd", reglas.getPRECIO_MIN_PSU())
                 .orderBy("price_usd")
                 .limit(1)
                 .get()
@@ -485,6 +486,8 @@ public class GestorFirebase {
      * @param callback the callback
      */
     public void sacarDisipador(ComponenteCallback callback) {
+        System.out.println("precio max disipador: " + reglas.getPRECIO_MAX_COOLER());
+        System.out.println("precio min disipador: " + reglas.getPRECIO_MIN_COOLER());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("cpu-cooler")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_COOLER())
@@ -514,6 +517,8 @@ public class GestorFirebase {
      * @param callback the callback
      */
     public void sacarDiscoDuro(ComponenteCallback callback) {
+        System.out.println("precio max disco: " + reglas.getPRECIO_MAX_DISCO());
+        System.out.println("precio min disco: " + reglas.getPRECIO_MIN_DISCO());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("internal-hard-drive")
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_DISCO())
@@ -543,6 +548,8 @@ public class GestorFirebase {
      * @param callback the callback
      */
     public void sacarCaja(PlacaBase placaBase, ComponenteCallback callback) {
+        System.out.println("precio max caja: " + reglas.getPRECIO_MAX_CAJA());
+        System.out.println("precio min caja: " + reglas.getPRECIO_MIN_CAJA());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("case")
                 .whereEqualTo("form_factor", placaBase.getFormato())
@@ -570,10 +577,9 @@ public class GestorFirebase {
 
     public void sacarMemoriaRam(PlacaBase placaBase, ComponenteCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        System.out.println(placaBase.getFactor_forma_memoria());
-        System.out.println(placaBase.getVelocidad_max_memoria());
-        System.out.println(reglas.getPRECIO_MAX_RAM());
-        System.out.println(reglas.getPRECIO_MIN_RAM());
+        System.out.println("velocidad max memoria: " + placaBase.getVelocidad_max_memoria());
+        System.out.println("precio max memoria: " + reglas.getPRECIO_MAX_RAM());
+        System.out.println("precio min memoria: " + reglas.getPRECIO_MIN_RAM());
         db.collection("memory_ram")
                 .whereEqualTo("form_factor", placaBase.getFactor_forma_memoria())
                 .whereLessThanOrEqualTo("price_usd", reglas.getPRECIO_MAX_RAM())
@@ -587,13 +593,11 @@ public class GestorFirebase {
                             List<DocumentSnapshot> listaFiltrada = new ArrayList<>(documents);
                             for (DocumentSnapshot document : documents
                             ) {
-                                System.out.println(document.get("speed"));
                                 if ((Long) document.get("speed") > placaBase.getVelocidad_max_memoria()) {
                                     listaFiltrada.remove(document);
                                     System.out.println("removida");
                                 }
                             }
-                            System.out.println("tamaño lista" + listaFiltrada.size());
                             if (listaFiltrada.size() != 0) {
                                 ordenarPorPrecio(listaFiltrada);
                                 DocumentSnapshot document = listaFiltrada.get(0);
