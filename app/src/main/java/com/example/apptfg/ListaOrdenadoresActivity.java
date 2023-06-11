@@ -32,7 +32,8 @@ public class ListaOrdenadoresActivity extends FatherView {
                         LinearLayoutManager.VERTICAL,
                         false));
         List<Ordenador> listaOrdenadores = ListaOrdenadoresSingleton.getInstance().getListaOrdenadores();
-        AdaptadorOrdenadorVH adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores);
+
+        AdaptadorOrdenadorVH adaptadorOrdenadorVH = new AdaptadorOrdenadorVH(listaOrdenadores, this);
         recyclerViewUser.setAdapter(adaptadorOrdenadorVH);
     }
 
@@ -41,5 +42,9 @@ public class ListaOrdenadoresActivity extends FatherView {
     protected void onResume() {
         super.onResume();
         recyclerViewUser.getAdapter().notifyDataSetChanged();
+    }
+
+    public void mostrarBorrado() {
+        mostrarToastBorrado();
     }
 }

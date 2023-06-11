@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apptfg.ListaOrdenadoresActivity;
 import com.example.apptfg.VerOrdenadorActivity;
 import com.example.apptfg.R;
 import com.example.apptfg.entidad.Ordenador;
@@ -22,9 +23,11 @@ import java.util.List;
 public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenadorVH.ViewHolder> {
 
     private List<Ordenador> listaOrdenadores;
+    private ListaOrdenadoresActivity activity;
 
-    public AdaptadorOrdenadorVH(List<Ordenador> listaOrdenadores) {
+    public AdaptadorOrdenadorVH(List<Ordenador> listaOrdenadores, ListaOrdenadoresActivity activity) {
         this.listaOrdenadores = listaOrdenadores;
+        this.activity = activity;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,7 +67,7 @@ public class AdaptadorOrdenadorVH extends RecyclerView.Adapter<AdaptadorOrdenado
 
     private void eliminar(ViewHolder holder, int posicion) {
         ListaOrdenadoresSingleton.getInstance().getListaOrdenadores().remove(listaOrdenadores.get(posicion));
-        Toast.makeText(holder.itemView.getContext(), "Borrado con exito", Toast.LENGTH_SHORT).show();
+        activity.mostrarBorrado();
         notifyDataSetChanged();
     }
 

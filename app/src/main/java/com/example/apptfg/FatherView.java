@@ -104,6 +104,16 @@ public class FatherView extends AppCompatActivity {
         t.show();
     }
 
+    protected void mostrarToastBorrado() {
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.toast_ordenador_borrado, (ViewGroup) findViewById(R.id.toastOrdenadorBorrado));
+        Toast t = new Toast(getApplicationContext());
+        t.setGravity(Gravity.CENTER_VERTICAL | Gravity.BOTTOM, 0, 200);
+        t.setDuration(Toast.LENGTH_SHORT);
+        t.setView(view);
+        t.show();
+    }
+
     protected void darFuncionalidadMenu(){
         findViewById(R.id.iCasa).setOnClickListener(v -> {
             Intent intent = new Intent(this, ListaOrdenadoresActivity.class);

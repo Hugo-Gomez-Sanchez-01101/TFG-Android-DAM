@@ -77,11 +77,11 @@ public class VerOrdenadorActivity extends FatherView {
     }
 
     private void borrar() {
-        mostrarCarga();
         ListaOrdenadoresSingleton.getInstance().getListaOrdenadores().remove(ordenador);
-        Context context = getApplicationContext();
-        Toast.makeText(context, "Borrado con exito", Toast.LENGTH_SHORT).show();
-        disiparCarga();
+        mostrarToastBorrado();
+        Intent i = new Intent(this, ListaOrdenadoresActivity.class);
+        startActivity(i);
+        finish();
     }
 
     private void volver() {
