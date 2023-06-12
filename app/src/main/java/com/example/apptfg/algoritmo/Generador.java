@@ -73,7 +73,8 @@ public class Generador{
      * Obtains a cpu compatible with the motherboard
       */
     private void sacarCpu() {
-        if(reglas.getPRECIO_MAX_GPU() == 0)
+        if(reglas.getPRECIO_MAX_GPU() == 0) {
+            System.out.println("ofimatica");
             GestorFirebase.getInstance().sacarCpuConGrafica(placaBaseMain, new GestorFirebase.ComponenteCallback() {
                 @Override
                 public void onComponenteObtenido(Componente componente) {
@@ -90,7 +91,7 @@ public class Generador{
                     preciosActivity.mostrarError();
                 }
             });
-        else
+        }else {
             GestorFirebase.getInstance().sacarCpuNormal(placaBaseMain, new GestorFirebase.ComponenteCallback() {
                 @Override
                 public void onComponenteObtenido(Componente componente) {
@@ -106,6 +107,7 @@ public class Generador{
                     preciosActivity.mostrarError();
                 }
             });
+        }
     }
 
     private void sacarGpu() {

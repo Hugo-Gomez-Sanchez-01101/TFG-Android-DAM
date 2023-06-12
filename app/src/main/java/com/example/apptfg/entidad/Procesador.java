@@ -1,9 +1,7 @@
 package com.example.apptfg.entidad;
 
-import java.io.Serializable;
-
 public class Procesador extends Componente {
-    private String integrated_grafics;
+    private String integrated_graphics;
     private double price;
     private String name;
     private String socket;
@@ -12,7 +10,7 @@ public class Procesador extends Componente {
     private String boost_clock;
 
     public Procesador(String integrated_grafics, double price, String name, String socket, String core_clock, String core_count, String boost_clock) {
-        this.integrated_grafics = integrated_grafics;
+        this.integrated_graphics = integrated_grafics;
         this.price = price;
         this.name = name;
         this.socket = socket;
@@ -22,8 +20,8 @@ public class Procesador extends Componente {
     }
 
     public Procesador(){}
-    public String getIntegrated_grafics() {
-        return integrated_grafics;
+    public String getIntegrated_graphics() {
+        return integrated_graphics;
     }
 
     public double getPrice() {
@@ -53,7 +51,7 @@ public class Procesador extends Componente {
     @Override
     public String toString() {
         return "Procesador{" +
-                "integrated_grafics='" + integrated_grafics + '\'' +
+                "integrated_grafics='" + integrated_graphics + '\'' +
                 ", price=" + price +
                 ", name='" + name + '\'' +
                 ", socket='" + socket + '\'' +

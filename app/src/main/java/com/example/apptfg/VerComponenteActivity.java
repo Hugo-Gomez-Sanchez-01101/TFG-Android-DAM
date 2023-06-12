@@ -258,9 +258,9 @@ public class VerComponenteActivity extends FatherView {
         txt = findViewById(R.id.txtGigaherciosOverclockedProcesador);
         txt.setText(p.getBoost_clock());
         txt = findViewById(R.id.txtGraficosIntegradosProcesador);
-        if(p.getIntegrated_grafics() == null)
+        if(p.getIntegrated_graphics() == null)
             txt.setText("Sin gráficos integrados");
         else
-            txt.setText(p.getIntegrated_grafics());
+            txt.setText(p.getIntegrated_graphics());
     }
 }
